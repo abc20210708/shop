@@ -1,0 +1,235 @@
+/* 웹 폰트 로딩 */
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+
+/* reset */
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+input {
+    outline: none;
+    border: none;
+}
+
+/* common */
+.clearfix::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.wrap {
+    font-size: 15px;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.en {
+    font-family: 'Exo 2', sans-serif;
+}
+
+br.mo {
+    display: none;
+}
+
+.hide {
+    display: none !important;
+}
+
+/* ============== header ============= */
+header {
+    width: 100%;
+    height: 60px;
+    position: fixed;
+    z-index: 100;
+    padding-top: 20px;
+    background: #fff;
+    display: flex;
+    /* background: orange; */
+
+}
+
+header .inner-header {
+    display: flex;
+    width: 70%;
+    height: 60px;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: space-between;
+    color: #111;
+    /* background: pink; */
+}
+
+
+/* 네비게이션 정렬 */
+header .inner-header nav ul {
+    align-items: center;
+}
+
+header .inner-header nav ul li {
+    float: left;
+    margin-right: 40px;
+}
+
+/* 메인 네비게이션 마우스 호버 효과 */
+/* 투명도 80% */
+header .inner-header .gnb li a:hover {
+    opacity: 0.8;
+    /* color: rgb(6, 121, 35); */
+}
+
+header .inner-header .gnb {
+    /* background: greenyellow; */
+    margin-left: 10px;
+}
+
+header .inner-header .gnb li a {
+    display: block;
+    font-weight: 700;
+}
+
+/* 돋보기아이콘 클릭 시 실행 */
+header .inner-header .tnb .search {
+    border: #ddd solid 0.8px;
+    border-radius: 15px;
+    padding: 5px 10px;
+    background: #fff;
+
+
+}
+
+/* 돋보기아이콘 클릭 시 display: block */
+#search {
+    background: transparent;
+    display: none;
+}
+
+/* ============ header fin ============ */
+
+
+
+/* ============ contents✅ ============ */
+
+/* ------- contents > main banner✅ ------- */
+section#main-banner-container {
+    position: relative;
+    width: 100%;
+    /* 전체 크기를 화면 크기와 동일하게 맞추기 */
+    height: 600px;
+    /* 높이 고정 */
+    overflow: hidden;
+    /* 나머지 부분 숨기기 */
+    margin: 0 auto;
+    padding-top: 100px;
+    display: block;
+}
+
+section#main-banner-container .main-banner-img {
+    position: absolute;
+    /* 화면 감소시 이미지 크기는 right, left 포지션값에 의해 결정된다. */
+    /* 포지션값을 -200% 시킴으로써 화면이 줄어들어도 이미지 크기가 감소하는 right, left 값이 되지 않음 */
+    top: 0;
+    right: -200%;
+    bottom: 0;
+    left: -200%;
+    margin-top: 85px;
+}
+
+section#main-banner-container .main-banner-img a img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    max-height: 100%;
+
+}
+
+/* main banner text Style */
+/* 메인 배너 텍스트 스타일 */
+section#main-banner-container .main-banner-img a .banner-text {
+    position: absolute;
+    width: 50%;
+    height: 100px;
+    left: 300px;
+    bottom: 250px;
+    z-index: 100000;
+}
+
+/* next \ previous Style */
+section#main-banner-container .click-next-pre {
+    position: absolute;
+    display: flex;
+    top: 631px;
+    right: 20%;
+    font-weight: 700;
+    margin: 0 auto;
+    font-size: 0.9em;
+    padding: 20px 25px;
+    background: #fff;
+
+}
+
+/* ------- contents > main banner fin ------- */
+
+
+/* ------- content common style✅ ------- */
+
+section.common-style {
+    width: 70%;
+    margin: 0 auto;
+}
+
+/* 각 섹션 텍스트 타이틀 스타일 */
+section .section-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 20px;
+
+}
+
+
+/* ------- contents > category✅ ------- */
+
+section#category .products {
+    display: flex;
+}
+
+section#category .products .category-link {
+    width: 50%;
+    background: #eee;
+    justify-content: center;
+}
+
+/* ------- contents > category fin ------- */
+
+
+
+/* ------- contents > new products✅ ------- */
+
+section#new-products .products ul {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+
+}
+
+section#new-products .products ul li {
+    margin-right: 30px;
+}
+
+/* ------- contents > new products fin ------- */
+
+
+
+
+/* ------- contents > best products✅ ------- */
+/* ------- contents > best products fin ------- */
+
+/* =============== contents fin ============== */
+
+
+
+/* =============== footer✅ =============== */
+
+/* =============== footer fin =============== */
