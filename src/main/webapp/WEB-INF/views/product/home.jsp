@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
 
     <!-- custom css -->
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="/css/main.css">
 
 </head>
 
@@ -34,8 +34,8 @@
                 <!-- 메인 네비게이션바 -->
                 <nav class="gnb">
                     <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Shop</a></li>
+                        <li><a href="/product/write">상품 등록하기</a></li>
+                        <li><a href="/product/list">상품 목록</a></li>
                         <li><a href="#">Pages</a></li>
                         <li><a href="#">Blog</a></li>
                         <li><a href="#">Contact</a></li>
