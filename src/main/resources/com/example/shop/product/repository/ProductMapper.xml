@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.shop.product.repository.ProductMapper">
+
+    <resultMap id="productMap" type="com.example.shop.product.domain.Product">
+        <result property="prCode" column="product_code" />
+        <result property="prName" column="product_name" />
+        <result property="prPrice" column="product_price" />
+        <result property="prYn" column="product_yn" />
+        <result property="prAmount" column="product_amount" />
+        <result property="prThumb" column="product_thumb" />
+        <result property="prImg" column="product_img" />
+    </resultMap>
+
+    <!--    //상품 목록 조회  -->
+    <select id="getArticles" resultMap="productMap">
+        <![CDATA[
+            SELECT
+                product_code, product_name, product_price,
+                product_yn, product_amount, product_thumb, product_img
+           FROM
+           product
+        ]]>
+    </select>
+
+    <!--    //상품 상세 조회-->
+    <select id="getContent" resultMap="productMap">
+        SELECT * FROM product
+        WHERE product_code = #{prCode}
+    </select>
+
+
+    <!--    //상품 등록-->
+    <insert id="insert">
+        INSERT INTO product
+            (product_code, product_name, product_price,
+            product_yn, product_amount, product_thumb, product_img)
+        VALUES
+            (seq_product_code.nextval, #{prName}, #{prPrice},
+            #{prYn}, #{prAmount}, #{prThumb}, #{prImg})
+    </insert>
+
+
+    <!--    //상품 삭제-->
+    <delete id="delete">
+        DELETE FROM product
+        WHERE product_code = #{prCode}
+    </delete>
+
+
+</mapper>
