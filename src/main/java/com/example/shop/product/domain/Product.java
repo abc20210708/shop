@@ -14,7 +14,7 @@ public class Product {
     private int prCode;
     private String prName;
     private int prPrice;
-    private String prYn;
+    private int prYn;
     private int prAmount;
     private String prThumb;
     private String prImg;
@@ -25,7 +25,7 @@ public class Product {
         this.prCode = ++seq;
     }
 
-    public Product(int prCode, String prName, int prPrice,String prYn,
+    public Product(int prCode, String prName, int prPrice, int prYn,
                      int prAmount, String prThumb, String prImg) {
         this();
         this.prCode = prCode;
@@ -42,7 +42,7 @@ public class Product {
         this.prCode = rs.getInt("product_code");
         this.prName = rs.getString("product_name");
         this.prPrice = rs.getInt("product_price");
-        this.prYn = rs.getString("product_yn");
+        this.prYn = rs.getInt("product_yn");
         this.prAmount = rs.getInt("product_amount");
         this.prThumb = rs.getString("product_thumb");
         this.prImg = rs.getString("product_img");

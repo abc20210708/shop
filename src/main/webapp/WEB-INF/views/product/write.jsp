@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
-<head>
+
   <head>
       <meta charset="UTF-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,21 +19,51 @@
       <link rel="stylesheet" href="/css/main.css">
 
   </head>
-</head>
+
 <body>
 
     <h1>상품 등록하기 </h1>
 
    <form action="/product/write" method="post" autocomplete="off">
+      
         <label>
-            # 상품  : <input type="text" name="id">
+            # 상품명  : <input type="text" name="prName">
         </label>
+        <br>
+
+        
         <label>
-            # 비밀번호 : <input type="password" name="pw">
+            # 상품 가격  : <input type="text" name="prPrice">
         </label>
+        <br>
+
         <label>
-            <button type="submit">로그인</button>
+            # 판매여부  : <input type="text" name="prYn">
         </label>
+        <br>
+
+
+        <label>
+            # 상품수량 : <input type="text" name="prAmount">
+        </label>
+        <br>
+
+
+        <label>
+            # 상품썸네일 : <input type="file" name="prThumb" id=thumbFileOpenInput" accept="image/png, image/jpeg">
+        </label>
+        <br>
+
+       
+        <label>
+            # 상품이미지 : <input type="file" name="prImg" id=imageFileOpenInput" accept="image/png, image/jpeg">
+        </label>
+        <br>
+
+        <label>
+            <button type="submit">상품 등록</button>
+        </label>
+       
     </form>
 
 </body>

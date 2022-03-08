@@ -36,9 +36,11 @@
     <!--    //상품 등록-->
     <insert id="insert">
         INSERT INTO product
+            (product_code, product_name, product_price,
+            product_yn, product_amount, product_thumb, product_img)
         VALUES
-            (seq_board.nextval, #{prName}, #{prPrice}, #{prYn}, #{prAmount}
-             #{prThumb}, #{prImg})
+            (seq_product_code.nextval, #{prName}, #{prPrice},
+            #{prYn}, #{prAmount}, #{prThumb}, #{prImg})
     </insert>
 
 
