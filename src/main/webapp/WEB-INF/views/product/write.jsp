@@ -24,7 +24,7 @@
 
     <h1>상품 등록하기 </h1>
 
-   <form action="/product/write" method="post" autocomplete="off">
+   <form action="/product/write" method="post" autocomplete="off" enctype="multipart/form-data">
       
         <label>
             # 상품명  : <input type="text" name="prName">
@@ -33,30 +33,30 @@
 
         
         <label>
-            # 상품 가격  : <input type="text" name="prPrice">
+            # 상품 가격  : <input type="text" name="prPrice"  >
         </label>
         <br>
 
         <label>
-            # 판매여부  : <input type="text" name="prYn">
-        </label>
-        <br>
-
-
-        <label>
-            # 상품수량 : <input type="text" name="prAmount">
+            # 판매여부  : <input type="text" name="prYn"  >
         </label>
         <br>
 
 
         <label>
-            # 상품썸네일 : <input type="file" name="prThumb" id=thumbFileOpenInput" accept="image/png, image/jpeg">
+            # 상품수량 : <input type="text" name="prAmount"  >
+        </label>
+        <br>
+
+
+        <label>
+            # 상품썸네일 : <input type="file" name="prThumb" id=thumbFileOpenInput" accept="image/png, image/jpeg" multiple >
         </label>
         <br>
 
        
         <label>
-            # 상품이미지 : <input type="file" name="prImg" id=imageFileOpenInput" accept="image/png, image/jpeg">
+            # 상품이미지 : <input type="file" name="prImg" id=imageFileOpenInput" accept="image/png, image/jpeg" multiple >
         </label>
         <br>
 
@@ -65,6 +65,9 @@
         </label>
        
     </form>
+
+
+
 
 </body>
 </html>
