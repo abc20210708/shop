@@ -7,7 +7,7 @@
       <meta charset="UTF-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Mall</title>
+      <title></title>
 
     
 
@@ -15,10 +15,10 @@
 
 <body>
 
-   
+  
     <h1>상품 등록하기 </h1>
-
-   <form action="/product/write" method="post" autocomplete="off" enctype="multipart/form-data">
+   
+   <form action="/write" method="post" autocomplete="off" enctype="multipart/form-data">
       
     <p>
         <label>
