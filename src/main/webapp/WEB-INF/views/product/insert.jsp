@@ -1,22 +1,21 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="ko">
 
   <head>
-      <meta charset="UTF-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title></title>
-
-    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>상품 등록</title>
 
   </head>
 
 <body>
 
   
-    <h1>상품 등록하기 </h1>
+    <h1>파일 업로드</h1>
    
    <form action="/write" method="post" autocomplete="off" enctype="multipart/form-data">
       
@@ -62,7 +61,8 @@
 
     <p>
         <label>
-            # 상품썸네일 : <input type="file" name="prThumb" id=thumbFileOpenInput" accept="image/png, image/jpeg" >
+            # 상품썸네일 : <input type="file" name="prThumb">
+           
         </label>
        
     </p>
@@ -71,12 +71,14 @@
 
     <p>
         <label>
-            <button type="submit">상품 등록</button>
+          <input type="submit" value="등록하기" onclick="location.href='list.jsp'">
         </label>
     </p>
+
+    
     </form>
 
-
+    
 
 
 </body>

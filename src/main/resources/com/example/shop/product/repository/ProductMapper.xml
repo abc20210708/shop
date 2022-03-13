@@ -13,6 +13,7 @@
         <result property="prYn" column="product_yn" />
         <result property="prAmount" column="product_amount" />
         <result property="prThumb" column="product_thumb" />
+        <result property="prDate" column="product_date" />
     </resultMap>
 
     <!--    //상품 목록 조회  -->
@@ -36,10 +37,10 @@
     <insert id="insert">
         INSERT INTO product
             (product_code, cate_code, product_name, product_price,
-            product_yn, product_amount, product_thumb, product_date)
+            product_yn, product_amount, product_thumb)
         VALUES
             (seq_product_code.nextval, #{cateCode} , #{prName}, #{prPrice},
-            #{prYn}, #{prAmount}, #{prThumb}, #{prDate})
+            #{prYn}, #{prAmount}, #{prThumb})
     </insert>
 
 

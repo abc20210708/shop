@@ -19,8 +19,6 @@ public class Product {
     private int prAmount;
     private String prThumb;
     private String prDate;
-    private String imgPath;
-    private String imgSize;
 
     private static int seq;
 
@@ -29,7 +27,7 @@ public class Product {
     }
 
     public Product(int prCode, int cateCode, String prName, int prPrice, int prYn,
-                     int prAmount, String prThumb, String prDate, String imgPath, String imgSize) {
+                     int prAmount, String prThumb, String prDate) {
         this();
         this.prCode = prCode;
         this.cateCode = cateCode;
@@ -39,8 +37,6 @@ public class Product {
         this.prAmount = prAmount;
         this.prThumb = prThumb;
         this.prDate = prDate;
-        this.imgPath = imgPath;
-        this.imgSize = imgSize;
     }
 
     public Product(ResultSet rs) throws SQLException {
@@ -52,8 +48,6 @@ public class Product {
         this.prAmount = rs.getInt("product_amount");
         this.prThumb = rs.getString("product_thumb");
         this.prDate = rs.getString("product_date");
-        this.imgPath = rs.getString("img_path");
-        this.imgSize = rs.getString("img_size");
     }
 
 
