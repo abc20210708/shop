@@ -17,7 +17,7 @@
   
     <h1>파일 업로드</h1>
    
-   <form action="/write" method="post" autocomplete="off" enctype="multipart/form-data">
+   <form action="/product/write" method="post" autocomplete="off" enctype="multipart/form-data">
       
     <p>
         <label>
@@ -54,19 +54,20 @@
 
     <p>
         <label>
-            # 상품수량 : <input type="text" name="prAmount"  >
+            # 상품수량 : <input type="text" name="prAmount" >
         </label>
         
     </p>
 
     <p>
         <label>
-            # 상품썸네일 : <input type="file" name="prThumb">
+            # 상품썸네일 : <input type="file" name="file" >
            
         </label>
        
     </p>
 
+ 
   
 
     <p>

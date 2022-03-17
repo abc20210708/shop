@@ -3,6 +3,7 @@ package com.example.shop.product.domain;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,6 +19,7 @@ public class Product {
     private int prYn;
     private int prAmount;
     private String prThumb;
+  //  private String prImg;
     private String prDate;
 
     private static int seq;
@@ -36,6 +38,7 @@ public class Product {
         this.prYn = prYn;
         this.prAmount = prAmount;
         this.prThumb = prThumb;
+     //   this.prImg = prImg;
         this.prDate = prDate;
     }
 
@@ -47,6 +50,7 @@ public class Product {
         this.prYn = rs.getInt("product_yn");
         this.prAmount = rs.getInt("product_amount");
         this.prThumb = rs.getString("product_thumb");
+        // this.prImg = rs.getString("product_img");
         this.prDate = rs.getString("product_date");
     }
 

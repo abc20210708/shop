@@ -13,6 +13,7 @@
         <result property="prYn" column="product_yn" />
         <result property="prAmount" column="product_amount" />
         <result property="prThumb" column="product_thumb" />
+<!--        <result property="prImg" column="product_img" />-->
         <result property="prDate" column="product_date" />
     </resultMap>
 

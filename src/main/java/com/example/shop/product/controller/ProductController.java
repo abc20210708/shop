@@ -14,9 +14,11 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.multipart.MultipartRequest;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -28,6 +30,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 @Controller
@@ -35,6 +38,12 @@ import java.util.*;
 @RequestMapping("/product")
 @RequiredArgsConstructor
 public class ProductController extends HttpServlet {
+
+   /* public void doGet(HttpServletRequest request, HttpServletResponse response)
+       throws ServletException, IOException {
+        fileUpload(request,response);
+    }*/
+
 
     /**
      * 상품 목록요청: /product/list: GET
@@ -74,22 +83,37 @@ public class ProductController extends HttpServlet {
 
     //상품 등록 요청 - POST!
     @PostMapping("/write")
-    public String write(HttpServletRequest req,
-                        @RequestParam("file") MultipartFile file,
-                        Product product)
-        throws  IllegalStateException, IOException {
+    public String fileUpload(MultipartHttpServletRequest request,Product product,
+                    @RequestParam("file") MultipartFile[] file) throws Exception  {
+
         log.info("상픔 등록 요청 - POST!");
 
-        String PATH = req.getSession().getServletContext().getRealPath("C:\\testImg\\here");
-        if (!file.getOriginalFilename().isEmpty()) {
-            file.transferTo(new File(PATH + file.getOriginalFilename()));
-            product.setPrThumb(file.getOriginalFilename());
+        String uploadPath = request.getServletContext().getRealPath("\\");
+        String fileOriginName = "";
+        String fileMultiName = "";
+        for (int i = 0; i < file.length; i++) {
+            fileOriginName = file[i].getOriginalFilename();
+            log.info("기존 파일명: "+ fileOriginName);
+            SimpleDateFormat formatter = new SimpleDateFormat("YYYYMMDD_HHMMSS_"+i);
+            Calendar now = Calendar.getInstance();
+
+            //확장잠여
+            String extension = fileOriginName.split("\\.")[1];
+
+            //
+            fileOriginName = formatter.format(now.getTime())+"."+extension;
+            log.info("변경된 파일명 :" +fileOriginName);
+
+            File f = new File(uploadPath+ "\\"+fileOriginName);
+            file[i].transferTo(f);
+            if (i==0) {fileMultiName += fileOriginName;}
+            else {fileMultiName += ","+fileOriginName;}
         }
 
+        log.info("*"+fileMultiName);
+        product.setPrThumb(fileMultiName);
         productService.write(product);
-
         log.info(product);
-
         return "product/list";
     }
 
