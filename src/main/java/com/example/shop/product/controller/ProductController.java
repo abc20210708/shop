@@ -88,7 +88,10 @@ public class ProductController extends HttpServlet {
 
         log.info("상픔 등록 요청 - POST!");
 
-        String uploadPath = request.getServletContext().getRealPath("\\");
+
+
+        String uploadPath = "C:\\testImg";
+
         String fileOriginName = "";
         String fileMultiName = "";
         for (int i = 0; i < file.length; i++) {
