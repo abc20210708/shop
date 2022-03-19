@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @Service
@@ -26,8 +28,8 @@ public class ProductService {
 
     //상품 등록 중간 처리
     public boolean write(Product product) {
-
-        return productMapper.insert(product);
+        productMapper.insert(product);
+        return true;
     }
 
     //상품 수정 중간 처리

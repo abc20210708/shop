@@ -7,20 +7,21 @@
 
     <resultMap id="productMap" type="com.example.shop.product.domain.Product">
         <result property="prCode" column="product_code" />
+        <result property="cateCode" column="cate_code" />
         <result property="prName" column="product_name" />
         <result property="prPrice" column="product_price" />
         <result property="prYn" column="product_yn" />
         <result property="prAmount" column="product_amount" />
         <result property="prThumb" column="product_thumb" />
-        <result property="prImg" column="product_img" />
+<!--        <result property="prImg" column="product_img" />-->
+        <result property="prDate" column="product_date" />
     </resultMap>
 
     <!--    //상품 목록 조회  -->
     <select id="getArticles" resultMap="productMap">
         <![CDATA[
             SELECT
-                product_code, product_name, product_price,
-                product_yn, product_amount, product_thumb, product_img
+                *
            FROM
            product
         ]]>
@@ -36,11 +37,11 @@
     <!--    //상품 등록-->
     <insert id="insert">
         INSERT INTO product
-            (product_code, product_name, product_price,
-            product_yn, product_amount, product_thumb, product_img)
+            (product_code, cate_code, product_name, product_price,
+            product_yn, product_amount, product_thumb)
         VALUES
-            (seq_product_code.nextval, #{prName}, #{prPrice},
-            #{prYn}, #{prAmount}, #{prThumb}, #{prImg})
+            (seq_product_code.nextval, #{cateCode} , #{prName}, #{prPrice},
+            #{prYn}, #{prAmount}, #{prThumb})
     </insert>
 
 

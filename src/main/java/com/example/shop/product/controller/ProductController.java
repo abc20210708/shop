@@ -3,21 +3,39 @@ package com.example.shop.product.controller;
 import com.example.shop.product.domain.Product;
 import com.example.shop.product.service.ProductService;
 import lombok.RequiredArgsConstructor;
+import lombok.Value;
 import lombok.extern.log4j.Log4j2;
+import org.apache.commons.io.IOUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import javax.servlet.http.HttpSession;
-import java.util.List;
+
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import java.io.File;
+import java.io.IOException;
+import java.lang.annotation.Target;
+import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 @Controller
 @Log4j2
 @RequestMapping("/product")
 @RequiredArgsConstructor
-public class ProductController {
+public class ProductController extends HttpServlet {
+
+   /* public void doGet(HttpServletRequest request, HttpServletResponse response)
+       throws ServletException, IOException {
+        fileUpload(request,response);
+    }*/
+
 
     /**
      * 상품 목록요청: /product/list: GET
@@ -31,32 +49,72 @@ public class ProductController {
 
     private final ProductService productService;
 
+  //  private static String CURR_IMG_REPO_PATH = "C:\\testImg\\";
+
+
+
     @GetMapping("/list")
-    public String list(Model model) {
+    public String list(Model model)
+            throws Exception {
         log.info("/product/list -- GET!");
+
+
         List<Product> productList = productService.getList();
         model.addAttribute("articles", productList);
+
         return "product/list";
     }
 
     //상품 등록 화면 요청
     @GetMapping("/write")
-    public String write(HttpSession session) {
+    public String write() {
         log.info("/product/write - GET!");
 
         /*Product product = (Product) session.getAttribute("newProduct");
         if (product == null) {
             return "redirect:/home";
         }*/
-        return "product/write";
+        return "product/insert";
     }
 
-    //상품 등록 요청
+    //상품 등록 요청 - POST!
     @PostMapping("/write")
-    public String write(Product product) {
-        log.info("/product/write --POST!"+ product);
+    public String fileUpload(MultipartHttpServletRequest request,Product product,
+                    @RequestParam("file") MultipartFile[] file) throws Exception  {
+
+        log.info("상픔 등록 요청 - POST!");
+
+
+        //String uploadPath = request.getSession().getServletContext().getRealPath("/"); webapp
+
+        String uploadPath = "C:\\testImg";
+
+        String fileOriginName = "";
+        String fileMultiName = "";
+        for (int i = 0; i < file.length; i++) {
+            fileOriginName = file[i].getOriginalFilename();
+            log.info("기존 파일명: "+ fileOriginName);
+            SimpleDateFormat formatter = new SimpleDateFormat("YYYYMMDD_HHMMSS_"+i);
+            Calendar now = Calendar.getInstance();
+
+            //확장잠여
+            String extension = fileOriginName.split("\\.")[1];
+
+            //
+            fileOriginName = formatter.format(now.getTime())+"."+extension;
+            log.info("변경된 파일명 :" +fileOriginName);
+
+            File f = new File(uploadPath+ "\\"+fileOriginName);
+            file[i].transferTo(f);
+            if (i==0) {fileMultiName += fileOriginName;}
+            else {fileMultiName += ","+fileOriginName;}
+        }
+
+        log.info("*"+fileMultiName);
+        product.setPrThumb(fileMultiName);
         productService.write(product);
-        return "redirect:/product/list";
+        log.info(product);
+        return "product/list";
     }
 
 
