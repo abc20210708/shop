@@ -63,10 +63,10 @@
         <p>
             <label>
 
-            #상품썸네일:
+            #상품썸네일: <input type="text"  value="${a.prThumb}" >
         
-                <img src="C:\testImg\${a.prThumb}" width="300" height="300" />
-
+                <img src="/product/list/${a.prThumb}" width="300" height="300" referrerpolicy="no-referrer" />
+               
               
             </label>
         
