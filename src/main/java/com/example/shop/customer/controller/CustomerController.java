@@ -53,7 +53,7 @@ public class CustomerController {
     public String delete(String csId, String csPw) {
         log.info("회원 탈퇴 요청 아이디: "+ csId);
         customerService.delete(csId, csPw);
-        return  "redirect:/main/home";
+        return  "redirect:/";
     }
 
     //회원 정보 상세 보기  - (화면)
@@ -102,7 +102,7 @@ public class CustomerController {
     @PostMapping("/login")
     public String loginCustomer(String csId, String csPw, Model model,
                                 HttpSession session, HttpServletResponse response) throws IOException {
-        log.info("로그인 검증 ID: "+ csId + "PW: " + csPw);
+        log.info("로그인 검증 ID: "+ csId);
         LoginFlag flag = customerService.login(csId, csPw);
         model.addAttribute("flag",flag);
         model.addAttribute("id", csId);
@@ -110,7 +110,8 @@ public class CustomerController {
         //회원 로그인 성공시
         if (flag == LoginFlag.SUCCESS) {
             session.setAttribute("loginCustomer", customerService.getCustomer(csId));
-            return "redirect:/customer/info?cdId="+csId;
+            return "redirect:/";
+            //customer/info?cdId="+csId
         }
         return "login/customer";
     }
@@ -122,7 +123,7 @@ public class CustomerController {
             session.removeAttribute("loginCustomer");
             session.invalidate();//세션 무효화
         }
-        return  "redirect:/main/home";
+        return  "redirect:/";
     }
 
 }//

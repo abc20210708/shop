@@ -36,8 +36,8 @@ public class AdminController {
         List<Customer> customerList = adminService.getCustomerList();
         model.addAttribute("cs",customerList);
 
-        //List<Notice> noticeList = adminService.getNoticeList();
-       // model.addAttribute("notice",noticeList);
+        List<Notice> noticeList = adminService.getNoticeList();
+        model.addAttribute("notice",noticeList);
 
         return "admin/list";
     }
@@ -69,7 +69,7 @@ public class AdminController {
     public String delete(String adminId, String adminPw) {
         log.info("삭제할 관리자 id: " + adminId);
         adminService.delete(adminId, adminPw);
-        return "redirect:/main/home";
+        return "redirect:/";
     }
 
     //회원 상세 조회 요청
@@ -78,7 +78,7 @@ public class AdminController {
         log.info("회원 목록 상세 조회" + csId);
         Customer customer = adminService.getCustomerContent(csId);
         model.addAttribute("customer", customer);
-        return "admin/csContent";
+        return "customer/content";
     }
 
     //공지사항 상세 조회 요청
@@ -87,7 +87,22 @@ public class AdminController {
         log.info("공지사항 목록 상세 조회" + noticeCode);
         Notice notice = adminService.getNoticeContent(noticeCode);
         model.addAttribute("notice", notice);
-        return "admin/noticeContent";
+        return "notice/content";
+    }
+
+    //공지사항 등록 요청 - (화면)
+    @GetMapping("/noticeInsert")
+    public String noticeInsert() {
+        log.info("공지사항 등록 요청(화면) - GET");
+        return "notice/insert";
+    }
+
+    //공지사항 등록 요청
+    @PostMapping("/noticeInsert")
+    public String noticeInsert(Notice notice) {
+        log.info("공지사항 등록 :" + notice);
+        adminService.insert(notice);
+        return "redirect:/";
     }
 
     //관리자 로그인 요청 - (화면)
@@ -108,7 +123,7 @@ public class AdminController {
         //관리자 로그인 성공시
         if  (flag == LoginFlag.SUCCESS) {
             session.setAttribute("loginAdmin", adminService.getAdmin(adminId));
-            return "admin/list";
+            return "redirect:/";
         }
         return "login/admin";
     }
