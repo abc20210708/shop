@@ -26,13 +26,13 @@ public interface AdminMapper {
     //회원 목록 조회하기
     List<Customer> getCustomerList();
 
-    //회원 목록 상세조회
+    //단일 회원 정보 받기
     Customer getCustomerContent(String csId);
 
     //공지사항 목록 조회
     List<Notice> getNoticeList();
 
-    //공지사항 목록 상세조회
+    //단일 공지사항 목록 조회
     Notice getNoticeContent(Long noticeCode);
 
     //공지사항 삭제

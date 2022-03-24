@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.shop.customer.repository.CustomerMapper">
+
+    <resultMap id="customerMap" type="com.example.shop.customer.domain.Customer">
+        <result property="csId" column="customer_id" />
+        <result property="csPw" column="customer_pw" />
+        <result property="csName" column="customer_name" />
+        <result property="csGender" column="customer_gender" />
+        <result property="csPhone" column="customer_phone" />
+        <result property="postCode" column="customer_post_code" />
+        <result property="roadAddr" column="customer_road_addr" />
+        <result property="lotNumAddr" column="customer_lot_num_addr" />
+        <result property="extraAddr" column="customer_extra_addr" />
+        <result property="csBirth" column="customer_birth" />
+    </resultMap>
+
+    <!-- 회원 가입   -->
+    <insert id="createCustomer">
+        INSERT INTO customer
+        VALUES(#{csId}, #{csPw},  #{csName},  #{csGender},  #{csPhone},
+        #{postCode}, #{roadAddr}, #{lotNumAddr}, #{extraAddr}, #{csBirth})
+    </insert>
+
+    <!-- 회원 탈퇴   -->
+    <delete id="delCustomer">
+        DELETE FROM customer WHERE customer_id =#{csId}
+    </delete>
+
+    <!-- 회원 수정    -->
+    <update id="updateCustomer">
+        UPDATE customer SET
+        customer_phone =  #{csPhone}, customer_post_code = #{postCode},
+        customer_road_addr = #{roadAddr}, customer_lot_num_addr =  #{lotNumAddr},
+        customer_extra_addr = #{extraAddr} WHERE customer_id = #{cdId}
+    </update>
+
+    <!-- 단일 회원 목록 조회하기   -->
+    <select id="getCustomer" resultMap="customerMap">
+        SELECT * FROM customer WHERE customer_id = #{cdId}
+    </select>
+
+    <!-- 아이디 중복확인 가능   -->
+    <select id="isDuplicate" resultMap="customerMap">
+        SELECT COUNT(*) FROM customer
+        WHERE customer_id = #{target}
+    </select>
+
+
+
+</mapper>

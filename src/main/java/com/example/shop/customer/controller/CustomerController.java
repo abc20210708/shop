@@ -1,6 +1,7 @@
 package com.example.shop.customer.controller;
 
 import com.example.shop.customer.domain.Customer;
+import com.example.shop.customer.domain.LoginFlag;
 import com.example.shop.customer.dto.ModCustomer;
 import com.example.shop.customer.service.CustomerService;
 import com.example.shop.notice.domain.Notice;
@@ -100,7 +101,26 @@ public class CustomerController {
     public String loginCustomer(String csId, String csPw, Model model,
                                 HttpSession session, HttpServletResponse response) throws IOException {
         log.info("로그인 검증 ID: "+ csId + "PW: " + csPw);
-        //model.addAttribute("flag",)
+        LoginFlag flag = customerService.login(csId, csPw);
+        model.addAttribute("flag",flag);
+        model.addAttribute("id", csId);
+
+        //회원 로그인 성공시
+        if (flag == LoginFlag.SUCCESS) {
+            session.setAttribute("loginCustomer", customerService.getCustomer(csId));
+            return "redirect:/customer/info?cdId="+csId;
+        }
+        return "login/customer";
+    }
+
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        Customer customer = (Customer) session.getAttribute("loginCustomer");
+        if (customer != null) {
+            session.removeAttribute("loginCustomer");
+            session.invalidate();//세션 무효화
+        }
+        return  "redirect:/main/home";
     }
 
 }//
