@@ -79,9 +79,7 @@
 
     <nav class="gnb">
         <ul>
-           
             <li><a href="/">홈으로</a></li>
-        
         </ul>
     </nav>  
 

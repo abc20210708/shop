@@ -8,71 +8,96 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <title>상품 등록</title>
+      <title>회원가입</title>
 
   </head>
 
 <body>
 
   
-    <h1>관리자 등록하기</h1>
+    <h1>회원가입</h1>
    
-   <form action="/admin/insert" method="post" autocomplete="off" enctype="multipart/form-data">
+   <form action="/customer/account" method="post" autocomplete="off" enctype="multipart/form-data">
       
     <p>
         <label>
-            # 상품명  : <input type="text" name="prName">
+            # 회원아이디  : <input type="text" name="csId"  >
         </label>
-    </p>
+      </p>
         
 
-    <p>
-        <label>
-            # 카테고리 번호  : <input type="text" name="cateCode">
-           
-            <br>
-            1 - tableware, 2 - 프라이팬, 3 - 컵, 4 - 접시
+        <p>
+            <label>
+                # 회원 비밀번호  : <input type="password" name="csPw">
+            
+            </label>
+            
+        </p>
 
-        </label>
+
+        <p>   
+            <label>
+                # 회원 이름  : <input type="text"  name="csName" >
+            </label>
         
-    </p>
+        </p> 
 
-
-    <p>   
-        <label>
-            # 상품 가격  : <input type="text" name="prPrice"  >
-        </label>
-       
-    </p> 
-
-    <p>
-        <label>
-            # 판매여부  : <input type="text" name="prYn"  >
-        </label>
-       
-    </p>
-
-    <p>
-        <label>
-            # 상품수량 : <input type="text" name="prAmount" >
-        </label>
+        <p>   
+            <label>
+                # 회원 성별  : <input type="text"  name="csGender" >
+            </label>
         
-    </p>
+        </p> 
 
-    <p>
-        <label>
-            # 상품썸네일 : <input type="file" name="file" >
-           
-        </label>
-       
-    </p>
+        <p>   
+            <label>
+                # 연락처  : <input type="text"  name="csPhone" >
+            </label>
+        
+        </p> 
 
+        <p>   
+            <label>
+                # 우편번호  : <input type="text"  name="postCode" >
+            </label>
+        
+        </p> 
+
+        <p>   
+            <label>
+                # 도로명주소  : <input type="text"  name="roadAddr" >
+            </label>
+        
+        </p> 
+
+        <p>   
+            <label>
+                # 지번주소  : <input type="text"  name="lotNumAddr" >
+            </label>
+        
+        </p> 
+
+
+        <p>   
+            <label>
+                # 상세주소  : <input type="text"  name="extraAddr" >
+            </label>
+        
+        </p> 
+
+
+        <p>   
+            <label>
+                # 생일  : <input type="text"  name="csBirth" >
+            </label>
+        
+        </p> 
  
   
 
     <p>
         <label>
-          <input type="submit" value="등록하기" onclick="location.href='list.jsp'">
+          <input type="submit" value="가입하기">
         </label>
     </p>
 

@@ -30,11 +30,14 @@ public class AdminController {
     public String list(Model model) {
         log.info("관리자 - 회원 및 공지사항 조회 GET!");
 
+        List<Admin> adminList = adminService.getList();
+        model.addAttribute("admin",adminList);
+
         List<Customer> customerList = adminService.getCustomerList();
         model.addAttribute("cs",customerList);
 
-        List<Notice> noticeList = adminService.getNoticeList();
-        model.addAttribute("notice",noticeList);
+        //List<Notice> noticeList = adminService.getNoticeList();
+       // model.addAttribute("notice",noticeList);
 
         return "admin/list";
     }
@@ -50,7 +53,8 @@ public class AdminController {
     @PostMapping("/account")
     public String insert(Admin admin) {
         log.info(admin);
-        return "redirect:/main/home";
+        adminService.write(admin);
+        return "redirect:/";
     }
 
     //관리자 삭제 요청 - (화면)
@@ -89,18 +93,17 @@ public class AdminController {
     //관리자 로그인 요청 - (화면)
     @GetMapping("/login")
     public String loginAdmin() {
-        return "login/adminLogin";
+        return "login/admin";
     }
 
     //관리자 로그인 검증
-    @PostMapping("login")
+    @PostMapping("/login")
     public String loginCheck(String adminId, String adminPw, Model model,
                              HttpSession session, HttpServletResponse response) throws IOException {
         log.info("ID: "+adminId, "PW: "+ adminPw );
         LoginFlag flag = adminService.login(adminId, adminPw);
 
         model.addAttribute("flag", flag);
-        model.addAttribute("adminId", adminId);
 
         //관리자 로그인 성공시
         if  (flag == LoginFlag.SUCCESS) {

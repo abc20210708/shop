@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletResponse;
@@ -20,6 +21,7 @@ import java.util.List;
 
 @Controller
 @Log4j2
+@RequestMapping("/customer")
 @RequiredArgsConstructor
 public class CustomerController {
 
@@ -37,7 +39,7 @@ public class CustomerController {
     public String insert(Customer customer) {
         log.info("회원 가입 요청 " + customer);
         customerService.insert(customer);
-        return "redirect:/main/home";
+        return "redirect:/";
     }
 
     //회원 탈퇴 요청 - (화면)
