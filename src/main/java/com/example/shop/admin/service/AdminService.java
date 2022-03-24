@@ -65,6 +65,11 @@ public class AdminService {
         return adminMapper.getNoticeContent(noticeCode);
     }
 
+    //공지사항 등록 중간처리
+    public void insert(Notice notice) {
+        adminMapper.insert(notice);
+    }
+
     //공지사항 삭제 중간처리
     public void remove(Long noticeCode) {
         adminMapper.delNotice(noticeCode);

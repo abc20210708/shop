@@ -8,27 +8,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <title>관리자 등록</title>
+      <title>공지사항 등록</title>
 
   </head>
 
 <body>
 
   
-    <h1>관리자 등록하기</h1>
+    <h1>공지사항 등록하기</h1>
    
-   <form action="/admin/account" method="post" autocomplete="off" enctype="multipart/form-data">
+   <form action="/admin/noticeInsert" method="post" autocomplete="off">
       
+    
     <p>
         <label>
-            # 관리자 아이디  : <input type="text" name="adminId">
-        </label>
-    </p>
+            # 공지사항 제목  : <input type="text" name="noticeTitle">
         
-
-    <p>
-        <label>
-            # 관리자 비밀번호  : <input type="password"  name="adminPw">
         </label>
         
     </p>
@@ -36,9 +31,17 @@
 
     <p>   
         <label>
-            # 관리자 이름  : <input type="text" name="adminName"  >
+            # 공지사항 내용  : <input type="text"  name="noticeContent" >
         </label>
-       
+    
+    </p> 
+
+
+    <p>   
+        <label>
+            # 공지사항 등록 관리자 아이디  : <input type="text"  name="adminId"  >
+        </label>
+    
     </p> 
 
   

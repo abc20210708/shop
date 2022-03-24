@@ -8,27 +8,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <title>관리자 로그인</title>
+      <title>회원 로그인</title>
 
   </head>
 
 <body>
 
   
-    <h1>관리자 로그인</h1>
+    <h1>회원 로그인</h1>
    
-   <form action="/admin/login" method="post" autocomplete="off" enctype="multipart/form-data">
+   <form action="/customer/login" method="post" autocomplete="off" enctype="multipart/form-data">
       
     <p>
         <label>
-            # 관리자 아이디  : <input type="text" name="prName">
+            # 회원 아이디  : <input type="text" name="csId">
         </label>
     </p>
         
 
     <p>
         <label>
-            # 관리자 비밀번호  : <input type="password" name="cateCode">
+            # 회원 비밀번호  : <input type="password" name="csPw">
 
         </label>
         
@@ -39,14 +39,21 @@
 
     <p>
         <label>
-          <input type="submit" value="로그인" onclick="location.href='list.jsp'">
+          <input type="submit" value="로그인">
         </label>
     </p>
 
     
     </form>
 
-    
+    <script>
+        const flag = '${flag}';
+        if (flag === 'NO_ID') {
+            alert('회원가입된 아이디가 아닙니다!');
+        } else if (flag === 'NO_PW') {
+            alert('비밀번호가 틀렸습니다!');
+        }
+    </script>
 
 
 </body>
