@@ -60,6 +60,11 @@ public class AdminService {
         return adminMapper.getNoticeList();
     }
 
+    //회원 상세 조회 중간 처리
+    public Notice getNoticeContent(Long noticeCode) {
+        return adminMapper.getNoticeContent(noticeCode);
+    }
+
     //공지사항 삭제 중간처리
     public void remove(Long noticeCode) {
         adminMapper.delNotice(noticeCode);
@@ -73,7 +78,7 @@ public class AdminService {
     }
 
     //관리자 로그인 중간처리
-    public LoginFlag loginFlag(String adminId, String adminPw) {
+    public LoginFlag login(String adminId, String adminPw) {
         Admin admin = adminMapper.getAdmin(adminId);
         if (admin != null) {
             String dbPw = admin.getAdminPw();

@@ -29,9 +29,9 @@
                     <ul>
                         <li><a href="/product/write">상품 등록하기</a></li>
                         <li><a href="/product/list">상품 목록</a></li>
-                        <li><a href="#">Pages</a></li>
+                        <li><a href="/admin/list">회원 목록 조회</a></li>
                         <li><a href="#">Blog</a></li>
-                        <li><a href="#">Contact</a></li>
+                        <li><a href="/admin/login">관리자 로그인</a></li>
                     </ul>
                 </nav>
 
