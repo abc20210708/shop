@@ -107,7 +107,7 @@ public class AdminController {
             session.setAttribute("loginAdmin", adminService.getAdmin(adminId));
             return "admin/list";
         }
-        return "login/adminLogin";
+        return "login/admin";
     }
 
 }//
