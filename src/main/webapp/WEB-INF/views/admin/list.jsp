@@ -8,7 +8,7 @@
       <meta charset="UTF-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Mall</title>
+      <title>admin / list</title>
 
     
 
@@ -17,65 +17,127 @@
 <body>
 
    
-    <h1>관리자 - 회원 목록 조회 </h1>
-
-    <c:forEach var="cs" items="${cs}">
-        <p>
-            <label>
-                # 상품명  : <input type="text" value="${a.prName}"  >
-            </label>
-        </p>
-            
-
-        <p>
-            <label>
-                # 카테고리 번호  : <input type="text" value="${a.cateCode}">
-            
-                <br>
-                1 - tableware, 2 - 프라이팬, 3 - 컵, 4 - 접시
-
-            </label>
-            
-        </p>
-
-
-        <p>   
-            <label>
-                # 상품 가격  : <input type="text"  value="${a.prPrice}" >
-            </label>
-        
-        </p> 
-
-        <p>
-            <label>
-                # 판매여부  : <input type="text" value="${a.prYn}"  >
-            </label>
-        
-        </p>
-
-        <p>
-            <label>
-                # 상품수량 : <input type="text"  value="${a.prAmount}" >
-            </label>
-            
-        </p>
-
-        <p>
-            <label>
-
-            #상품썸네일: <input type="text"  value="${a.prThumb}" >
-        
-                <img src="/product/list/${a.prThumb}" width="300" height="300" referrerpolicy="no-referrer" />
-               
-              
-            </label>
-        
-        </p>
-
-  
-    </c:forEach>
-    
+    <h1>관리자 목록 조회 </h1>
    
+
+
+            <c:forEach var="a" items="${admin}">
+            <p>
+                <label>
+                    # 관리자 아이디  : <input type="text" value="${a.adminId}"  >
+                </label>
+            </p>
+                
+
+            <p>
+                <label>
+                    # 관리자 비밀번호  : <input type="password" value="${a.adminPw}">
+                
+                </label>
+                
+            </p>
+
+
+            <p>   
+                <label>
+                    # 관리자 이름  : <input type="text"  value="${a.adminName}" >
+                </label>
+            
+            </p> 
+
+
+
+            </c:forEach>
+      
+
+            <p>=======================================</p>
+        
+            <c:forEach var="cs" items="${cs}">
+            <p>
+            <label>
+                # 회원아이디  : <input type="text" value="${cs.csId}"  >
+            </label>
+          </p>
+            
+
+            <p>
+                <label>
+                    # 회원 비밀번호  : <input type="password" value="${cs.csPw}">
+                
+                </label>
+                
+            </p>
+
+
+            <p>   
+                <label>
+                    # 회원 이름  : <input type="text"  value="${cs.csName}" >
+                </label>
+            
+            </p> 
+
+            <p>   
+                <label>
+                    # 회원 성별  : <input type="text"  value="${cs.csGender}" >
+                </label>
+            
+            </p> 
+
+            <p>   
+                <label>
+                    # 연락처  : <input type="text"  value="${cs.csPhone}" >
+                </label>
+            
+            </p> 
+
+            <p>   
+                <label>
+                    # 우편번호  : <input type="text"  value="${cs.postCode}" >
+                </label>
+            
+            </p> 
+
+            <p>   
+                <label>
+                    # 도로명주소  : <input type="text"  value="${cs.roadAddr}" >
+                </label>
+            
+            </p> 
+
+            <p>   
+                <label>
+                    # 지번주소  : <input type="text"  value="${cs.lotNumAddr}" >
+                </label>
+            
+            </p> 
+
+
+            <p>   
+                <label>
+                    # 상세주소  : <input type="text"  value="${cs.extraAddr}" >
+                </label>
+            
+            </p> 
+
+            <p>   
+                <label>
+                    # 생일  : <input type="text"  value="${cs.csBirth}" >
+                </label>
+            
+            </p> 
+
+         </c:forEach>
+       
+
+
+        <p>=======================================</p>
+
+    
+    <nav class="gnb">
+        <ul>
+            <li><a href="/">홈으로</a></li>
+        </ul>
+    </nav>  
 
 
 
