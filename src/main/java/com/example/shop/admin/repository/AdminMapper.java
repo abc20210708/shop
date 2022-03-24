@@ -32,6 +32,9 @@ public interface AdminMapper {
     //공지사항 목록 조회
     List<Notice> getNoticeList();
 
+    //공지사항 목록 상세조회
+    Notice getNoticeContent(Long noticeCode);
+
     //공지사항 삭제
     boolean delNotice(Long noticeCode);
 

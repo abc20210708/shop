@@ -17,9 +17,9 @@
 <body>
 
    
-    <h1> 업로드가 완료되었습니다. </h1>
+    <h1>관리자 - 회원 목록 조회 </h1>
 
-    <c:forEach var="a" items="${articles}">
+    <c:forEach var="cs" items="${cs}">
         <p>
             <label>
                 # 상품명  : <input type="text" value="${a.prName}"  >
@@ -77,13 +77,7 @@
     
    
 
-    <nav class="gnb">
-        <ul>
-           
-            <li><a href="/">홈으로</a></li>
-        
-        </ul>
-    </nav>  
+
 
 
 </body>
