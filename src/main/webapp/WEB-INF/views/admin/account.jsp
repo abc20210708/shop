@@ -17,7 +17,7 @@
   
     <h1>관리자 등록하기</h1>
    
-   <form action="/admin/insert" method="post" autocomplete="off" enctype="multipart/form-data">
+   <form action="/admin/account" method="post" autocomplete="off" enctype="multipart/form-data">
       
     <p>
         <label>
@@ -28,7 +28,7 @@
 
     <p>
         <label>
-            # 관리자 비밀번호  : <input type="text" name="adminPw">
+            # 관리자 비밀번호  : <input type="password" name="adminPw">
         </label>
         
     </p>

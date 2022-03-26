@@ -52,7 +52,7 @@ public class ProductController extends HttpServlet {
   //  private static String CURR_IMG_REPO_PATH = "C:\\testImg\\";
 
 
-
+    //관리자가 상품등록 후 요청(화면)
     @GetMapping("/list")
     public String list(Model model)
             throws Exception {
@@ -63,6 +63,19 @@ public class ProductController extends HttpServlet {
         model.addAttribute("articles", productList);
 
         return "product/list";
+    }
+
+    //회원 로그인 후 상품목록 요청(화면)
+    @GetMapping("/product")
+    public String productList(Model model)
+            throws Exception {
+        log.info("/product/product -- GET!");
+
+
+        List<Product> productList = productService.getList();
+        model.addAttribute("articles", productList);
+
+        return "product/product";
     }
 
     //상품 등록 화면 요청
@@ -97,7 +110,7 @@ public class ProductController extends HttpServlet {
             SimpleDateFormat formatter = new SimpleDateFormat("YYYYMMDD_HHMMSS_"+i);
             Calendar now = Calendar.getInstance();
 
-            //확장잠여
+            //확장자명
             String extension = fileOriginName.split("\\.")[1];
 
             //
@@ -114,7 +127,7 @@ public class ProductController extends HttpServlet {
         product.setPrThumb(fileMultiName);
         productService.write(product);
         log.info(product);
-        return "product/list";
+        return "redirect:/product/list";
     }
 
 

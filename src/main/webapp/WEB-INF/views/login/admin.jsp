@@ -17,32 +17,35 @@
   
     <h1>관리자 로그인</h1>
    
-   <form action="/admin/login" method="post" autocomplete="off" enctype="multipart/form-data">
-      
-    <p>
-        <label>
-            # 관리자 아이디  : <input type="text" name="adminId">
-        </label>
-    </p>
-        
-
-    <p>
-        <label>
-            # 관리자 비밀번호  : <input type="password" name="adminPw">
-
-        </label>
-        
-    </p>
-
-
+   <form action="/admin/login" method="post" autocomplete="off">
+    
   
+    
+                
+      
+         
+           
+     
 
-    <p>
-        <label>
-          <input type="submit" value="로그인">
-        </label>
-    </p>
-
+     
+            <p>
+                <label>
+                    # 관리자 아이디  : <input type="text" name="adminId">
+                </label>
+            </p>
+                
+        
+            <p>
+                <label>
+                    # 관리자 비밀번호  : <input type="password" name="adminPw">
+        
+                </label>
+                
+            </p>
+            <button type="submit">로그인</button>
+      
+    
+       
     
     </form>
 
@@ -52,7 +55,7 @@
             alert('회원가입된 아이디가 아닙니다!');
         } else if (flag === 'NO_PW') {
             alert('비밀번호가 틀렸습니다!');
-        }
+        } 
     </script>
 
 

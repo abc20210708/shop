@@ -19,24 +19,22 @@
         <header>
             <div class="inner-header">
                 <h1 class="logo">
-                   HOME 
-                  
+                    ${loginCustomer.csName} 님이 로그인 되었습니다.  
                 </h1>
 
                 <!-- 메인 네비게이션바 -->
                 <nav class="gnb">
-                   
-                            <li><a href="/product/write">상품 등록하기</a></li>
-                            <li><a href="/admin/list">관리자, 회원 공지사항 조회</a></li>
-                            <li><a href="/admin/account">관리자등록</a></li>
-                            <li><a href="/admin/noticeInsert"> 공지사항 등록</a></li>
-                            <li><a href="/admin/login">관리자 로그인</a></li>
-                            <li><a href="/product/list">상품 목록</a></li>
-                            <li><a href="/customer/account">회원가입</a></li>
-                            <li><a href="/customer/login">회원 로그인</a></li>
-                      
+                    <ul>
+                        <!-- <li><a href="/product/write">상품 등록하기</a></li> -->
+                        <li><a href="/product/product">상품 목록</a></li>
+                        <!-- <li><a href="/admin/list">관리자, 회원 공지사항 조회</a></li> -->
+                        <!-- <li><a href="/customer/account">회원가입</a></li> -->
+                        <!-- <li><a href="/admin/account">관리자등록</a></li> -->
+                        <!-- <li><a href="/admin/login">관리자 로그인</a></li> -->
+                        <!-- <li><a href="/customer/login">회원 로그인</a></li> -->
+                        <!-- <li><a href="/admin/noticeInsert"> 공지사항 등록</a></li> -->
+                        <li><a href="/customer/logout">회원 로그아웃</a></li>
                     </ul>
-                   
                 </nav>
 
                 <!-- 검색/찜/장바구니 -->
@@ -58,9 +56,6 @@
             </div>
         </header>
         <!-- //header -->
-
-
-
 
 </body>
 

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
@@ -46,7 +47,7 @@ public class AdminController {
     @GetMapping("/account")
     public String insert() {
         log.info("관리자 등록 요청(화면) - GET ");
-        return "admin/insert";
+        return "admin/account";
     }
 
     //관리자 등록 요청
@@ -123,9 +124,25 @@ public class AdminController {
         //관리자 로그인 성공시
         if  (flag == LoginFlag.SUCCESS) {
             session.setAttribute("loginAdmin", adminService.getAdmin(adminId));
-            return "redirect:/";
+            //response.sendRedirect("/");
+            //Cookie loginCookie = new Cookie("loginCookie",session.getId());
+           // //loginCookie.setPath("/");
+            //loginCookie.setMaxAge(60*60*24*7);
+           // response.addCookie(loginCookie);
+            return "admin/loginHome";
         }
         return "login/admin";
+    }
+
+    //로그아웃
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        Admin admin = (Admin) session.getAttribute("loginAdmin");
+        if (admin != null) {
+            session.removeAttribute("loginAdmin");
+            session.invalidate(); //세션 무효화
+        }
+        return "redirect:/";
     }
 
 }//

@@ -110,7 +110,8 @@ public class CustomerController {
         //회원 로그인 성공시
         if (flag == LoginFlag.SUCCESS) {
             session.setAttribute("loginCustomer", customerService.getCustomer(csId));
-            return "redirect:/";
+            //response.sendRedirect("/product/product");
+            return "redirect:/customer/loginHome";
             //customer/info?cdId="+csId
         }
         return "login/customer";

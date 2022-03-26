@@ -17,7 +17,9 @@
 <body>
 
    
-    <h1> ${loginAdmin.adminName}님 업로드가 완료되었습니다. </h1>
+    <h1> 
+        ${loginCustomer.csName} 님
+    </h1>
 
     <c:forEach var="a" items="${articles}">
         <p>
@@ -80,18 +82,13 @@
     <nav class="gnb">
         <ul>
             <li><a href="/">홈으로</a></li>
-           
-            <li><a href="/admin/logout">관리자 로그아웃</a></li>
+            <li><a href="/customer/logout">회원 로그아웃</a></li>
         </ul>
     </nav>  
 
-    <input type="button" value="로그인성공페이지" class="btn" onclick="location.href='/admin/login'">
-
-
-
     <script>
-        
-        
+    
+
     </script>
 
 
