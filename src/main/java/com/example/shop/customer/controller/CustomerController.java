@@ -4,6 +4,7 @@ import com.example.shop.customer.domain.Customer;
 import com.example.shop.customer.domain.LoginFlag;
 import com.example.shop.customer.dto.ModCustomer;
 import com.example.shop.customer.service.CustomerService;
+import com.example.shop.login.SessionManager;
 import com.example.shop.notice.domain.Notice;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -26,6 +27,7 @@ import java.util.List;
 public class CustomerController {
 
     private  final CustomerService customerService;
+    private final SessionManager sessionManager;
 
     //회원 가입 요청 - (화면)
     @GetMapping("/account")
@@ -103,15 +105,17 @@ public class CustomerController {
     public String loginCustomer(String csId, String csPw, Model model,
                                 HttpSession session, HttpServletResponse response) throws IOException {
         log.info("로그인 검증 ID: "+ csId);
-        LoginFlag flag = customerService.login(csId, csPw);
-        model.addAttribute("flag",flag);
-        model.addAttribute("id", csId);
+        //LoginFlag flag = customerService.login(csId, csPw);
+       // Customer loginCs = customerService.login(csId, csPw);
+        //model.addAttribute("flag",flag);
+        //model.addAttribute("id", csId);
 
         //회원 로그인 성공시
         if (flag == LoginFlag.SUCCESS) {
-            session.setAttribute("loginCustomer", customerService.getCustomer(csId));
+            sessionManager.createSession(loginCs, response);
+            //session.setAttribute("loginCustomer", customerService.getCustomer(csId));
             //response.sendRedirect("/product/product");
-            return "redirect:/customer/loginHome";
+            return "redirect:/";
             //customer/info?cdId="+csId
         }
         return "login/customer";
