@@ -103,6 +103,25 @@ public class CustomerController {
     //회원 로그인 검증
     @PostMapping("/login")
     public String loginCustomer(String csId, String csPw, Model model,
+                                HttpSession session, HttpServletResponse response) {
+
+        return "login/customer";
+    }
+
+
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        Customer customer = (Customer) session.getAttribute("loginCustomer");
+        if (customer != null) {
+            session.removeAttribute("loginCustomer");
+            session.invalidate();//세션 무효화
+        }
+        return  "redirect:/";
+    }
+
+    /*
+      @PostMapping("/login")
+    public String loginCustomer(String csId, String csPw, Model model,
                                 HttpSession session, HttpServletResponse response) throws IOException {
         log.info("로그인 검증 ID: "+ csId);
         //LoginFlag flag = customerService.login(csId, csPw);
@@ -120,15 +139,6 @@ public class CustomerController {
         }
         return "login/customer";
     }
-
-    @GetMapping("/logout")
-    public String logout(HttpSession session) {
-        Customer customer = (Customer) session.getAttribute("loginCustomer");
-        if (customer != null) {
-            session.removeAttribute("loginCustomer");
-            session.invalidate();//세션 무효화
-        }
-        return  "redirect:/";
-    }
+    * */
 
 }//
