@@ -1,7 +1,6 @@
 package com.example.shop.customer.controller;
 
 import com.example.shop.customer.domain.Customer;
-import com.example.shop.customer.domain.LoginFlag;
 import com.example.shop.customer.dto.ModCustomer;
 import com.example.shop.customer.service.CustomerService;
 import com.example.shop.login.SessionManager;
@@ -15,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
@@ -102,20 +102,28 @@ public class CustomerController {
 
     //회원 로그인 검증
     @PostMapping("/login")
-    public String loginCustomer(String csId, String csPw, Model model,
-                                HttpSession session, HttpServletResponse response) {
+    public String loginCustomer(HttpServletRequest request, Model model, Customer customer)
+            throws IOException {
 
-        return "login/customer";
+        //세션 관리자에 저장된 회원 정보 조회
+        //Customer loginCustomer = (Customer) sessionManager.getSession(request);
+        Customer loginCustomer = customerService.login(customer.getCsId(), customer.getCsPw());
+        log.info(loginCustomer);
+        //로그인
+        if (loginCustomer == null) {
+            return "main/home";
+        }
+
+        HttpSession session = request.getSession();
+        session.setAttribute(SessionManager.SESSION_COOKIE_NAME, loginCustomer);
+        model.addAttribute("loginCustomer", loginCustomer);
+        return "customer/loginHome";
     }
 
 
     @GetMapping("/logout")
-    public String logout(HttpSession session) {
-        Customer customer = (Customer) session.getAttribute("loginCustomer");
-        if (customer != null) {
-            session.removeAttribute("loginCustomer");
-            session.invalidate();//세션 무효화
-        }
+    public String logout(HttpServletResponse response, HttpServletRequest request) {
+        sessionManager.expire(request);
         return  "redirect:/";
     }
 

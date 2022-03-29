@@ -19,8 +19,9 @@
         <header>
             <div class="inner-header">
                 <h1 class="logo">
+                    <a href="/">
                    HOME 
-                  
+                    </a>
                 </h1>
 
                 <!-- 메인 네비게이션바 -->

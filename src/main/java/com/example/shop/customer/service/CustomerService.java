@@ -61,15 +61,14 @@ public class CustomerService {
     }
 
     //회원 로그인 중간처리
-    public LoginFlag login(String csId, String csPw) {
+    public Customer login(String csId, String csPw) {
         Customer customer = customerMapper.getCustomer(csId);
         if (customer != null) {
             String dbPw = customer.getCsPw();
             BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-            return encoder.matches(csPw,dbPw) ? LoginFlag.SUCCESS : LoginFlag.NO_PW;
-        }   else {
-            return LoginFlag.NO_ID;
+            //return encoder.matches(csPw,dbPw) ? LoginFlag.SUCCESS : LoginFlag.NO_PW;
         }
+        return customer;
     }
 
 
