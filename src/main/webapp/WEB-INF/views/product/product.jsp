@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -20,6 +21,14 @@
     <h1> 
         ${loginCustomer.csName} 님
     </h1>
+
+    <nav class="gnb">
+        <ul>
+            <li><a href="/">홈으로</a></li>
+            <li><a href="/customer/info">마이페이지</a></li>
+            <li><a href="/customer/logout">회원 로그아웃</a></li>
+        </ul>
+    </nav>  
 
     <c:forEach var="a" items="${articles}">
         <p>
@@ -79,12 +88,7 @@
     
    
 
-    <nav class="gnb">
-        <ul>
-            <li><a href="/">홈으로</a></li>
-            <li><a href="/customer/logout">회원 로그아웃</a></li>
-        </ul>
-    </nav>  
+
 
     <script>
     

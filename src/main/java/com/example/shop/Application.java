@@ -6,6 +6,7 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+
 @SpringBootApplication
 @ServletComponentScan //서블릿들을 검색해서 주입할 수 있도록 설정
 public class Application {
@@ -21,7 +22,6 @@ public class Application {
 
 		return  resolver;
 	}
-
 
 
 	public static void main(String[] args) {

@@ -5,7 +5,9 @@ import com.example.shop.customer.dto.ModCustomer;
 import com.example.shop.notice.domain.Notice;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.aop.target.LazyInitTargetSource;
+import org.springframework.ui.Model;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Mapper

@@ -3,12 +3,13 @@ package com.example.shop.customer.controller;
 import com.example.shop.customer.domain.Customer;
 import com.example.shop.customer.dto.ModCustomer;
 import com.example.shop.customer.service.CustomerService;
-import com.example.shop.login.SessionManager;
+import com.example.shop.login.SessionConst;
 import com.example.shop.notice.domain.Notice;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +18,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -27,7 +27,6 @@ import java.util.List;
 public class CustomerController {
 
     private  final CustomerService customerService;
-    private final SessionManager sessionManager;
 
     //회원 가입 요청 - (화면)
     @GetMapping("/account")
@@ -60,9 +59,17 @@ public class CustomerController {
 
     //회원 정보 상세 보기  - (화면)
     @GetMapping("/info")
-    public String content(Model model, String csId) {
-        Customer loginCustomer = customerService.getCustomer(csId);
+    public String content(Model model, HttpSession session) {
+        //String csId = (String) session.getAttribute("loginCustomer");
+
+        //Customer loginCustomer = customerService.getCustomer(csId);
+
+        Customer loginCustomer = (Customer) session.getAttribute("loginCustomer");
+
+        customerService.getCustomer(loginCustomer.getCsId());
+
         model.addAttribute("cs", loginCustomer);
+        log.info("회원 정보 보기(화면) ");
         log.info(loginCustomer);
         return "customer/info";
     }
@@ -102,28 +109,30 @@ public class CustomerController {
 
     //회원 로그인 검증
     @PostMapping("/login")
-    public String loginCustomer(HttpServletRequest request, Model model, Customer customer)
-            throws IOException {
+    public String loginCustomer( HttpServletResponse response,
+                                HttpServletRequest request, Model model, Customer customer) {
 
-        //세션 관리자에 저장된 회원 정보 조회
-        //Customer loginCustomer = (Customer) sessionManager.getSession(request);
+
         Customer loginCustomer = customerService.login(customer.getCsId(), customer.getCsPw());
-        log.info(loginCustomer);
-        //로그인
         if (loginCustomer == null) {
-            return "main/home";
+
+            return "login/customer";
         }
 
+        //세션 매니저를 통해 세션 생성 및 회원정보 보관
+        //세션이 있으면 있는 세션을 반환, 없으면 신규 세션을 생성
         HttpSession session = request.getSession();
-        session.setAttribute(SessionManager.SESSION_COOKIE_NAME, loginCustomer);
-        model.addAttribute("loginCustomer", loginCustomer);
+        session.setAttribute(SessionConst.LOGIN_CUSTOMER, loginCustomer);
         return "customer/loginHome";
     }
 
 
     @GetMapping("/logout")
     public String logout(HttpServletResponse response, HttpServletRequest request) {
-        sessionManager.expire(request);
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            session.invalidate();
+        }
         return  "redirect:/";
     }
 
