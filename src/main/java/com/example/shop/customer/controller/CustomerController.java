@@ -60,12 +60,8 @@ public class CustomerController {
     //회원 정보 상세 보기  - (화면)
     @GetMapping("/info")
     public String content(Model model, HttpSession session) {
-        //String csId = (String) session.getAttribute("loginCustomer");
-
-        //Customer loginCustomer = customerService.getCustomer(csId);
 
         Customer loginCustomer = (Customer) session.getAttribute("loginCustomer");
-
         customerService.getCustomer(loginCustomer.getCsId());
 
         model.addAttribute("cs", loginCustomer);
