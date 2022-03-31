@@ -19,7 +19,11 @@ public class Product {
     private int prYn;
     private int prAmount;
     private String prThumb;
-  //  private String prImg;
+    private String prImg1;
+    private String prImg2;
+    private String prImg3;
+    private String prImg4;
+    private String prImg5;
     private String prDate;
 
     private static int seq;
@@ -38,7 +42,11 @@ public class Product {
         this.prYn = prYn;
         this.prAmount = prAmount;
         this.prThumb = prThumb;
-     //   this.prImg = prImg;
+        this.prImg1 = prImg1;
+        this.prImg2 = prImg2;
+        this.prImg3 = prImg3;
+        this.prImg4 = prImg4;
+        this.prImg5 = prImg5;
         this.prDate = prDate;
     }
 
@@ -50,7 +58,11 @@ public class Product {
         this.prYn = rs.getInt("product_yn");
         this.prAmount = rs.getInt("product_amount");
         this.prThumb = rs.getString("product_thumb");
-        // this.prImg = rs.getString("product_img");
+        this.prImg1 = rs.getString("product_img1");
+        this.prImg2 = rs.getString("product_img2");
+        this.prImg3 = rs.getString("product_img3");
+        this.prImg4 = rs.getString("product_img4");
+        this.prImg5 = rs.getString("product_img5");
         this.prDate = rs.getString("product_date");
     }
 

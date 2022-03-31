@@ -38,7 +38,7 @@
         </p>
             
 
-        <!-- <p>
+        <p>
             <label>
                 # 카테고리 번호  : <input type="text" value="${a.cateCode}">
             
@@ -47,7 +47,7 @@
 
             </label>
             
-        </p> -->
+        </p>
 
 
         <p>   
@@ -56,7 +56,7 @@
             </label>
         
         </p> 
-<!-- 
+
         <p>
             <label>
                 # 판매여부  : <input type="text" value="${a.prYn}"  >
@@ -69,7 +69,7 @@
                 # 상품수량 : <input type="text"  value="${a.prAmount}" >
             </label>
             
-        </p> -->
+        </p>
 
         <p>
             <label>
@@ -84,6 +84,8 @@
         
         </p>
 
+
+        
   
     </c:forEach>
     

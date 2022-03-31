@@ -13,7 +13,11 @@
         <result property="prYn" column="product_yn" />
         <result property="prAmount" column="product_amount" />
         <result property="prThumb" column="product_thumb" />
-<!--        <result property="prImg" column="product_img" />-->
+        <result property="prImg1" column="product_img1" />
+        <result property="prImg2" column="product_img2" />
+        <result property="prImg3" column="product_img3" />
+        <result property="prImg4" column="product_img4" />
+        <result property="prImg5" column="product_img5" />
         <result property="prDate" column="product_date" />
     </resultMap>
 
@@ -38,10 +42,12 @@
     <insert id="insert">
         INSERT INTO product
             (product_code, cate_code, product_name, product_price,
-            product_yn, product_amount, product_thumb)
+            product_yn, product_amount, product_thumb, product_img1,
+            product_img2, product_img3, product_img4, product_img5)
         VALUES
             (seq_product_code.nextval, #{cateCode} , #{prName}, #{prPrice},
-            #{prYn}, #{prAmount}, #{prThumb})
+            #{prYn}, #{prAmount}, #{prThumb}, #{prImg1}, #{prImg2}, #{prImg3},
+            #{prImg4}, #{prImg5})
     </insert>
 
 

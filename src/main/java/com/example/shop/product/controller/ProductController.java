@@ -93,7 +93,7 @@ public class ProductController extends HttpServlet {
     //상품 등록 요청 - POST!
     @PostMapping("/write")
     public String fileUpload(MultipartHttpServletRequest request,Product product,
-                    @RequestParam("file") MultipartFile[] file) throws Exception  {
+                             @RequestParam("files") MultipartFile[] files) throws Exception  {
 
         log.info("상픔 등록 요청 - POST!");
 
@@ -103,13 +103,14 @@ public class ProductController extends HttpServlet {
         String uploadPath = "C:\\testImg";
 
         String fileOriginName = "";
-        String fileMultiName = "";
-        for (int i = 0; i < file.length; i++) {
-            fileOriginName = file[i].getOriginalFilename();
+
+        for (int i = 0; i < files.length; i++) {
+            fileOriginName = files[i].getOriginalFilename();
             log.info("기존 파일명: "+ fileOriginName);
             SimpleDateFormat formatter = new SimpleDateFormat("YYYYMMDD_HHMMSS_"+i);
             Calendar now = Calendar.getInstance();
 
+            String fileMultiName = "";
             //확장자명
             String extension = fileOriginName.split("\\.")[1];
 
@@ -118,17 +119,33 @@ public class ProductController extends HttpServlet {
             log.info("변경된 파일명 :" +fileOriginName);
 
             File f = new File(uploadPath+ "\\"+fileOriginName);
-            file[i].transferTo(f);
-            if (i==0) {fileMultiName += fileOriginName;}
+            files[i].transferTo(f);
+
+
+            fileMultiName += fileOriginName;
+            if (i==0) {
+                product.setPrThumb(fileMultiName);
+                } else if (i == 1 ) {
+                product.setPrImg1(fileMultiName);
+            } else if (i == 2 ) {
+                product.setPrImg2(fileMultiName);
+            } else if (i == 3 ) {
+                product.setPrImg3(fileMultiName);
+            }  else if (i == 4 ) {
+                product.setPrImg4(fileMultiName);
+            }  else if (i == 5 ) {
+                product.setPrImg5(fileMultiName);
+            }
             else {fileMultiName += ","+fileOriginName;}
+            log.info("*"+fileMultiName);
         }
 
-        log.info("*"+fileMultiName);
-        product.setPrThumb(fileMultiName);
+
+       // product.setPrThumb(fileMultiName);
         productService.write(product);
         log.info(product);
-        return "redirect:/product/list";
+        //return "redirect:/product/list";
+        return ":/";
     }
-
 
 }//

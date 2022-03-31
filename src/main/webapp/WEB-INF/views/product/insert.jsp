@@ -62,7 +62,49 @@
 
     <p>
         <label>
-            # 상품썸네일 : <input type="file" name="file" >
+            # 상품썸네일 : <input type="file" name="files" multiple="multiple">
+           
+        </label>
+       
+    </p>
+
+
+    <p>
+        <label>
+            # 상품이미지1 : <input type="file" name="files" multiple="multiple" >
+           
+        </label>
+       
+    </p>
+
+
+    <p>
+        <label>
+            # 상품이미지2 : <input type="file" name="files" multiple="multiple" >
+           
+        </label>
+       
+    </p>
+
+    <p>
+        <label>
+            # 상품이미지3 : <input type="file" name="files" multiple="multiple"  >
+           
+        </label>
+       
+    </p>
+
+    <p>
+        <label>
+            # 상품이미지4: <input type="file" name="files" multiple="multiple"  >
+           
+        </label>
+       
+    </p>
+
+    <p>
+        <label>
+            # 상품이미지5 : <input type="file" name="files" multiple="multiple"  >
            
         </label>
        
@@ -73,7 +115,7 @@
 
     <p>
         <label>
-          <input type="submit" value="등록하기" onclick="location.href='list.jsp'">
+          <input type="submit" value="등록하기" > <!-- onclick="location.href='list.jsp' -->
         </label>
     </p>
 
