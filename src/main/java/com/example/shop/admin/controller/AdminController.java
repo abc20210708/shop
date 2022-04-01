@@ -124,11 +124,7 @@ public class AdminController {
         //관리자 로그인 성공시
         if  (flag == LoginFlag.SUCCESS) {
             session.setAttribute("loginAdmin", adminService.getAdmin(adminId));
-            //response.sendRedirect("/");
-            //Cookie loginCookie = new Cookie("loginCookie",session.getId());
-           // //loginCookie.setPath("/");
-            //loginCookie.setMaxAge(60*60*24*7);
-           // response.addCookie(loginCookie);
+
             return "admin/loginHome";
         }
         return "login/admin";

@@ -19,7 +19,7 @@
 
    
     <h1> 
-        ${loginCustomer.csName} 님
+       상품 번호 ${p.prCode}번 
     </h1>
 
     <nav class="gnb">
@@ -30,17 +30,17 @@
         </ul>
     </nav>  
 
-    <c:forEach var="a" items="${articles}">
+  
         <p>
             <label>
-                # 상품명  : <input type="text" value="${a.prName}"  >
+                # 상품명  : <input type="text" value="${p.prName}"  >
             </label>
         </p>
             
 
         <p>
             <label>
-                # 카테고리 번호  : <input type="text" value="${a.cateCode}">
+                # 카테고리 번호  : <input type="text" value="${p.cateCode}">
             
                 <br>
                 1 - tableware, 2 - 프라이팬, 3 - 컵, 4 - 접시
@@ -52,21 +52,21 @@
 
         <p>   
             <label>
-                # 상품 가격  : <input type="text"  value="${a.prPrice}" >
+                # 상품 가격  : <input type="text"  value="${p.prPrice}" >
             </label>
         
         </p> 
 
         <p>
             <label>
-                # 판매여부  : <input type="text" value="${a.prYn}"  >
+                # 판매여부  : <input type="text" value="${p.prYn}"  >
             </label>
         
         </p>
 
         <p>
             <label>
-                # 상품수량 : <input type="text"  value="${a.prAmount}" >
+                # 상품수량 : <input type="text"  value="${p.prAmount}" >
             </label>
             
         </p>
@@ -74,20 +74,83 @@
         <p>
             <label>
 
-            #상품썸네일: <input type="text"  value="${a.prThumb}" >
+            #상품썸네일: <input type="text"  value="${p.prThumb}" >
         
             <a href="">
-                <img src="/product/list/${a.prThumb}" width="300" height="300" referrerpolicy="no-referrer" />
+                <img src="/product/list/${p.prThumb}" width="300" height="300" referrerpolicy="no-referrer" />
                
             </a>
             </label>
         
         </p>
 
+        <p>
+            <label>
+
+            #상품이미지1 : <input type="text"  value="${p.prImg1}" >
+        
+            <a href="">
+                <img src="/product/list/${p.prImg1}" width="300" height="300" referrerpolicy="no-referrer" />
+               
+            </a>
+            </label>
+        
+        </p>
+
+        <p>
+            <label>
+
+            #상품이미지2 : <input type="text"  value="${p.prImg2}" >
+        
+            <a href="">
+                <img src="/product/list/${p.prImg2}" width="300" height="300" referrerpolicy="no-referrer" />
+               
+            </a>
+            </label>
+        
+        </p>
 
         
-  
-    </c:forEach>
+        <p>
+            <label>
+
+            #상품이미지3 : <input type="text"  value="${p.prImg3}" >
+        
+            <a href="">
+                <img src="/product/list/${p.prImg3}" width="300" height="300" referrerpolicy="no-referrer" />
+               
+            </a>
+            </label>
+        
+        </p>
+
+        
+        <p>
+            <label>
+
+            #상품이미지4 : <input type="text"  value="${p.prImg4}" >
+        
+            <a href="">
+                <img src="/product/list/${p.prImg4}" width="300" height="300" referrerpolicy="no-referrer" />
+               
+            </a>
+            </label>
+        
+        </p>
+        
+        <p>
+            <label>
+
+            #상품이미지5 : <input type="text"  value="${p.prImg5}" >
+        
+            <a href="">
+                <img src="/product/list/${p.prImg5}" width="300" height="300" referrerpolicy="no-referrer" />
+               
+            </a>
+            </label>
+        
+        </p>
+        
     
    
 

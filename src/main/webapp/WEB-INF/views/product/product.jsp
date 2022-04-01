@@ -5,20 +5,20 @@
 <!DOCTYPE html>
 <html lang="ko">
 
-  <head>
-      <meta charset="UTF-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Mall</title>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mall</title>
 
-    
 
-  </head>
+
+</head>
 
 <body>
 
-   
-    <h1> 
+
+    <h1>
         ${loginCustomer.csName} 님
     </h1>
 
@@ -28,74 +28,65 @@
             <li><a href="/customer/info">마이페이지</a></li>
             <li><a href="/customer/logout">회원 로그아웃</a></li>
         </ul>
-    </nav>  
+    </nav>
 
     <c:forEach var="a" items="${articles}">
+
         <p>
-            <label>
-                # 상품명  : <input type="text" value="${a.prName}"  >
-            </label>
-        </p>
-            
-
-        <!-- <p>
-            <label>
-                # 카테고리 번호  : <input type="text" value="${a.cateCode}">
-            
-                <br>
-                1 - tableware, 2 - 프라이팬, 3 - 컵, 4 - 접시
-
-            </label>
-            
-        </p> -->
-
-
-        <p>   
-            <label>
-                # 상품 가격  : <input type="text"  value="${a.prPrice}" >
-            </label>
-        
-        </p> 
-<!-- 
-        <p>
-            <label>
-                # 판매여부  : <input type="text" value="${a.prYn}"  >
-            </label>
-        
+           # 상품번호 <span>${a.prCode}</span>
         </p>
 
-        <p>
-            <label>
-                # 상품수량 : <input type="text"  value="${a.prAmount}" >
-            </label>
-            
-        </p> -->
 
         <p>
             <label>
-
-            #상품썸네일: <input type="text"  value="${a.prThumb}" >
-        
-            <a href="">
-                <img src="/product/list/${a.prThumb}" width="300" height="300" referrerpolicy="no-referrer" />
-               
-            </a>
+                # 상품명 : <input type="text" value="${a.prName}">
             </label>
-        
         </p>
 
-  
+
+        <p>
+            <label>
+                # 상품 가격 : <input type="text" value="${a.prPrice}">
+            </label>
+
+        </p>
+
+
+        <p>
+            <label>
+
+                #상품썸네일: <input type="text" value="${a.prThumb}">
+
+                <a href="#" id="item">
+                    <img src="/product/list/${a.prThumb}" width="300" height="300" referrerpolicy="no-referrer" />
+
+                </a>
+            </label>
+
+        </p>
+
+
     </c:forEach>
-    
-   
-
 
 
     <script>
-    
+        //상세보기 요청 이벤트
+        const $product = document.querySelector("#item");
+        $product.addEventListener('click', e => {
 
+            let num = e.target.parentElement.parentElement.parentElement.
+            previousElementSibling.previousElementSibling.previousElementSibling.
+            lastElementChild.textContent;
+            /*
+            console.log(e.target.parentElement.parentElement.parentElement.
+            previousElementSibling.previousElementSibling.previousElementSibling.
+            lastElementChild.textContent); */
+
+            location.href = '/product/info?prCode=' + num;
+        })
     </script>
 
 
 </body>
+
 </html>

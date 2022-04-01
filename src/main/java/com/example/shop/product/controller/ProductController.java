@@ -78,7 +78,7 @@ public class ProductController extends HttpServlet {
         return "product/product";
     }
 
-    //상품 등록 화면 요청
+    //상품 등록 화면 요청(화면)
     @GetMapping("/write")
     public String write() {
         log.info("/product/write - GET!");
@@ -145,7 +145,18 @@ public class ProductController extends HttpServlet {
         productService.write(product);
         log.info(product);
         //return "redirect:/product/list";
-        return ":/";
+        return "redirect:/product/list";
     }
+
+    //상품 상세 조회(화면)
+    @GetMapping("/info")
+    public String content(int prCode, Model model) {
+        log.info("상세조회요청 - (화면)" + prCode);
+        Product product = productService.get(prCode);
+        model.addAttribute("p",product);
+        return "product/info";
+    }
+
+
 
 }//
