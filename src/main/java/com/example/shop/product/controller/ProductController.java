@@ -3,9 +3,7 @@ package com.example.shop.product.controller;
 import com.example.shop.product.domain.Product;
 import com.example.shop.product.service.ProductService;
 import lombok.RequiredArgsConstructor;
-import lombok.Value;
 import lombok.extern.log4j.Log4j2;
-import org.apache.commons.io.IOUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -13,15 +11,10 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 
-import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+
 
 import java.io.File;
-import java.io.IOException;
-import java.lang.annotation.Target;
-import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.*;
 

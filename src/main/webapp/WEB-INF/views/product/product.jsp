@@ -32,9 +32,9 @@
 
     <c:forEach var="a" items="${articles}">
 
-        <p>
-           # 상품번호 <span>${a.prCode}</span>
-        </p>
+        <div>
+           # 상품번호 <p>${a.prCode}</p>
+        </div>
 
 
         <p>
@@ -57,7 +57,8 @@
 
                 #상품썸네일: <input type="text" value="${a.prThumb}">
 
-                <a href="#" id="item">
+                <a href="/product/info?prCode=${a.prCode}" id="item"  >
+                    <!-- onclick="return false;" -->
                     <img src="/product/list/${a.prThumb}" width="300" height="300" referrerpolicy="no-referrer" />
 
                 </a>
@@ -68,22 +69,26 @@
 
     </c:forEach>
 
+       
+
 
     <script>
         //상세보기 요청 이벤트
-        const $product = document.querySelector("#item");
+        /* const $product = document.querySelector("#item");
         $product.addEventListener('click', e => {
+
+            e.preventDefault();
 
             let num = e.target.parentElement.parentElement.parentElement.
             previousElementSibling.previousElementSibling.previousElementSibling.
             lastElementChild.textContent;
-            /*
+            
             console.log(e.target.parentElement.parentElement.parentElement.
             previousElementSibling.previousElementSibling.previousElementSibling.
-            lastElementChild.textContent); */
+            lastElementChild.textContent);
 
             location.href = '/product/info?prCode=' + num;
-        })
+        });*/
     </script>
 
 

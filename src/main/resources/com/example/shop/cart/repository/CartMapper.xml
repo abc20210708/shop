@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.shop.cart.repository.CartMapper">
+
+    <resultMap id="cartMap" type="com.example.shop.cart.domain.Cart">
+        <result property="cartCode" column="cart_code" />
+        <result property="csId" column="customer_id" />
+        <result property="prCode" column="product_code" />
+        <result property="cartChecked" column="cart_checked" />
+        <result property="cartAmount" column="cart_amount" />
+        <result property="cartTotalPrice" column="cart_total_price" />
+    </resultMap>
+
+
+    <!-- 장바구니 추가   -->
+    <insert id="insert">
+        INSERT INTO cart (cart_code, customer_id, product_code, cart_amount)
+            VALUES (seq_cart.NEXTVAL, #{csId}, #{prCode}, #{cartAmount})
+    </insert>
+
+    <!-- 장바구니 목록   -->
+    <select id="listCart" resultMap="cartMap">
+        SELELCT
+            C.cart_code, P.product_code,
+            P.product_name, P.product_thumb,
+            C.cart_amount,
+            P.product_price AS prPrice,
+            (product_price * cart_amount) money
+        FROM
+            customer M, product P, cart C
+        WHERE
+            M.customer_id = C.customer_id
+        AND
+            P.product_code = C.product_code
+        AND
+            C.customer_id = #{csId}
+    </select>
+
+
+</mapper>
