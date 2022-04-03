@@ -3,6 +3,7 @@ package com.example.shop.cart.controller;
 import com.example.shop.cart.domain.Cart;
 import com.example.shop.cart.service.CartService;
 import com.example.shop.customer.domain.Customer;
+import com.example.shop.customer.service.CustomerService;
 import jdk.nashorn.internal.ir.CatchNode;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
@@ -10,6 +11,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
@@ -23,10 +25,13 @@ public class CartController {
 
     private CartService cartService;
 
+    private  final CustomerService customerService;
+
     //장바구니 추가
-    @GetMapping
+    @PostMapping("/add")
     public String insert(Cart cart, HttpSession session) {
 
+        log.info(session.getAttribute("loginCustomer"));
         Customer loginCustomer = (Customer) session.getAttribute("loginCustomer");
         String csId = loginCustomer.getCsId();
 
@@ -47,6 +52,8 @@ public class CartController {
 
         Customer loginCustomer = (Customer) session.getAttribute("loginCustomer");
         String csId = loginCustomer.getCsId();
+
+        model.addAttribute("cs", loginCustomer);
 
         //장바구니 정보
         List<Cart> cartList = cartService.listCart(csId);

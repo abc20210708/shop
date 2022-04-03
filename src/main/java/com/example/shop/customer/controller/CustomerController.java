@@ -28,6 +28,7 @@ public class CustomerController {
 
     private  final CustomerService customerService;
 
+
     //회원 가입 요청 - (화면)
     @GetMapping("/account")
     public String insert() {
@@ -61,12 +62,15 @@ public class CustomerController {
     @GetMapping("/info")
     public String content(Model model, HttpSession session) {
 
+        log.info("회원 정보 보기(화면) ");
+
         Customer loginCustomer = (Customer) session.getAttribute("loginCustomer");
         customerService.getCustomer(loginCustomer.getCsId());
 
-        model.addAttribute("cs", loginCustomer);
-        log.info("회원 정보 보기(화면) ");
         log.info(loginCustomer);
+
+        model.addAttribute("cs", loginCustomer);
+
         return "customer/info";
     }
 

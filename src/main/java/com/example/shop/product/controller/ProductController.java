@@ -1,5 +1,7 @@
 package com.example.shop.product.controller;
 
+import com.example.shop.customer.domain.Customer;
+import com.example.shop.customer.service.CustomerService;
 import com.example.shop.product.domain.Product;
 import com.example.shop.product.service.ProductService;
 import lombok.RequiredArgsConstructor;
@@ -12,6 +14,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 
 import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpSession;
 
 
 import java.io.File;
@@ -42,6 +45,9 @@ public class ProductController extends HttpServlet {
 
     private final ProductService productService;
 
+    private  final CustomerService customerService;
+
+
   //  private static String CURR_IMG_REPO_PATH = "C:\\testImg\\";
 
 
@@ -60,11 +66,10 @@ public class ProductController extends HttpServlet {
 
     //회원 로그인 후 상품목록 요청(화면)
     @GetMapping("/product")
-    public String productList(Model model)
+    public String productList(Model model, HttpSession session)
             throws Exception {
         log.info("/product/product -- GET!");
-
-
+        log.info(session.getAttribute("loginCustomer"));
         List<Product> productList = productService.getList();
         model.addAttribute("articles", productList);
 

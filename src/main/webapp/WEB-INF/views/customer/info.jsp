@@ -21,21 +21,13 @@
     <h1>회원 정보 조회 </h1>
 
     <div>
-        <!-- <c:forEach var="cs" items="${cs}"> -->
+        
         <p>
         <label>
             # 회원아이디  : <input type="text" value="${cs.csId}"  >
         </label>
          </p>
         
-
-        <p>
-            <label>
-                # 회원 비밀번호  : <input type="password" value="${cs.csPw}">
-            
-            </label>
-            
-        </p>
 
 
         <p>   
@@ -95,7 +87,7 @@
         
         </p> 
 
-    <!-- </c:forEach> -->
+   
 
 </div>
     
