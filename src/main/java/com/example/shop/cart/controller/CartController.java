@@ -4,6 +4,7 @@ import com.example.shop.cart.domain.Cart;
 import com.example.shop.cart.service.CartService;
 import com.example.shop.customer.domain.Customer;
 import com.example.shop.customer.service.CustomerService;
+import com.example.shop.product.domain.Product;
 import jdk.nashorn.internal.ir.CatchNode;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
@@ -48,7 +49,7 @@ public class CartController {
 
     //장바구니 목록
     @GetMapping("/list")
-    public String inset(HttpSession session, Model model) {
+    public String insert(HttpSession session, Model model) {
 
         Customer loginCustomer = (Customer) session.getAttribute("loginCustomer");
         String csId = loginCustomer.getCsId();
@@ -60,6 +61,8 @@ public class CartController {
         model.addAttribute("cart",cartList);
         //장바구니 전체 금액 호출
         int sumTotal = cartService.sumTotal(csId);
+
+
 
         return "cart/list";
     }
