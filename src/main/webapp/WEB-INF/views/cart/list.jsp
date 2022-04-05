@@ -34,7 +34,7 @@
   <tfoot>
     <tr>
         <td colspan="4"></td>
-        <td>${ cart.totalPrice }</td>
+        <td>${cart.totalPrice}</td>
     </tr>
   </tfoot>
 </table>
