@@ -18,7 +18,6 @@
 <body>
 
 
-  
     
         <h1> 
         상품 번호 ${p.prCode}번 
@@ -155,8 +154,11 @@
             
 
         <form action="/cart/add" method="post">
+
             <input type="hidden" name="prCode" value="${p.prCode}">    
-            <input type="hidden" name="csId" value=" ${loginCustomer.csName}">  
+            <input type="hidden" name="csId" value=" ${loginCustomer.csId}">    
+            <input type="hidden" name="prCode" value="${p.prCode}">    
+           
                     <select name="cartAmount">
                         <option selected>수량을 선택하세요</option>
                         <option value="1"> 1</option>

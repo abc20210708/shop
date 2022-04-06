@@ -14,7 +14,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CartService {
 
-    private CartMapper cartMapper;
+    private final CartMapper cartMapper;
 
     //장바구니 추가
     public void insert(Cart cart) {

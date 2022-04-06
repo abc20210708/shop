@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
@@ -22,28 +23,30 @@ import java.util.List;
 @RequestMapping("/cart")
 @Log4j2
 @RequiredArgsConstructor
-public class CartController {
+public class CartController extends HttpServlet {
 
-    private CartService cartService;
+    private final CartService cartService;
 
-    private  final CustomerService customerService;
+   // private  final CustomerService customerService;
 
     //장바구니 추가
     @PostMapping("/add")
     public String insert(Cart cart, HttpSession session) {
 
-        log.info(session.getAttribute("loginCustomer"));
+        log.info("장바구니" +session.getAttribute("loginCustomer"));
         Customer loginCustomer = (Customer) session.getAttribute("loginCustomer");
         String csId = loginCustomer.getCsId();
 
         //장바구니에 기존 상품이 있는지 검사
-        int count = cartService.countCart(cart.getPrCode(), csId);
+       // int count = cartService.countCart(cart.getPrCode(), csId);
         //count == 0 ? cartService.updateCart(cart) : cartService.insert(cart);
-        if (count == 0) { //없으면 insert
-            cartService.insert(cart);
-        } else { //있으면 update
+        //없으면 insert
+        cart.setCsId(csId);
+        cartService.insert(cart);
+        log.info(cart);
+        /*else { //있으면 update
             cartService.updateCart(cart);
-        }
+        }*/
         return "redirect:/cart/list";
     }
 

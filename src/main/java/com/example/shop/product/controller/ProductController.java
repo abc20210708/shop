@@ -148,9 +148,12 @@ public class ProductController extends HttpServlet {
 
     //상품 상세 조회(화면)
     @GetMapping("/info")
-    public String content(int prCode, Model model) {
-        log.info("상세조회요청 - (화면)" + prCode);
+    public String content(int prCode, Model model, HttpSession session) {
+
+        log.info("상세조회요청 - (화면)" + prCode + session.getAttribute("loginCustomer") );
+
         Product product = productService.get(prCode);
+
         model.addAttribute("p",product);
         return "product/info";
     }
