@@ -34,7 +34,7 @@
                         <!-- <li><a href="/admin/account">관리자등록</a></li> -->
                         <!-- <li><a href="/admin/login">관리자 로그인</a></li> -->
                         <!-- <li><a href="/customer/login">회원 로그인</a></li> -->
-                        <!-- <li><a href="/admin/noticeInsert"> 공지사항 등록</a></li> -->
+                        <li><a href="/cart/list">장바구니목록</a></li>
                         <li><a href="/customer/logout">회원 로그아웃</a></li>
                     </ul>
                 </nav>

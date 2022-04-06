@@ -157,7 +157,7 @@
 
             <input type="hidden" name="prCode" value="${p.prCode}">    
             <input type="hidden" name="csId" value=" ${loginCustomer.csId}">    
-            <input type="hidden" name="prCode" value="${p.prCode}">    
+               
            
                     <select name="cartAmount">
                         <option selected>수량을 선택하세요</option>

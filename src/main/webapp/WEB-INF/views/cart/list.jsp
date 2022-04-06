@@ -6,7 +6,7 @@
     <h1 class="display-4">Index Carts</h1>
     <p class="lead">views/carts/index.jsp</p>
     <hr class="my-4">
-    <p>장바구니 페이지</p>
+    <p>${cs.csName}님의 장바구니 페이지</p>
 </div>
 <h2>장바구니</h2>
 <hr>
@@ -27,14 +27,14 @@
             <td>${c.csId}</td>
             <td>${c.prCode}</td>
             <td>${c.cartAmount}</td>
-            <td>${c.cartTotalPrice}</td>
+            <!-- <td>${c.cartTotalPrice}</td> -->
         </tr>
     </c:forEach>
   </tbody>
   <tfoot>
     <tr>
         <td colspan="4"></td>
-        <td>${cart.totalPrice}</td>
+        <td>${c.carttotalPrice}</td>
     </tr>
   </tfoot>
 </table>

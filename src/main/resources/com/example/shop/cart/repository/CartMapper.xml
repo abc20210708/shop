@@ -23,20 +23,18 @@
 
     <!-- 장바구니 목록   -->
     <select id="listCart" resultMap="cartMap">
-        SELELCT
-            C.cart_code, P.product_code,
-            P.product_name, P.product_thumb,
-            C.cart_amount,
-            P.product_price AS prPrice,
-            (product_price * cart_amount) money
+        SELECT
+            c.cart_code, p.product_code,
+            c.cart_amount,
+            p.product_price * c.cart_amount
         FROM
-            customer M, product P, cart C
-        WHERE
-            M.customer_id = C.customer_id
-        AND
-            P.product_code = C.product_code
-        AND
-            C.customer_id = #{csId}
+            customer m LEFT JOIN cart c
+        ON
+            m.customer_id = c.customer_id
+        LEFT JOIN
+            product p
+        ON
+            p.product_code = c.product_code
     </select>
 
 
