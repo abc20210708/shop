@@ -28,13 +28,13 @@
             c.cart_amount,
             p.product_price * c.cart_amount
         FROM
-            customer m LEFT JOIN cart c
-        ON
-            m.customer_id = c.customer_id
-        LEFT JOIN
-            product p
-        ON
+            customer m , JOIN cart c , product p
+        WHERE
+            c.customer_id = #{csId}
+        AND
             p.product_code = c.product_code
+        AND
+            m.customer_id = c.customer_id
     </select>
 
 
