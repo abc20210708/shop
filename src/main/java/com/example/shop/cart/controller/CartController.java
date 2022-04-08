@@ -63,7 +63,7 @@ public class CartController extends HttpServlet {
         List<Cart> cartList = cartService.listCart(csId);
         model.addAttribute("cart",cartList);
         //장바구니 전체 금액 호출
-        int sumTotal = cartService.sumTotal(csId);
+        //int sumTotal = cartService.sumTotal(csId);
 
 
 
