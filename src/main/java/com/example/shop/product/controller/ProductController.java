@@ -148,7 +148,7 @@ public class ProductController extends HttpServlet {
 
     //상품 상세 조회(화면)
     @GetMapping("/info")
-    public String content(int prCode, Model model, HttpSession session) {
+    public String content(int prCode, Model model, HttpSession session) throws Exception{
 
         log.info("상세조회요청 - (화면)" + prCode + session.getAttribute("loginCustomer") );
 

@@ -46,7 +46,8 @@ public class CartController {
         /*else { //있으면 update
             cartService.updateCart(cart);
         }*/
-        return "redirect:/cart/list";
+        return "redirect:/cart/list?csId="+loginCustomer.getCsId();
+        //redirect:/customer/info?cdId="+loginCustomer.getCsId()
     }
 
     //장바구니 목록
