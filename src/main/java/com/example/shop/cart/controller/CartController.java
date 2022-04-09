@@ -63,7 +63,8 @@ public class CartController {
         //장바구니 전체 금액 호출
         //int sumTotal = cartService.sumTotal(csId);
 
-        return "redirect:/cart/list?csId="+loginCustomer.getCsId();
+       // return "redirect:/cart/list?csId="+loginCustomer.getCsId();
+        return "cart/list";
     }
 
 }//

@@ -23,9 +23,9 @@
     <c:forEach var="c" items="${cart}">
         <tr>
             <th>${c.cartCode}</th>
-            <td>${c.csId}</td>
-            <td>${c.prCode}</td>
-            <td>${c.cartAmount}</td>
+            <!-- <td>${c.csId}</td> -->
+            <!-- <td>${c.prCode}</td> -->
+            <!-- <td>${c.cartAmount}</td> -->
             <!-- <td>${c.cartTotalPrice}</td> -->
         </tr>
     </c:forEach>
