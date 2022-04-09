@@ -23,7 +23,7 @@ import java.util.List;
 @RequestMapping("/cart")
 @Log4j2
 @RequiredArgsConstructor
-public class CartController extends HttpServlet {
+public class CartController {
 
     private final CartService cartService;
 
@@ -35,13 +35,12 @@ public class CartController extends HttpServlet {
 
         log.info("장바구니" +session.getAttribute("loginCustomer"));
         Customer loginCustomer = (Customer) session.getAttribute("loginCustomer");
-        String csId = loginCustomer.getCsId();
 
         //장바구니에 기존 상품이 있는지 검사
        // int count = cartService.countCart(cart.getPrCode(), csId);
         //count == 0 ? cartService.updateCart(cart) : cartService.insert(cart);
         //없으면 insert
-        cart.setCsId(csId);
+        cart.setCsId(loginCustomer.getCsId());
         cartService.insert(cart);
         log.info(cart);
         /*else { //있으면 update
@@ -52,20 +51,16 @@ public class CartController extends HttpServlet {
 
     //장바구니 목록
     @GetMapping("/list")
-    public String insert(HttpSession session, Model model) {
+    public String cartList(HttpSession session, Model model) {
+
+        log.info("장바구니 목록 Controller! (화면)");
 
         Customer loginCustomer = (Customer) session.getAttribute("loginCustomer");
-        String csId = loginCustomer.getCsId();
-
-        model.addAttribute("cs", loginCustomer);
-
         //장바구니 정보
-        List<Cart> cartList = cartService.listCart(csId);
+        List<Cart> cartList = cartService.listCart(loginCustomer.getCsId());
         model.addAttribute("cart",cartList);
         //장바구니 전체 금액 호출
         //int sumTotal = cartService.sumTotal(csId);
-
-
 
         return "cart/list";
     }

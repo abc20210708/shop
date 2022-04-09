@@ -24,7 +24,7 @@
 
     <nav class="gnb">
         <ul>
-            <li><a href="/">홈으로</a></li>
+            <li><a href="/customer/loginHome">홈으로</a></li>
             <li><a href="/customer/info">마이페이지</a></li>
             <li><a href="/customer/logout">회원 로그아웃</a></li>
         </ul>

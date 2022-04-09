@@ -3,10 +3,9 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <div class="jumbotron">
-    <h1 class="display-4">Index Carts</h1>
-    <p class="lead">views/carts/index.jsp</p>
+   
     <hr class="my-4">
-    <p>${cs.csName}님의 장바구니 페이지</p>
+    <p>${loginCustomer.csName}님의 장바구니 페이지</p>
 </div>
 <h2>장바구니</h2>
 <hr>
@@ -14,10 +13,10 @@
     <thead class="thead-light">
     <tr>
       <th>카테고리 번호</th>
-      <th>회원명</th>
+      <th>회원아이디</th>
       <th>상품번호</th>
       <th>장바구니 수량</th>
-      <th>합계금액</th>
+      <!-- <th>합계금액</th> -->
     </tr>
   </thead>
   <tbody>
@@ -34,7 +33,7 @@
   <tfoot>
     <tr>
         <td colspan="4"></td>
-        <td>${c.carttotalPrice}</td>
+        <!-- <td>${c.carttotalPrice}</td> -->
     </tr>
   </tfoot>
 </table>
