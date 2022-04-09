@@ -46,7 +46,7 @@ public class CartController {
         /*else { //있으면 update
             cartService.updateCart(cart);
         }*/
-        return "redirect:/cart/list?csId="+loginCustomer.getCsId();
+        return "product/product";
         //redirect:/customer/info?cdId="+loginCustomer.getCsId()
     }
 
@@ -63,7 +63,7 @@ public class CartController {
         //장바구니 전체 금액 호출
         //int sumTotal = cartService.sumTotal(csId);
 
-        return "cart/list";
+        return "redirect:/cart/list?csId="+loginCustomer.getCsId();
     }
 
 }//

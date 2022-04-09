@@ -82,7 +82,7 @@ public class CustomerController {
         log.info(loginCustomer);
         customerService.updateCustomer(modCustomer);
         log.info("회원 정보 변경 :" + modCustomer);
-        return "redirect:/customer/info?cdId="+loginCustomer.getCsId();
+        return "redirect:/customer/info?csId="+loginCustomer.getCsId();
     }
 
     //공지사항 요청 - (화면)
