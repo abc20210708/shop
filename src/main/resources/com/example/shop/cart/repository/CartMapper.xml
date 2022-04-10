@@ -39,5 +39,26 @@
             c.customer_id = #{csId}
     </select>
 
+    <resultMap id="productMap" type="com.example.shop.product.domain.Product">
+        <result property="prCode" column="product_code" />
+        <result property="cateCode" column="cate_code" />
+        <result property="prName" column="product_name" />
+        <result property="prPrice" column="product_price" />
+        <result property="prYn" column="product_yn" />
+        <result property="prAmount" column="product_amount" />
+        <result property="prThumb" column="product_thumb" />
+        <result property="prImg1" column="product_img1" />
+        <result property="prImg2" column="product_img2" />
+        <result property="prImg3" column="product_img3" />
+        <result property="prImg4" column="product_img4" />
+        <result property="prImg5" column="product_img5" />
+        <result property="prDate" column="product_date" />
+    </resultMap>
+
+    <!--  상품 목록 조회  -->
+    <select id="listProduct" resultMap="productMap">
+        SELECT * FROM product
+    </select>
+
 
 </mapper>

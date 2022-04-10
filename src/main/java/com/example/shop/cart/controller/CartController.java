@@ -61,8 +61,15 @@ public class CartController {
         List<Cart> cartList = cartService.listCart(loginCustomer.getCsId());
 
         log.info(cartList);
-
         model.addAttribute("cart",cartList);
+
+        //상품정보보
+       for (Cart cart: cartList) {
+            List<Product> productList = cartService.listProduct(cart.getPrCode());
+            model.addAttribute("product",productList);
+        }
+
+
         //장바구니 전체 금액 호출
         //int sumTotal = cartService.sumTotal(csId);
 

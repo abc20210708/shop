@@ -25,6 +25,8 @@
 
     <div>
         <c:forEach var="c" items="${cart}">
+
+        <input type="checkbox">
         <p>
             <label>
                 # 카테고리 번호  : <input type="text" value="${c.cartCode}"  >
@@ -55,10 +57,22 @@
             </label>
         
         </p> 
-
-
-
         </c:forEach>
+
+
+        <c:forEach var="p" items="${product}">
+            <label>
+
+            
+            #상품썸네일: <input type="text"  value="${p.prThumb}" >
+        
+                <img src="/product/list/${p.prThumb}" width="300" height="300" referrerpolicy="no-referrer" />
+               
+              
+            </label>
+        </c:forEach>
+
+        
     </div>
 
 </body>

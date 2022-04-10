@@ -2,6 +2,7 @@ package com.example.shop.cart.repository;
 
 import com.example.shop.cart.domain.Cart;
 import com.example.shop.cart.dto.ModCart;
+import com.example.shop.product.domain.Product;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -14,6 +15,9 @@ public interface CartMapper {
 
     //장바구니 목록
     List<Cart> listCart(String csId);
+
+    //상품 목록
+    List<Product> listProduct(int prCode);
 
     //장바구니 삭제
     void delete(int cartCode);

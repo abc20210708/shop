@@ -3,6 +3,7 @@ package com.example.shop.cart.service;
 import com.example.shop.cart.domain.Cart;
 import com.example.shop.cart.dto.ModCart;
 import com.example.shop.cart.repository.CartMapper;
+import com.example.shop.product.domain.Product;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
@@ -26,6 +27,12 @@ public class CartService {
     public List<Cart> listCart(String csId) {
         log.info("장바구니 목록 요청 서비스!" + csId);
         return cartMapper.listCart(csId);
+    }
+
+    //장바구니 목록
+    public List<Product> listProduct(int prCode) {
+        log.info("CartService 상품 목록 요청 서비스!" + prCode);
+        return cartMapper.listProduct(prCode);
     }
 
     //장바구니 삭제
