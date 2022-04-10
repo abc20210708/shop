@@ -110,7 +110,8 @@ public class CustomerController {
     //회원 로그인 검증
     @PostMapping("/login")
     public String loginCustomer( HttpServletResponse response,
-                                HttpServletRequest request, Model model, Customer customer) {
+                                HttpServletRequest request, Model model,
+                                 Customer customer) {
 
 
         Customer loginCustomer = customerService.login(customer.getCsId(), customer.getCsPw());

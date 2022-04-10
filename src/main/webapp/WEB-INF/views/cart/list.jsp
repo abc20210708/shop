@@ -19,6 +19,7 @@
         
             <hr class="my-4">
             <p>${loginCustomer.csName}님의 장바구니 페이지</p>
+            <li><a href="/customer/logout">회원 로그아웃</a></li>
         </div>
         <h2>장바구니</h2>
         <hr>
@@ -72,7 +73,7 @@
             </label>
         </c:forEach>
 
-        
+        <hr>
     </div>
 
 </body>
