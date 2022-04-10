@@ -59,6 +59,9 @@ public class CartController {
         Customer loginCustomer = (Customer) session.getAttribute("loginCustomer");
         //장바구니 정보
         List<Cart> cartList = cartService.listCart(loginCustomer.getCsId());
+
+        log.info(cartList);
+
         model.addAttribute("cart",cartList);
         //장바구니 전체 금액 호출
         //int sumTotal = cartService.sumTotal(csId);
