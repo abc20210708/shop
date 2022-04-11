@@ -27,7 +27,8 @@
     <div>
         <c:forEach var="c" items="${cart}">
 
-        <input type="checkbox">
+        <input type="checkbox" name="cartChecked" value='1' id="input_check" checked/>
+        <input type="hidden" name="cartChecked" value='0' id="input_check_hidden"/>
         <p>
             <label>
                 # 카테고리 번호  : <input type="text" value="${c.cartCode}"  >
@@ -75,6 +76,14 @@
 
         <hr>
     </div>
+
+    <script>
+    
+        var name = document.getElementsByName("cartChecked").value;
+        
+        console.log(name);
+       // console.log(c2);
+    </script>
 
 </body>
 
