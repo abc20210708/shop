@@ -25,6 +25,9 @@
         <hr>
 
     <div>
+
+        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
         <c:forEach var="c" items="${cart}">
 
         <input type="checkbox" name="cartChecked" value='1' id="input_check" checked/>
@@ -78,11 +81,16 @@
     </div>
 
     <script>
-    
-        var name = document.getElementsByName("cartChecked").value;
+
         
-        console.log(name);
-       // console.log(c2);
+
+        $("[name=cartChecked]:checked").each(function() {
+        var chk = $(this).val();
+        console.log(chk);
+        });
+
+     
+    
     </script>
 
 </body>
