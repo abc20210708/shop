@@ -29,7 +29,7 @@ public class CartService {
         return cartMapper.listCart(csId);
     }
 
-    //장바구니 목록
+    //장바구니 상품 목록
     public List<Product> listProduct(int prCode) {
         log.info("CartService 상품 목록 요청 서비스!" + prCode);
         return cartMapper.listProduct(prCode);

@@ -5,9 +5,9 @@ import com.example.shop.cart.service.CartService;
 import com.example.shop.customer.domain.Customer;
 import com.example.shop.customer.service.CustomerService;
 import com.example.shop.product.domain.Product;
-import jdk.nashorn.internal.ir.CatchNode;
+
 import lombok.RequiredArgsConstructor;
-import lombok.extern.java.Log;
+
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
@@ -63,11 +62,12 @@ public class CartController {
         log.info(cartList);
         model.addAttribute("cart",cartList);
 
-        //상품정보보
+        //상품정보
        for (Cart cart: cartList) {
             List<Product> productList = cartService.listProduct(cart.getPrCode());
-            model.addAttribute("product",productList);
-        }
+                model.addAttribute("product",productList);
+            }
+
 
 
         //장바구니 전체 금액 호출
