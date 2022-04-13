@@ -75,9 +75,24 @@
                
               
             </label>
+
+                 <label>
+
+                #상품가격: <input type="text"  value="${p.prPrice}" >
+   
+                </label>
         </c:forEach>
 
+        <p>   
+            <label>
+                # 총금액  : <input type="text" name="" value="" >
+            </label>
+        
+        </p> 
+
         <hr>
+
+
     </div>
 
     <script>
