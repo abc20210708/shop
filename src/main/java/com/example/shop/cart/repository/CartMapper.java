@@ -17,7 +17,7 @@ public interface CartMapper {
     List<Cart> listCart(String csId);
 
     //상품 목록
-    List<Product> listProduct(int prCode);
+    Product listProduct(int prCode);
 
     //장바구니 삭제
     void delete(int cartCode);

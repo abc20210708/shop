@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -62,13 +63,14 @@ public class CartController {
         log.info(cartList);
         model.addAttribute("cart",cartList);
 
+        List<Product> productList = new ArrayList<>();
+
         //상품정보
        for (Cart cart: cartList) {
-            List<Product> productList = cartService.listProduct(cart.getPrCode());
+                Product product = cartService.listProduct(cart.getPrCode());
+                productList.add(product);
                 model.addAttribute("product",productList);
             }
-
-
 
         //장바구니 전체 금액 호출
         //int sumTotal = cartService.sumTotal(csId);
