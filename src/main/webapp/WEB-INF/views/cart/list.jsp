@@ -13,6 +13,9 @@
     <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
+<c:set var="p"  value="${product}"  />
+<c:set var="c"  value="${cart}"  />
+
   </head>
 
     <body> 
@@ -31,7 +34,7 @@
 
         <c:forEach var="c" items="${cart}" >
 
-        <input type="checkbox" name="cartChecked" value='1' id="input_check" checked/>
+        <input type="checkbox" onClick="calcGoodsPrice('${p.prPrice}', this)" name="cartChecked" value='1' id="input_check" checked/>
         <!-- <input type="hidden" name="cartChecked" value='0' id="input_check_hidden"/> -->
         <p>
             <label>
@@ -98,25 +101,51 @@
 
     <script>
 
-        let total = parseInt(document.getElementById('cartTotalPrice').value);
-        let amount = parseInt(document.getElementById('cartAmount').value);
-        let price = parseInt(document.getElementById('prPrice').value);
+        let total = document.getElementById('cartTotalPrice');
+        let amount = document.getElementById('cartAmount');
+        let price = document.getElementById('prPrice');
+        let sum = 0;
+        let count = $("[name=cartChecked]:checked").each
 
-        $("[name=cartChecked]:checked").each(function() {
+       //개별 체크
+      
+
+
+
+        /*$("[name=cartChecked]:checked").each(function() {
             var chk = $(this).val();
             console.log(chk);
-            if($("[name=cartChecked]:checked") == true) {
-                total += amount * price;
-
+            console.log(total);
+            console.log(amount);
+            console.log(price);
+            for(let i = 0; i < count; i++) {
+                if($('input:checked[name=cartChecked]')[i].checked == true) {
+                
+                    sum += amount * price;
+                console.log("==================");  
                 console.log(total);
                 console.log(amount);
                 console.log(price);
-            }
-            
+                total = sum;
+                console.log("======");
+                console.log(total);
+                }
+             }
 
-        });
+        });*/
 
-        
+        /*function itemSum() {
+                var str = "";
+                var sum = 0;
+                var count = $(".chkbox").length;
+                for (var i = 0; i < count; i++) {
+                    if ($(".chkbox")[i].checked == true) {
+                        sum += parseInt($(".chkbox")[i].value);
+                    }
+                }
+                $("#total_sum").html(sum + " 원");
+                $("#amount").val(sum);
+            }*/
         
        
 
