@@ -10,7 +10,8 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Mall</title>
 
-    
+    <!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
   </head>
 
@@ -26,12 +27,12 @@
 
     <div>
 
-        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+       
 
-        <c:forEach var="c" items="${cart}">
+        <c:forEach var="c" items="${cart}" >
 
         <input type="checkbox" name="cartChecked" value='1' id="input_check" checked/>
-        <input type="hidden" name="cartChecked" value='0' id="input_check_hidden"/>
+        <!-- <input type="hidden" name="cartChecked" value='0' id="input_check_hidden"/> -->
         <p>
             <label>
                 # 카테고리 번호  : <input type="text" value="${c.cartCode}"  >
@@ -58,7 +59,7 @@
 
         <p>   
             <label>
-                # 장바구니수량  : <input type="text"  value="${c.cartAmount}" >
+                # 장바구니수량  : <input type="text" id="cartAmount" value="${c.cartAmount}" >
             </label>
         
         </p> 
@@ -78,14 +79,14 @@
 
                  <label>
 
-                #상품가격: <input type="text"  value="${p.prPrice}" >
+                #상품가격: <input type="text" id="prPrice" value="${p.prPrice}" >
    
                 </label>
         </c:forEach>
 
         <p>   
             <label>
-                # 총금액  : <input type="text" name="" value="" >
+                # 총금액  : <input type="text" id="cartTotalPrice" name="cartTotalPrice" value="0" >
             </label>
         
         </p> 
@@ -97,12 +98,27 @@
 
     <script>
 
-        
+        let total = parseInt(document.getElementById('cartTotalPrice').value);
+        let amount = parseInt(document.getElementById('cartAmount').value);
+        let price = parseInt(document.getElementById('prPrice').value);
 
         $("[name=cartChecked]:checked").each(function() {
-        var chk = $(this).val();
-        console.log(chk);
+            var chk = $(this).val();
+            console.log(chk);
+            if($("[name=cartChecked]:checked") == true) {
+                total += amount * price;
+
+                console.log(total);
+                console.log(amount);
+                console.log(price);
+            }
+            
+
         });
+
+        
+        
+       
 
      
     
