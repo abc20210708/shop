@@ -34,7 +34,7 @@
 
         <c:forEach var="c" items="${cart}" >
 
-        <input type="checkbox" onClick="calcGoodsPrice('${p.prPrice}', this)" name="cartChecked" value='1' id="input_check" checked/>
+       
         <!-- <input type="hidden" name="cartChecked" value='0' id="input_check_hidden"/> -->
         <p>
             <label>
@@ -85,6 +85,8 @@
                 #상품가격: <input type="text" id="prPrice" value="${p.prPrice}" >
    
                 </label>
+
+                <input type="checkbox" onClick="calcGoodsPrice('${p.prPrice}', this)" name="cartChecked" value='${p.prCode}' id="input_check"/>
         </c:forEach>
 
         <p>   
@@ -101,13 +103,40 @@
 
     <script>
 
+    let arr = new Array();
+
+    function calcGoodsPrice(prPrice, obj) {
+        let totalPrice = 0;
         let total = document.getElementById('cartTotalPrice');
         let amount = document.getElementById('cartAmount');
         let price = document.getElementById('prPrice');
+        
         let sum = 0;
-        let count = $("[name=cartChecked]:checked").each
+        let idx = 0;
+            if(obj.checked == true) {
+            alert("체크가 되었어요! :) ")
+                totalPrice += amount.value * prPrice;
+                
+                arr.push(totalPrice);
 
-       //개별 체크
+                for(let i = 0; i<arr.length; i++) {
+                    sum += arr[i] ;
+                }
+                
+                console.log(obj);
+                console.log(arr);
+                console.log("===========");
+                console.log(totalPrice);
+                console.log(sum);
+
+                total.value = sum;
+
+             } else {
+
+             }
+
+       
+        }
       
 
 
