@@ -103,38 +103,28 @@
 
     <script>
 
-    let arr = new Array();
+    let totalPrice = 0;
 
     function calcGoodsPrice(prPrice, obj) {
-        let totalPrice = 0;
+        
         let total = document.getElementById('cartTotalPrice');
         let amount = document.getElementById('cartAmount');
         let price = document.getElementById('prPrice');
         
-        let sum = 0;
-        let idx = 0;
             if(obj.checked == true) {
             alert("체크가 되었어요! :) ")
                 totalPrice += amount.value * prPrice;
                 
-                arr.push(totalPrice);
-
-                for(let i = 0; i<arr.length; i++) {
-                    sum += arr[i] ;
-                }
-                
                 console.log(obj);
-                console.log(arr);
                 console.log("===========");
                 console.log(totalPrice);
-                console.log(sum);
-
-                total.value = sum;
 
              } else {
+                 totalPrice -= amount.value * prPrice;
 
              }
 
+             total.value = totalPrice;  
        
         }
       
