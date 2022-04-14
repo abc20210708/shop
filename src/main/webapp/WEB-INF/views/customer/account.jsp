@@ -68,14 +68,14 @@
 
         <p>   
             <label>
-                # 도로명주소  : <input type="text" id="road_addr" name="roadAddr" >
+                # 도로명주소  : <input type="text" id="road_addr" name="roadAddr"  size="40">
             </label>
         
         </p> 
 
         <p>   
             <label>
-                # 지번주소  : <input type="text" id="lot_num_addr" name="lotNumAddr" >
+                # 지번주소  : <input type="text" id="lot_num_addr" name="lotNumAddr" size="40">
             </label>
         
         </p> 
@@ -83,7 +83,7 @@
 
         <p>   
             <label>
-                # 상세주소  : <input type="text" id="extra_addr" name="extraAddr" >
+                # 상세주소  : <input type="text" id="extra_addr" name="extraAddr" size="40">
             </label>
         
         </p> 
@@ -142,11 +142,12 @@
                 //document.getElementById("sample4_engAddress").value = data.addressEnglish;
                        
                 // 참고항목 문자열이 있을 경우 해당 필드에 넣는다.
-                if(roadAddr !== ''){
-                    document.getElementById("extra_addr").value = extraRoadAddr;
-                } else {
+                
+                if(roadAddr == ''){
                     document.getElementById("extra_addr").value = '';
-                }
+                } 
+                //else {document.getElementById("extra_addr").value = '';} 
+                
 
                 /*
                 var guideTextBox = document.getElementById("guide");
