@@ -96,7 +96,12 @@
         
         </p> 
 
-        <input type="checkbox" id="check_all" name="all" onclick="checkAll()">
+
+        <p>
+
+        <input type="checkbox" id="check_all" name="all" onclick="checkAll()"><span>전체선택</span>
+        
+        </p>
 
         <hr>
 
@@ -128,16 +133,17 @@
         }
       
        /* 체크박스 전체선택, 전체해제 */
-        function checkAll(){
+       function checkAll(){
             if( $("#check_all").is(':checked') ){
                 $("input[name=cartChecked]").prop("checked", true);
-
+                
             }else{
                 $("input[name=cartChecked]").prop("checked", false);
                 total.value = 0;
             }
-        }
+        } 
 
+       
 
 
     
