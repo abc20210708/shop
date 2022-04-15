@@ -114,6 +114,8 @@
     let total = document.getElementById('cartTotalPrice');
     let amount = document.getElementById('cartAmount');
     let price = document.getElementById('prPrice');
+    let input = document.getElementById('input_check');
+    
 
     function calcGoodsPrice(prPrice, obj) {
         
@@ -124,7 +126,7 @@
                 console.log(obj);
                 console.log("===========");
                 console.log(totalPrice);
-
+                
              } else {
                  totalPrice -= amount.value * prPrice;
 
@@ -133,15 +135,19 @@
         }
       
        /* 체크박스 전체선택, 전체해제 */
-       function checkAll(){
+        function checkAll(){
             if( $("#check_all").is(':checked') ){
                 $("input[name=cartChecked]").prop("checked", true);
-                
+               //total.value = calcGoodsPrice(prPrice, this);
             }else{
                 $("input[name=cartChecked]").prop("checked", false);
                 total.value = 0;
             }
         } 
+
+        
+
+        
 
        
 
