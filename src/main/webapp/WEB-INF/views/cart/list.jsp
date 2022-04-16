@@ -117,6 +117,7 @@
     let input = document.getElementById('input_check');
     
 
+    /*
     function calcGoodsPrice(prPrice, obj) {
         
             if(obj.checked == true) {
@@ -133,8 +134,10 @@
              }
              total.value = totalPrice;   
         }
-      
+      */
        /* 체크박스 전체선택, 전체해제 */
+
+       /*
         function checkAll(){
             if( $("#check_all").is(':checked') ){
                 $("input[name=cartChecked]").prop("checked", true);
@@ -144,7 +147,40 @@
                 total.value = 0;
             }
         } 
+        */
 
+         //전체 체크
+      $(document).on('change','#check_all',function(e){
+    	  let checkItem = $("input[name=all]");
+          if($(this).prop("checked")) { 
+        	  checkItem.prop("checked",true); 
+          } else {
+        	  checkItem.prop("checked",false);
+          }
+      });
+      let checkItem = $("input[name=all]");
+      $("#check_all").prop("checked",true);
+      checkItem.prop("checked",true); 
+      
+      //개별 체크
+      $(document).on('change','input[name=checkP]',function(e){
+         let totalPrice = $("#selectedTotal");
+         let countInput = countBox.find('input[name=countInput]');
+         let count = countInput.val();
+         totalPrice = parseInt(document.getElementById("sum").val(count)); 
+         let val = document.getElementById('input[name="checkP"]').checked;
+         
+         if($(this).prop("checked")) {
+            totalPrice+=result;
+         } else {
+         totalPrice-=result;
+      }
+         document.getElementById("sum").value = totalPrice;
+         
+         totalPrice.empty();
+         totalPrice.html(val);  
+      }); 
+      
         
 
         
