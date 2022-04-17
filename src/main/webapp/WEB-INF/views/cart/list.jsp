@@ -62,7 +62,7 @@
 
         <p>   
             <label>
-                # 장바구니수량  : <input type="text" id="cartAmount" value="${c.cartAmount}" >
+                # 장바구니수량  : <input type="text" name="cartAmount" id="cart_amount" value="${c.cartAmount}" >
             </label>
         
         </p> 
@@ -110,11 +110,11 @@
 
     <script>
 
-    let totalPrice = 0;
-    let total = document.getElementById('cartTotalPrice');
-    let amount = document.getElementById('cartAmount');
-    let price = document.getElementById('prPrice');
-    let input = document.getElementById('input_check');
+   // let totalPrice = 0;
+  //  let total = document.getElementById('cartTotalPrice');
+   // let amount = document.getElementById('cartAmount');
+   // let price = document.getElementById('prPrice');
+   // let input = document.getElementById('input_check');
     
 
     /*
@@ -149,6 +149,8 @@
         } 
         */
 
+        let countBox = $(this).closest('#cart_amount');
+
          //전체 체크
       $(document).on('change','#check_all',function(e){
     	  let checkItem = $("input[name=all]");
@@ -163,12 +165,12 @@
       checkItem.prop("checked",true); 
       
       //개별 체크
-      $(document).on('change','input[name=checkP]',function(e){
-         let totalPrice = $("#selectedTotal");
-         let countInput = countBox.find('input[name=countInput]');
+      $(document).on('change','input[name=all]',function(e){
+         let totalPrice = $("#cartTotalPrice");
+         let countInput = countBox.find('input[name=cartAmount]');
          let count = countInput.val();
          totalPrice = parseInt(document.getElementById("sum").val(count)); 
-         let val = document.getElementById('input[name="checkP"]').checked;
+         let val = document.getElementById('input[name="all"]').checked;
          
          if($(this).prop("checked")) {
             totalPrice+=result;
