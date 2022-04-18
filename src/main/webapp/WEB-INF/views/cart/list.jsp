@@ -62,7 +62,7 @@
 
         <p>   
             <label>
-                # 장바구니수량  : <input type="text" name="cartAmount" id="cart_amount" value="${c.cartAmount}" >
+                # 장바구니수량  : <input type="text"  id="cartAmount" value="${c.cartAmount}" >
             </label>
         
         </p> 
@@ -110,14 +110,14 @@
 
     <script>
 
-   // let totalPrice = 0;
-  //  let total = document.getElementById('cartTotalPrice');
-   // let amount = document.getElementById('cartAmount');
-   // let price = document.getElementById('prPrice');
-   // let input = document.getElementById('input_check');
+    let totalPrice = 0;
+    let total = document.getElementById('cartTotalPrice');
+    let amount = document.getElementById('cartAmount');
+    let price = document.getElementById('prPrice');
+    let input = document.getElementById('input_check');
     
 
-    /*
+    
     function calcGoodsPrice(prPrice, obj) {
         
             if(obj.checked == true) {
@@ -134,21 +134,34 @@
              }
              total.value = totalPrice;   
         }
-      */
+      
        /* 체크박스 전체선택, 전체해제 */
 
-       /*
+       /* 
         function checkAll(){
             if( $("#check_all").is(':checked') ){
-                $("input[name=cartChecked]").prop("checked", true);
-               //total.value = calcGoodsPrice(prPrice, this);
+                $("input").prop("checked", true);
+               
             }else{
                 $("input[name=cartChecked]").prop("checked", false);
                 total.value = 0;
             }
-        } 
-        */
+        } */
 
+        $(document).on('change','#check_all',function(e) {
+            let checkItem = $("input[name=cartChecked]");
+            if($(this).prop("checked")) {
+                checkItem.prop("checked", true);
+            } else {
+                checkItem.prop("checked",false);
+            }
+        });
+        let checkItem = $("input[name=cartChecked]");
+        $("#check_all").prop("checked",true);
+        checkItem.prop("checked",true);
+        
+
+        /*
         let countBox = $(this).closest('#cart_amount');
 
          //전체 체크
@@ -182,7 +195,7 @@
          totalPrice.empty();
          totalPrice.html(val);  
       }); 
-      
+      */
         
 
         
