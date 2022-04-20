@@ -63,6 +63,8 @@
         <p>   
             <label>
                 # 장바구니수량  : <input type="text"  id="cartAmount" value="${c.cartAmount}" >
+                <input type="button"  id="add" value=" + " >
+                <input type="button"  id="minus" value=" - " >
             </label>
         
         </p> 
