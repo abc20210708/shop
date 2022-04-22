@@ -139,17 +139,26 @@
       
        /* 체크박스 전체선택, 전체해제 */
 
-       /* 
+       let checkSum = 0;
+       
         function checkAll(){
             if( $("#check_all").is(':checked') ){
                 $("input").prop("checked", true);
-               
-            }else{
-                $("input[name=cartChecked]").prop("checked", false);
-                total.value = 0;
-            }
-        } */
 
+                    checkSum += price.value * amount.value;
+                    console.log(price.value);
+                    console.log(amount.value);
+                
+                total.value = checkSum;
+
+            } else{
+                $("input[name=cartChecked]").prop("checked", false);
+                checkSum = 0;
+            }
+            total.value = checkSum;
+        } 
+
+        /*
         $(document).on('change','#check_all',function(e) {
             let checkItem = $("input[name=cartChecked]");
             if($(this).prop("checked")) {
@@ -161,7 +170,7 @@
         let checkItem = $("input[name=cartChecked]");
         $("#check_all").prop("checked",true);
         checkItem.prop("checked",true);
-        
+        */
 
         /*
         let countBox = $(this).closest('#cart_amount');
