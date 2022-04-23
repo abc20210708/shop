@@ -63,10 +63,10 @@
             <p>
                 <label>
 
-                    <button type="button" onclick="fnCalCount('p',this);">+</button>
+                    <button type="button" onClick="Plus(); ">+</button>
                     # 장바구니수량 : <input type="text" name="cartAmount" id="cart_Amount" value="${c.cartAmount}">
-                    <button type="button" onclick="fnCalCount('m', this);">-</button>
-                    </label>
+                    <button type="button" onClick="Minus();">-</button>
+                </label>
 
             </p>
         </c:forEach>
@@ -163,19 +163,23 @@
 
 
 
-        function fnCalCount(type, ths) {
-            let $input = $(ths).parents("td").find("input[name='cart_Amount']");
-            let tCount = Number($input.val());
-            let tEqCount = Number($(ths).parents("tr").find("td.bseq_ea").html());
-
-            if (type == 'p') {
-                if (tCount < tEqCount) $input.val(Number(tCount) + 1);
-
-            } else {
-                if (tCount > 0) $input.val(Number(tCount) - 1);
-            }
+        function Plus() {
+            obj = amount.value;
+            console.log(obj);
+            obj.value = parseInt(obj.value) + 1;
         }
 
+
+        function Minus() {
+            obj = amount.value;
+            console.log(obj);
+            if (parseInt(obj.value) > 1) {
+                obj.value = parseInt(obj.value) - 1;
+            } else {
+                alert('더이상 줄일수가 없습니다');
+                return;
+            }
+        }
     </script>
 
 </body>
