@@ -62,9 +62,10 @@
 
             <p>
                 <label>
-                    # 장바구니수량 : <input type="text" name="cartAmount" id="cart_Amount" value="${c.cartAmount}">
-                    <button type="button" onClick="Plus(); ">+</button>
-                    <button type="button" onClick="Minus();">-</button>
+                    # 장바구니수량 :
+                    <button type="button" id="plus" onClick="Plus('${c.cartAmount},this')">+</button>
+                    <input type="text" name="cartAmount" id="cart_Amount" value="${c.cartAmount}">
+                    <button type="button" id="minus" onClick="Minus()">-</button>
                 </label>
 
             </p>
@@ -117,10 +118,34 @@
         let amount = document.getElementById('cart_Amount');
         let price = document.getElementById('prPrice');
         let input = document.getElementById('input_check');
+        let plus_btn = document.getElementById('plus');
 
 
+        function Plus(cartAmount, obj) {
+            $('#plus').bind('click', function fncSearch(){
+            //변수 증가
+            let am = plus_btn.nextElementSibling.value;
+            am++;
+            amount.value = am;
+        });            
+    }        
+        
 
 
+        function Minus(cartAmount) {
+            
+            if (cartAmount.value > 1) {
+                cartAmount.value--;
+               // price.value = price.value * amount.value;
+                //console.log(price.value);
+            } else {
+                alert('더이상 줄일수가 없습니다');
+                return;
+            }
+        }
+
+        
+        
         function calcGoodsPrice(prPrice, obj) {
 
             if (obj.checked == true) {
@@ -148,17 +173,17 @@
             if ($("#check_all").is(':checked')) {
                 $("input[name=cartChecked]").prop("checked", true);
 
-                 let arr = new Array();
-                 let chks = document.getElementsByName("cartChecked"); 
+                let arr = new Array();
+                let chks = document.getElementsByName("cartChecked");
 
-                for(let i = 0; i < chks.length; i++) {  
-                        arr[i] = parseInt(chks[i].previousElementSibling.lastElementChild.value); 
-                        //console.log(typeof chks[i]);
-                        console.log("typeof chks" +[i] + typeof arr[i]);
-                       // console.log("typeof chks"+ typeof chks);
-                       checkSum += arr[i];
-                               
-                    }
+                for (let i = 0; i < chks.length; i++) {
+                    arr[i] = parseInt(chks[i].previousElementSibling.lastElementChild.value);
+                    //console.log(typeof chks[i]);
+                    console.log("typeof chks" + [i] + typeof arr[i]);
+                    // console.log("typeof chks"+ typeof chks);
+                    checkSum += arr[i];
+
+                }
 
             } else {
                 $("input[name=cartChecked]").prop("checked", false);
@@ -168,25 +193,24 @@
         }
 
 
-
-        function Plus() {
-            
-            amount.value++;
-            console.log(amount.value);
-        }
+        
+      
+        
 
 
-        function Minus() {
-            
-            if (amount.value > 1) {
-                amount.value--;
-               // price.value = price.value * amount.value;
-                console.log(price.value);
-            } else {
-                alert('더이상 줄일수가 없습니다');
-                return;
+        /*
+        function count(type) {
+
+            // 더하기/빼기
+            if (type === 'plus') {
+                number = amount.value++;
+            } else if (type === 'minus') {
+                number = amount.value++;
             }
-        }
+
+            // 결과 출력
+            amount.value = number;
+        } */
     </script>
 
 </body>
