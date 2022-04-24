@@ -102,7 +102,7 @@
 
         <p>
 
-            <input type="checkbox" id="check_all" name="all" onclick="checkAll(this);"><span>전체선택</span>
+            <input type="checkbox" id="check_all" name="all" onclick="checkAll();"><span>전체선택</span>
 
         </p>
 
@@ -144,14 +144,20 @@
 
         let checkSum = 0;
 
-        function checkAll(checkAll) {
+        function checkAll() {
             if ($("#check_all").is(':checked')) {
-                //$("input[name=cartChecked]").prop("checked", false);
+                $("input[name=cartChecked]").prop("checked", true);
 
-                let chks = document.getElementsByName("cartChecked"); 
-                for(let i = 0; i < chks.length; i++)
-                    { chks[i].checked = checkAll; 
-                        checkSum +=  Integer.parseInt(chks[i].value);
+                 let arr = new Array();
+                 let chks = document.getElementsByName("cartChecked"); 
+
+                for(let i = 0; i < chks.length; i++) {  
+                        arr[i] = parseInt(chks[i].previousElementSibling.lastElementChild.value); 
+                        //console.log(typeof chks[i]);
+                        console.log("typeof chks" +[i] + typeof arr[i]);
+                       // console.log("typeof chks"+ typeof chks);
+                       checkSum += arr[i];
+                               
                     }
 
             } else {
