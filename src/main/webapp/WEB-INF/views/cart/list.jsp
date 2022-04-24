@@ -62,9 +62,8 @@
 
             <p>
                 <label>
-
-                    <button type="button" onClick="Plus(); ">+</button>
                     # 장바구니수량 : <input type="text" name="cartAmount" id="cart_Amount" value="${c.cartAmount}">
+                    <button type="button" onClick="Plus(); ">+</button>
                     <button type="button" onClick="Minus();">-</button>
                 </label>
 
@@ -95,7 +94,7 @@
 
         <p>
             <label>
-                # 총금액 : <input type="text" id="cartTotalPrice" name="cartTotalPrice" value="0">
+                # 총금액 : <input type="text" id="cartTotalPrice" name="cartTotalPrice" value="0" readonly>
             </label>
 
         </p>
@@ -103,7 +102,7 @@
 
         <p>
 
-            <input type="checkbox" id="check_all" name="all"><span>전체선택</span>
+            <input type="checkbox" id="check_all" name="all" onclick="checkAll(this);"><span>전체선택</span>
 
         </p>
 
@@ -145,14 +144,15 @@
 
         let checkSum = 0;
 
-        function checkAll() {
+        function checkAll(checkAll) {
             if ($("#check_all").is(':checked')) {
-                $("input[name=cartChecked]").prop("checked", false);
-                //$("input").prop("checked", true);
-                //  checkSum += prPrice * amount.value;
-                // console.log(prPrice);
-                //  console.log(amount.value);        
-                total.value = checkSum;
+                //$("input[name=cartChecked]").prop("checked", false);
+
+                let chks = document.getElementsByName("cartChecked"); 
+                for(let i = 0; i < chks.length; i++)
+                    { chks[i].checked = checkAll; 
+                        checkSum +=  Integer.parseInt(chks[i].value);
+                    }
 
             } else {
                 $("input[name=cartChecked]").prop("checked", false);
@@ -164,17 +164,18 @@
 
 
         function Plus() {
-            obj = amount.value;
-            console.log(obj);
-            obj.value = parseInt(obj.value) + 1;
+            
+            amount.value++;
+            console.log(amount.value);
         }
 
 
         function Minus() {
-            obj = amount.value;
-            console.log(obj);
-            if (parseInt(obj.value) > 1) {
-                obj.value = parseInt(obj.value) - 1;
+            
+            if (amount.value > 1) {
+                amount.value--;
+               // price.value = price.value * amount.value;
+                console.log(price.value);
             } else {
                 alert('더이상 줄일수가 없습니다');
                 return;

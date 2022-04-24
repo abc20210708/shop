@@ -46,7 +46,7 @@ public class CartController {
         /*else { //있으면 update
             cartService.updateCart(cart);
         }*/
-        return "product/product";
+        return "redirect:/cart/list";
         //redirect:/customer/info?cdId="+loginCustomer.getCsId()
     }
 
