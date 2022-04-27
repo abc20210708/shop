@@ -145,6 +145,48 @@
         }
 
 
+
+        $("document").ready(function() {
+	  //selectedTotal
+		var total=Number(0);
+		  <%
+		  for(int j=0;j<productList.size();j++){%>
+			total += Number(document.getElementsByName("total")[<%=j%>].value);
+		  <%}%>
+		  $('#selectedTotal').val(total);
+	});
+	
+	$("document").ready(function() {
+      //count button 
+      $(document).on('click','button[name="countBtn"]',function(e){
+   		 e.stopPropagation();
+   	     e.preventDefault();
+    	 let countBox = $(this).closest('.count-box');
+    	 let row = countBox.closest('tr');
+    	 let countInput = countBox.find('input[name=countInput]');
+    	 let count = parseInt(countInput.val());
+    	 let price = row.find('input[name=price]').val(); 
+    	 let totalInput = row.find('input[name=total]');
+    	
+    	 //upBtn일 경우
+    	 if($(this).hasClass("upBtn")){
+    		 count++;
+    		
+    	 //downBtn일 경우
+    	 } else {
+    		 count--;
+    		 if(count < 1) return;
+    	 }
+    	 countInput.val(count);
+    	 totalInput.val(count * price); 
+    	 var total=Number(0);
+		  <%
+		  for(int j=0;j<productList.size();j++){%>
+			total += Number(document.getElementsByName("total")[<%=j%>].value);
+		  <%}%>
+		  $('#selectedTotal').val(total);
+      });
+
         // 참고 
         // 수량변경 - 이벤트 델리게이션으로 이벤트 종류 구분해 처리
 
