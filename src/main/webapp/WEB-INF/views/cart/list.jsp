@@ -121,6 +121,7 @@
         let plus_btn = document.getElementById('plus');
 
 
+        /*
         function Plus(cartAmount, obj) {
             $('#plus').bind('click', function fncSearch(){
             //변수 증가
@@ -142,87 +143,29 @@
                 alert('더이상 줄일수가 없습니다');
                 return;
             }
+        }*/
+
+        function fnCalCount(type, ths) {
+            let $input = $(ths).parents("td").find("input[name='pop_out']");
+            let tCount = Number($input.val());
+            let tEqCount = Number($(ths).parents("tr").find("td.bseq_ea").html());
+
+            if (type == 'p') {
+                if (tCount < tEqCount) $input.val(Number(tCount) + 1);
+
+            } else {
+                if (tCount > 0) $input.val(Number(tCount) - 1);
+            }
         }
 
 
-
-        $("document").ready(function() {
-	  //selectedTotal
-		var total=Number(0);
-		  <%
-		  for(int j=0;j<productList.size();j++){%>
-			total += Number(document.getElementsByName("total")[<%=j%>].value);
-		  <%}%>
-		  $('#selectedTotal').val(total);
-	});
-	
-	$("document").ready(function() {
-      //count button 
-      $(document).on('click','button[name="countBtn"]',function(e){
-   		 e.stopPropagation();
-   	     e.preventDefault();
-    	 let countBox = $(this).closest('.count-box');
-    	 let row = countBox.closest('tr');
-    	 let countInput = countBox.find('input[name=countInput]');
-    	 let count = parseInt(countInput.val());
-    	 let price = row.find('input[name=price]').val(); 
-    	 let totalInput = row.find('input[name=total]');
-    	
-    	 //upBtn일 경우
-    	 if($(this).hasClass("upBtn")){
-    		 count++;
-    		
-    	 //downBtn일 경우
-    	 } else {
-    		 count--;
-    		 if(count < 1) return;
-    	 }
-    	 countInput.val(count);
-    	 totalInput.val(count * price); 
-    	 var total=Number(0);
-		  <%
-		  for(int j=0;j<productList.size();j++){%>
-			total += Number(document.getElementsByName("total")[<%=j%>].value);
-		  <%}%>
-		  $('#selectedTotal').val(total);
-      });
 
         // 참고 
         // 수량변경 - 이벤트 델리게이션으로 이벤트 종류 구분해 처리
 
-            document.querySelectorAll('.updown').forEach(
 
-        function(item, idx){
 
-            //수량 입력 필드 값 변경
 
-            item.querySelector('input').addEventListener('keyup', function(){
-
-                basket.changePNum(idx+1);
-
-            });
-
-            //수량 증가 화살표 클릭
-
-            item.children[1].addEventListener('click', function(){
-
-                basket.changePNum(idx+1);
-
-            });
-
-            //수량 감소 화살표 클릭
-
-            item.children[2].addEventListener('click', function(){
-
-                basket.changePNum(idx+1);
-
-            });
-
-        }
-
-        );
-        
-        
         function calcGoodsPrice(prPrice, obj) {
 
             if (obj.checked == true) {
@@ -270,9 +213,9 @@
         }
 
 
-        
-      
-        
+
+
+
 
 
         /*
