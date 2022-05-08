@@ -121,37 +121,6 @@
         let plus_btn = document.getElementById('plus');
 
 
-        /*
-        function Plus(cartAmount, obj) {
-            $('#plus').bind('click', function fncSearch(){
-            //변수 증가
-            let am = plus_btn.nextElementSibling.value;
-            am++;
-            amount.value = am;
-        });            
-    }        
-        
-
-
-        function Minus(cartAmount) {
-            
-            if (cartAmount.value > 1) {
-                cartAmount.value--;
-               // price.value = price.value * amount.value;
-                //console.log(price.value);
-            } else {
-                alert('더이상 줄일수가 없습니다');
-                return;
-            }
-        }*/
-
-
-        /*   document.querySelectorAll('[id=plus]').addEventListener('click', function () {
-
-                   amount.value++;
-                   console.log(amount.value);  
-               }); */
-
         const plusButtons = document.querySelectorAll("#plus");
         for (const button of plusButtons) {
             button.addEventListener('click', function (event) {
@@ -171,13 +140,6 @@
                 console.log(amount.value);  
             })
         }
-
-
-
-        // 참고 
-        // 수량변경 - 이벤트 델리게이션으로 이벤트 종류 구분해 처리
-
-
 
 
         function calcGoodsPrice(prPrice, obj) {
@@ -227,24 +189,6 @@
         }
 
 
-
-
-
-
-
-        /*
-        function count(type) {
-
-            // 더하기/빼기
-            if (type === 'plus') {
-                number = amount.value++;
-            } else if (type === 'minus') {
-                number = amount.value++;
-            }
-
-            // 결과 출력
-            amount.value = number;
-        } */
     </script>
 
 </body>
