@@ -65,7 +65,7 @@
                     # 장바구니수량 :
                     <button type="button" id="plus">+</button>
                     <input type="text" name="cartAmount" id="cart_Amount" value="${c.cartAmount}">
-                    <button type="button" id="minus" onClick="Minus()">-</button>
+                    <button type="button" id="minus" >-</button>
                 </label>
 
             </p>
@@ -152,16 +152,25 @@
                    console.log(amount.value);  
                }); */
 
-        const buttons = document.querySelectorAll("#plus");
-        for (const button of buttons) {
+        const plusButtons = document.querySelectorAll("#plus");
+        for (const button of plusButtons) {
             button.addEventListener('click', function (event) {
-                console.log(button.nextElementSibling); 
-                console.log(button.nextElementSibling.value); 
                 button.nextElementSibling.value++;
-                console.log(amount.value);  
+               
             })
         }
 
+        const minusButtons = document.querySelectorAll("#minus");
+        for (const button of minusButtons) {
+            button.addEventListener('click', function (event) {
+                button.previousElementSibling.value--;
+                if(button.previousElementSibling.value == 0) {
+                    button.previousElementSibling.value = 1;
+                    alert("수량은 1부터 가능합니다 :)")
+                }
+                console.log(amount.value);  
+            })
+        }
 
 
 
