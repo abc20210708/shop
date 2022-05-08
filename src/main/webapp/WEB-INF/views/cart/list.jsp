@@ -63,7 +63,7 @@
             <p>
                 <label>
                     # 장바구니수량 :
-                    <button type="button" id="plus" onClick="Plus('${c.cartAmount},this')">+</button>
+                    <button type="button" id="plus">+</button>
                     <input type="text" name="cartAmount" id="cart_Amount" value="${c.cartAmount}">
                     <button type="button" id="minus" onClick="Minus()">-</button>
                 </label>
@@ -145,18 +145,23 @@
             }
         }*/
 
-        function fnCalCount(type, ths) {
-            let $input = $(ths).parents("td").find("input[name='pop_out']");
-            let tCount = Number($input.val());
-            let tEqCount = Number($(ths).parents("tr").find("td.bseq_ea").html());
 
-            if (type == 'p') {
-                if (tCount < tEqCount) $input.val(Number(tCount) + 1);
+        /*   document.querySelectorAll('[id=plus]').addEventListener('click', function () {
 
-            } else {
-                if (tCount > 0) $input.val(Number(tCount) - 1);
-            }
+                   amount.value++;
+                   console.log(amount.value);  
+               }); */
+
+        const buttons = document.querySelectorAll("#plus");
+        for (const button of buttons) {
+            button.addEventListener('click', function (event) {
+                console.log(button.nextElementSibling); 
+                console.log(button.nextElementSibling.value); 
+                button.nextElementSibling.value++;
+                console.log(amount.value);  
+            })
         }
+
 
 
 
