@@ -149,6 +149,8 @@
                 totalPrice += amount.value * prPrice;
 
                 console.log("obj: ", obj);
+                console.log("test: " , obj.previousElementSibling.previousElementSibling.previousElementSibling.firstElementChild
+                                        .firstElementChild.nextElementSibling.value);
                 console.log("prPrice: ", prPrice);
                 console.log("===========");
                 console.log("totalPrice: ", totalPrice);
