@@ -142,16 +142,23 @@
         }
 
 
+         /* 체크박스 개별선택 */
+
+
+
         function calcGoodsPrice(prPrice, obj) {
 
             if (obj.checked == true) {
                 //alert("체크가 되었어요! :) ")
+
+               
                 totalPrice += amount.value * prPrice;
 
                 console.log("obj: ", obj);
-                console.log("test: " , obj.previousElementSibling.previousElementSibling.previousElementSibling.firstElementChild
-                                        .firstElementChild.nextElementSibling.value);
+               // console.log("check amount: " , obj.previousElementSibling.previousElementSibling.previousElementSibling.firstElementChild
+                 //                       .firstElementChild.nextElementSibling.getAttribute('value'));
                 console.log("prPrice: ", prPrice);
+                console.log("amount: ", amount.value);
                 console.log("===========");
                 console.log("totalPrice: ", totalPrice);
 
@@ -177,7 +184,7 @@
                 for (let i = 0; i < chks.length; i++) {
                     arr[i] = parseInt(chks[i].previousElementSibling.lastElementChild.value);
                     //console.log(typeof chks[i]);
-                    console.log("typeof chks" + [i] + typeof arr[i]);
+                    //console.log("typeof chks" + [i] + typeof arr[i]);
                     // console.log("typeof chks"+ typeof chks);
                     checkSum += arr[i];
 
