@@ -109,7 +109,7 @@
 
         <hr>
 
-
+        
     </div>
 
     <script>
@@ -143,7 +143,13 @@
 
 
          /* 체크박스 개별선택 */
+         for () {
+            for (){
 
+            }
+         }
+             
+                
 
 
         function calcGoodsPrice(prPrice, obj) {
