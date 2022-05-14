@@ -43,14 +43,6 @@
             </p>
 
 
-            <p>
-                <label>
-                    # 회원아이디 : <input type="text" value="${c.csId}">
-
-                </label>
-
-            </p>
-
 
             <p>
                 <label>
@@ -142,13 +134,7 @@
         }
 
 
-         /* 체크박스 개별선택 */
-         for () {
-            for (){
-
-            }
-         }
-             
+        
                 
 
 
