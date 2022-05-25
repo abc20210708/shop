@@ -135,7 +135,7 @@
 
 
         
-                
+        // 체크박스 개별선택, 전체해제 
 
 
         function calcGoodsPrice(prPrice, obj) {
@@ -175,9 +175,8 @@
 
                 for (let i = 0; i < chks.length; i++) {
                     arr[i] = parseInt(chks[i].previousElementSibling.lastElementChild.value);
-                    //console.log(typeof chks[i]);
-                    //console.log("typeof chks" + [i] + typeof arr[i]);
-                    // console.log("typeof chks"+ typeof chks);
+                    console.log("==== 전체체크 ==== ");
+                    console.log(arr[i]);
                     checkSum += arr[i];
 
                 }
