@@ -3,7 +3,6 @@ package com.example.shop.cart.controller;
 import com.example.shop.cart.domain.Cart;
 import com.example.shop.cart.service.CartService;
 import com.example.shop.customer.domain.Customer;
-import com.example.shop.customer.service.CustomerService;
 import com.example.shop.product.domain.Product;
 
 import lombok.RequiredArgsConstructor;
@@ -37,8 +36,12 @@ public class CartController {
         Customer loginCustomer = (Customer) session.getAttribute("loginCustomer");
 
         //장바구니에 기존 상품이 있는지 검사
-       // int count = cartService.countCart(cart.getPrCode(), csId);
-        //count == 0 ? cartService.updateCart(cart) : cartService.insert(cart);
+        int count = cartService.countCart(loginCustomer.getCsId(), cart.getPrCode());
+        if (count == 0) {
+            cartService.insert(cart);
+        } else {
+            cartService.updateCart(cart);
+        }
         //없으면 insert
         cart.setCsId(loginCustomer.getCsId());
         cartService.insert(cart);
@@ -77,6 +80,14 @@ public class CartController {
 
        // return "redirect:/cart/list?csId="+loginCustomer.getCsId();
         return "cart/list";
+    }
+
+    //장바구니 삭제
+    @GetMapping("/delete")
+    public String delete(int cartCode) {
+        log.info("장바구니 삭제: " + cartCode);
+        cartService.delete(cartCode);
+        return "redirect:/cart/list";
     }
 
 }//

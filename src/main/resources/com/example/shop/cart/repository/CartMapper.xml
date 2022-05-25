@@ -14,8 +14,21 @@
         <result property="cartTotalPrice" column="cart_total_price" />
     </resultMap>
 
+    <!-- 장바구니 동일한 상품 레코드 확인   -->
+    <select id="countCart" resultMap="cartMap">
+        SELECT COUNT(*)
+        FROM cart
+        WHERE
+            customer_id = #{csId}
+        AND
+            product_code = #{prCode}
+    </select>
 
-
+    <!-- 장바구니 삭제   -->
+    <delete id="delete">
+        DELETE FROM cart
+        WHERE cart_code = #{cateCode}
+    </delete>
 
 
     <!-- 장바구니 추가   -->

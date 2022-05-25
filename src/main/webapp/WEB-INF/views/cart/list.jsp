@@ -51,16 +51,23 @@
 
             </p>
 
+                <p>
+                    
+                    <a href="/cart/delete?cartCode=${c.cartCode}" id="delCart" onclick="return confirm('선택하신 상품을 삭제하시겠습니까?');">삭제</a>   
+                </p>
+
 
             <p>
                 <label>
                     # 장바구니수량 :
                     <button type="button" id="plus">+</button>
                     <input type="text" name="cartAmount" id="cart_Amount" value="${c.cartAmount}">
-                    <button type="button" id="minus" >-</button>
+                    <button type="button" id="minus">-</button>
                 </label>
 
             </p>
+
+           
         </c:forEach>
 
 
@@ -101,7 +108,7 @@
 
         <hr>
 
-        
+
     </div>
 
     <script>
@@ -117,7 +124,7 @@
         for (const button of plusButtons) {
             button.addEventListener('click', function (event) {
                 button.nextElementSibling.value++;
-               
+                
             })
         }
 
@@ -125,16 +132,16 @@
         for (const button of minusButtons) {
             button.addEventListener('click', function (event) {
                 button.previousElementSibling.value--;
-                if(button.previousElementSibling.value == 0) {
+                if (button.previousElementSibling.value == 0) {
                     button.previousElementSibling.value = 1;
                     alert("수량은 1부터 가능합니다 :)")
                 }
-                console.log(amount.value);  
+                console.log(amount.value);
             })
         }
 
 
-        
+
         // 체크박스 개별선택, 전체해제 
 
 
@@ -143,12 +150,12 @@
             if (obj.checked == true) {
                 //alert("체크가 되었어요! :) ")
 
-               
+
                 totalPrice += amount.value * prPrice;
 
                 console.log("obj: ", obj);
-               // console.log("check amount: " , obj.previousElementSibling.previousElementSibling.previousElementSibling.firstElementChild
-                 //                       .firstElementChild.nextElementSibling.getAttribute('value'));
+                // console.log("check amount: " , obj.previousElementSibling.previousElementSibling.previousElementSibling.firstElementChild
+                //                       .firstElementChild.nextElementSibling.getAttribute('value'));
                 console.log("prPrice: ", prPrice);
                 console.log("amount: ", amount.value);
                 console.log("===========");
@@ -181,12 +188,12 @@
                     /*console.log(chks[i].previousElementSibling.previousElementSibling.
                                 previousElementSibling.lastElementChild.lastElementChild.
                                 previousElementSibling.value); */
-                    
-                    console.log("==== 전체체크 ==== ");
-                    console.log("arr: ",arr);
-                    console.log("arr" +[i]+ arr[i]);
-                    console.log("cart: ", cart);
-                    console.log("cart" +[i]+ cart[i].value);
+
+                    // console.log("==== 전체체크 ==== ");
+                    // console.log("arr: ",arr);
+                    // console.log("arr" +[i]+ arr[i]);
+                    // console.log("cart: ", cart);
+                    //  console.log("cart" +[i]+ cart[i].value);
                     fSum = arr[i] * cart[i].value;
                     sSum += fSum
 
@@ -199,6 +206,8 @@
             total.value = sSum;
         }
 
+
+        
 
     </script>
 

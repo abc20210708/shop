@@ -51,8 +51,8 @@ public class CartService {
     }
 
     //장바구니 동일한 상품 레코드 확인
-    public int countCart(int prCode, String csId) {
-        return cartMapper.countCart(prCode, csId);
+    public int countCart(String csId, int prCode) {
+        return cartMapper.countCart(csId, prCode);
     }
 
     //장바구니 상품 수량 변경

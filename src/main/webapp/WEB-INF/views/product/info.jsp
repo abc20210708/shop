@@ -171,13 +171,14 @@
                         <option value="8"> 8</option>
                     </select>
 
-                    <input type="submit" value="장바구니" class="cartBtn">      
+                    <input type="submit" value="장바구니담기" class="cartBtn">      
         </form>
     
 
 
 
     <script>
+    
     
 
     </script>
