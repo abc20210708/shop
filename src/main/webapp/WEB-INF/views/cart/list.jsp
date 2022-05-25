@@ -164,7 +164,8 @@
 
         /* 체크박스 전체선택, 전체해제 */
 
-        let checkSum = 0;
+        let fSum = 0;
+        let sSum = 0;
 
         function checkAll() {
             if ($("#check_all").is(':checked')) {
@@ -172,20 +173,30 @@
 
                 let arr = new Array();
                 let chks = document.getElementsByName("cartChecked");
+                let cart = document.getElementsByName("cartAmount");
 
                 for (let i = 0; i < chks.length; i++) {
                     arr[i] = parseInt(chks[i].previousElementSibling.lastElementChild.value);
+                    //console.log("=== test ===");
+                    /*console.log(chks[i].previousElementSibling.previousElementSibling.
+                                previousElementSibling.lastElementChild.lastElementChild.
+                                previousElementSibling.value); */
+                    
                     console.log("==== 전체체크 ==== ");
-                    console.log(arr[i]);
-                    checkSum += arr[i];
+                    console.log("arr: ",arr);
+                    console.log("arr" +[i]+ arr[i]);
+                    console.log("cart: ", cart);
+                    console.log("cart" +[i]+ cart[i].value);
+                    fSum = arr[i] * cart[i].value;
+                    sSum += fSum
 
                 }
 
             } else {
                 $("input[name=cartChecked]").prop("checked", false);
-                checkSum = 0;
+                sSum = 0;
             }
-            total.value = checkSum;
+            total.value = sSum;
         }
 
 
