@@ -35,7 +35,6 @@
         <c:forEach var="c" items="${cart}">
 
 
-            <!-- <input type="hidden" name="cartChecked" value='0' id="input_check_hidden"/> -->
             <p>
                 <label>
                     # 카테고리 번호 : <input type="text" value="${c.cartCode}">

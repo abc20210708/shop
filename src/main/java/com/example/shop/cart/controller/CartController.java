@@ -5,16 +5,21 @@ import com.example.shop.cart.service.CartService;
 import com.example.shop.customer.domain.Customer;
 import com.example.shop.product.domain.Product;
 
+import com.sun.deploy.net.HttpResponse;
 import lombok.RequiredArgsConstructor;
 
 import lombok.extern.log4j.Log4j2;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,25 +35,26 @@ public class CartController {
 
     //장바구니 추가
     @PostMapping("/add")
-    public String insert(Cart cart, HttpSession session) {
+    public String insert(Cart cart, HttpSession session, HttpServletResponse response) throws Exception {
 
         log.info("장바구니" +session.getAttribute("loginCustomer"));
         Customer loginCustomer = (Customer) session.getAttribute("loginCustomer");
 
+        cart.setCsId(loginCustomer.getCsId());
         //장바구니에 기존 상품이 있는지 검사
         int count = cartService.countCart(loginCustomer.getCsId(), cart.getPrCode());
-        if (count == 0) {
+        log.info("count: "+ count);
+        if (count == 0)  {
+            log.info("장바구니 상품 레코드 확인 Controller");
             cartService.insert(cart);
+            log.info(cart);
         } else {
-            cartService.updateCart(cart);
+            response.setContentType("text/html; charset=UTF-8");
+            PrintWriter out = response.getWriter();
+            out.println("<script>alert('이미 장바구니에 있는 상품입니다 :) ');</script>");
+            out.flush();
         }
-        //없으면 insert
-        cart.setCsId(loginCustomer.getCsId());
-        cartService.insert(cart);
-        log.info(cart);
-        /*else { //있으면 update
-            cartService.updateCart(cart);
-        }*/
+
         return "redirect:/cart/list";
         //redirect:/customer/info?cdId="+loginCustomer.getCsId()
     }

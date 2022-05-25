@@ -45,7 +45,7 @@ public class ProductController extends HttpServlet {
 
     private final ProductService productService;
 
-    private  final CustomerService customerService;
+   // private  final CustomerService customerService;
 
 
   //  private static String CURR_IMG_REPO_PATH = "C:\\testImg\\";
