@@ -155,10 +155,10 @@
 
         <form action="/cart/add" method="post">
 
+            <input type="hidden" name="csId" value="${loginCustomer.csId}"> 
             <input type="hidden" name="prCode" value="${p.prCode}">    
-            <input type="hidden" name="csId" value="${loginCustomer.csId}">    
-               
-           
+              
+
                     <select name="cartAmount">
                         <option selected>수량을 선택하세요</option>
                         <option value="1"> 1</option>

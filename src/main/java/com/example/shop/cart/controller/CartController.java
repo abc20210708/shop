@@ -9,14 +9,12 @@ import com.sun.deploy.net.HttpResponse;
 import lombok.RequiredArgsConstructor;
 
 import lombok.extern.log4j.Log4j2;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.PrintWriter;
@@ -37,12 +35,14 @@ public class CartController {
     @PostMapping("/add")
     public String insert(Cart cart, HttpSession session, HttpServletResponse response) throws Exception {
 
-        log.info("장바구니" +session.getAttribute("loginCustomer"));
+        log.info("장바구니 insert! " +session.getAttribute("loginCustomer"));
         Customer loginCustomer = (Customer) session.getAttribute("loginCustomer");
+
+        log.info("로그 확인하기: "+ loginCustomer.getCsId(), cart.getPrCode());
 
         cart.setCsId(loginCustomer.getCsId());
         //장바구니에 기존 상품이 있는지 검사
-        int count = cartService.countCart(loginCustomer.getCsId(), cart.getPrCode());
+        Integer count = cartService.countCart(loginCustomer.getCsId(), cart.getPrCode());
         log.info("count: "+ count);
         if (count == 0)  {
             log.info("장바구니 상품 레코드 확인 Controller");

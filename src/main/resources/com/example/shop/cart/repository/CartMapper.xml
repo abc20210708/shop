@@ -16,18 +16,23 @@
 
     <!-- 장바구니 동일한 상품 레코드 확인   -->
     <select id="countCart" resultMap="cartMap">
-        SELECT COUNT(NVL(product_code, 0))
-        FROM cart
+        SELECT COUNT(*)
+        FROM
+            customer m , cart c , product p
         WHERE
-            customer_id = #{csId}
+            p.product_code = c.product_code
         AND
-            product_code = #{prCode}
+            m.customer_id = c.customer_id
+        AND
+            m.customer_id = #{csId}
+        AND
+            c.product_code = #{prCode}
     </select>
 
     <!-- 장바구니 삭제   -->
     <delete id="delete">
         DELETE FROM cart
-        WHERE cart_code = #{cateCode}
+        WHERE cart_code = #{cartCode}
     </delete>
 
 

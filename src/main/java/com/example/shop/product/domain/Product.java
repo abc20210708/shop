@@ -33,7 +33,8 @@ public class Product {
     }
 
     public Product(int prCode, int cateCode, String prName, int prPrice, int prYn,
-                     int prAmount, String prThumb, String prDate) {
+                   String prImg1, String prImg2,String prImg3,
+                   String prImg4, String prImg5, int prAmount, String prThumb, String prDate) {
         this();
         this.prCode = prCode;
         this.cateCode = cateCode;

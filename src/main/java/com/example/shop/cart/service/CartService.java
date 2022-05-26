@@ -6,6 +6,7 @@ import com.example.shop.cart.repository.CartMapper;
 import com.example.shop.product.domain.Product;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -51,7 +52,7 @@ public class CartService {
     }
 
     //장바구니 동일한 상품 레코드 확인
-    public int countCart(String csId, int prCode) {
+    public Integer countCart(String csId, Integer prCode) {
         log.info("장바구니 상품 레코드 확인 Service");
         return cartMapper.countCart(csId, prCode);
     }
