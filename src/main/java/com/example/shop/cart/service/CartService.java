@@ -55,7 +55,7 @@ public class CartService {
 
     //장바구니 동일한 상품 레코드 확인
     public Integer countCart(String csId, int prCode){
-        log.info("장바구니 상품 레코드 확인 Service: "+ cartMapper.countCart(csId, prCode));
+        log.info("장바구니 상품 레코드 확인 Service =====>"+ cartMapper.countCart(csId, prCode));
         return cartMapper.countCart(csId, prCode);
     }
 

@@ -44,13 +44,14 @@ public class CartController {
         log.info("로그 확인하기 2: "+ cart.getPrCode());
 
         //장바구니에 기존 상품이 있는지 검사
-        log.info("count: "+ count);
+        log.info("count =============> "+ count);
         if (count == null || count == 0)  {
             log.info("장바구니 상품 레코드 확인 Controller");
             cart.setCsId(loginCustomer.getCsId());
             cartService.insert(cart);
             log.info(cart);
-        } else {
+        }
+        else {
             response.setContentType("text/html; charset=UTF-8");
             PrintWriter out = response.getWriter();
             out.println("<script>alert('이미 장바구니에 있는 상품입니다 :) ');</script>");
