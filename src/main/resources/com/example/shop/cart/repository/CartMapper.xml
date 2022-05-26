@@ -15,18 +15,14 @@
     </resultMap>
 
     <!-- 장바구니 동일한 상품 레코드 확인   -->
-    <select id="countCart" resultType="int" resultMap="cartMap">
-        SELECT COUNT(c.product_code)
+    <select id="countCart"  resultMap="cartMap">
+        SELECT COUNT(product_code) AS CART_COUNT
         FROM
-            customer m , cart c , product p
+           cart
         WHERE
-            p.product_code = c.product_code
+            customer_id = #{csId}
         AND
-            m.customer_id = c.customer_id
-        AND
-            m.customer_id = #{csId}
-        AND
-            p.product_code = #{prCode}
+            product_code = #{prCode}
     </select>
 
     <!-- 장바구니 삭제   -->
