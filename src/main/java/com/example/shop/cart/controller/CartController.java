@@ -37,15 +37,17 @@ public class CartController {
 
         log.info("장바구니 insert! " +session.getAttribute("loginCustomer"));
         Customer loginCustomer = (Customer) session.getAttribute("loginCustomer");
-
-        log.info("로그 확인하기: "+ loginCustomer.getCsId(), cart.getPrCode());
-
-        cart.setCsId(loginCustomer.getCsId());
-        //장바구니에 기존 상품이 있는지 검사
         Integer count = cartService.countCart(loginCustomer.getCsId(), cart.getPrCode());
+
+        log.info("(cart):" +cart);
+        log.info("로그 확인하기 1: "+ loginCustomer.getCsId());
+        log.info("로그 확인하기 2: "+ cart.getPrCode());
+
+        //장바구니에 기존 상품이 있는지 검사
         log.info("count: "+ count);
-        if (count == 0)  {
+        if (count == null || count == 0)  {
             log.info("장바구니 상품 레코드 확인 Controller");
+            cart.setCsId(loginCustomer.getCsId());
             cartService.insert(cart);
             log.info(cart);
         } else {

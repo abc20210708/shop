@@ -7,6 +7,7 @@ import com.example.shop.product.domain.Product;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,6 +18,7 @@ import java.util.List;
 public class CartService {
 
     private final CartMapper cartMapper;
+    private final SqlSession session;
 
     //장바구니 추가
     public void insert(Cart cart) {
@@ -52,7 +54,7 @@ public class CartService {
     }
 
     //장바구니 동일한 상품 레코드 확인
-    public Integer countCart(String csId, Integer prCode) {
+    public Integer countCart(String csId, int prCode) throws Exception {
         log.info("장바구니 상품 레코드 확인 Service");
         return cartMapper.countCart(csId, prCode);
     }

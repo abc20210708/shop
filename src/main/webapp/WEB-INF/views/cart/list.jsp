@@ -37,7 +37,7 @@
 
             <p>
                 <label>
-                    # 카테고리 번호 : <input type="text" value="${c.cartCode}">
+                    # 장바구니 번호 : <input type="text" value="${c.cartCode}">
                 </label>
             </p>
 
