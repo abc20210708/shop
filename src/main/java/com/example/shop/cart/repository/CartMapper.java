@@ -30,7 +30,7 @@ public interface CartMapper {
     int sumTotal(String csId);
 
     //장바구니 동일한 상품 확인
-    boolean countCart(@Param("csId") String csId, @Param("prCode") int prCode);
+    int countCart(@Param("csId") String csId, @Param("prCode") int prCode);
 
     //장바구니 상품수량 변경
     void updateCart(Cart cart);
