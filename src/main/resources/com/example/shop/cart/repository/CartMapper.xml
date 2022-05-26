@@ -15,8 +15,8 @@
     </resultMap>
 
     <!-- 장바구니 동일한 상품 레코드 확인   -->
-    <select id="countCart"  resultMap="cartMap">
-        SELECT case when COUNT(product_code)>=1 then 1 else 0 end as isExisted
+    <select id="countCart" resultType="boolean"  resultMap="cartMap">
+        SELECT case when COUNT(product_code)>=1 then 'true' else 'false' end as isExisted
         FROM
            cart
         WHERE
