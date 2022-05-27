@@ -54,9 +54,10 @@ public class CartController {
         else {
             response.setContentType("text/html; charset=UTF-8");
             PrintWriter out = response.getWriter();
-            out.println("<script>alert('이미 장바구니에 있는 상품입니다 :) ');</script>");
+            out.println("<script>alert('이미 장바구니에 있는 상품입니다 :) ');");
+            out.println("history.back();");
+            out.println("</script>");
             out.flush();
-            
         }
 
         return "redirect:/cart/list";
