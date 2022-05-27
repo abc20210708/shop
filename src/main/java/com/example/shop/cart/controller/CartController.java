@@ -15,9 +15,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.Writer;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,7 +39,7 @@ public class CartController {
 
     //장바구니 추가
     @PostMapping("/add")
-    public String insert(Cart cart, HttpSession session, HttpServletResponse response) throws Exception {
+    public String insert(Cart cart, HttpSession session, HttpServletResponse response, HttpServletRequest request) throws IOException,ServletException {
 
         log.info("장바구니 insert! " +session.getAttribute("loginCustomer"));
         Customer loginCustomer = (Customer) session.getAttribute("loginCustomer");
@@ -52,16 +58,18 @@ public class CartController {
             log.info(cart);
         }
         else {
-            response.setContentType("text/html; charset=UTF-8");
             PrintWriter out = response.getWriter();
+            response.setContentType("text/html; charset=UTF-8");
             out.println("<script>alert('이미 장바구니에 있는 상품입니다 :) ');");
-            out.println("history.back();");
+            out.println("history.back()");
             out.println("</script>");
             out.flush();
+            response.flushBuffer();
+            out.close();
+            return null;
         }
 
         return "redirect:/cart/list";
-
     }
 
     //장바구니 목록
