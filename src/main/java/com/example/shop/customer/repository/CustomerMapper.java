@@ -31,4 +31,7 @@ public interface CustomerMapper {
     //회원 아이디 중복 체크
     int isDuplicate(String target);
 
+    //로그인
+    Customer login(Customer customer);
+
 }//

@@ -49,12 +49,13 @@
     </form>
 
     <script>
+        /*
         const flag = '${flag}';
         if (flag === 'NO_ID') {
             alert('회원가입된 아이디가 아닙니다!');
         } else if (flag === 'NO_PW') {
             alert('비밀번호가 틀렸습니다!');
-        }
+        } */
     </script>
 
 
