@@ -37,7 +37,7 @@ public class CartController {
 
         log.info("장바구니 insert! " +session.getAttribute("loginCustomer"));
         Customer loginCustomer = (Customer) session.getAttribute("loginCustomer");
-        String count = cartService.countCart(loginCustomer.getCsId(), cart.getPrCode());
+        int count = cartService.countCart(loginCustomer.getCsId(), cart.getPrCode());
 
         log.info("(cart):" +cart);
         log.info("로그 확인하기 1: "+ loginCustomer.getCsId());
@@ -45,7 +45,7 @@ public class CartController {
 
         //장바구니에 기존 상품이 있는지 검사
         log.info("count =============> "+ count);
-        if (count.equals("false"))  {
+        if (count == 0)  {
             log.info("장바구니 상품 레코드 확인 Controller");
             cart.setCsId(loginCustomer.getCsId());
             cartService.insert(cart);
