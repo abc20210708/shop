@@ -56,10 +56,11 @@ public class CartController {
             PrintWriter out = response.getWriter();
             out.println("<script>alert('이미 장바구니에 있는 상품입니다 :) ');</script>");
             out.flush();
+            
         }
 
         return "redirect:/cart/list";
-        //redirect:/customer/info?cdId="+loginCustomer.getCsId()
+
     }
 
     //장바구니 목록
