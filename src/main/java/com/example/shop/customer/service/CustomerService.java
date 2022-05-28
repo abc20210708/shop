@@ -9,6 +9,8 @@ import com.example.shop.login.SessionConst;
 import com.example.shop.notice.domain.Notice;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.InternalAuthenticationServiceException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -68,14 +70,15 @@ public class CustomerService {
 
         log.info("회원 로그인 service---" + customer);
 
-        if (csId == null || !(csId.equals(customer.getCsId()))) throw new UsernameNotFoundException("Not Fount Account");
-        
+        if (csId == null || !(csId.equals(customer.getCsId()))) throw new InternalAuthenticationServiceException(csId);
+
+
         if (csId.equals(customer.getCsId())) {
             String dbPw = customer.getCsPw();
             BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-            if (encoder.matches(csPw, dbPw)) return customer;
+            if (!encoder.matches(csPw, dbPw)) throw new BadCredentialsException("Not Fount PassWord"); ;
         }
-        return null;
+        return customer;
     }
 
 
