@@ -68,11 +68,10 @@ public class CustomerService {
     }
 
     //회원 로그인 중간처리
+
     public Customer login(String csId, String csPw) throws UsernameNotFoundException {
         Customer customer = customerMapper.csLogin(csId, csPw);
-
         log.info("회원 로그인 service---" + customer);
-
         if (csId.isEmpty() || !(csId.equals(customer.getCsId()))) throw new UsernameNotFoundException("아이디가 올바르지 않습니다.");
 
 
@@ -81,8 +80,6 @@ public class CustomerService {
             BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
             if (!encoder.matches(csPw, dbPw)) throw new UsernameNotFoundException("비밀번호가 올바르지 않습니다.");
         }
-
-
         return customer;
     }
 
