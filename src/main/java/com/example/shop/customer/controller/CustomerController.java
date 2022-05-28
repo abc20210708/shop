@@ -7,6 +7,7 @@ import com.example.shop.login.SessionConst;
 import com.example.shop.notice.domain.Notice;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,6 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 @Controller
@@ -109,15 +111,26 @@ public class CustomerController {
 
     //회원 로그인 검증
     @PostMapping("/login")
-    public String loginCustomer(BindingResult bindingResult,
-                                HttpServletRequest request, Model model,
-                               Customer customer) throws IOException, ServletException {
+    public String loginCustomer(Customer customer,BindingResult bindingResult,
+                                HttpServletRequest request, Model model, HttpServletResponse response
+                               ) throws UsernameNotFoundException,IOException {
 
         log.info("회원 로그인 controller---" + customer);
 
 
         Customer loginCustomer = customerService.login(customer.getCsId(), customer.getCsPw());
         if (loginCustomer == null) {
+            response.setCharacterEncoding("UTF-8");
+            response.setContentType("text/html; charset=UTF-8");
+
+            PrintWriter out = response.getWriter();
+
+            out.println("<script>alert('아이디 또는 비밀번호가 맞지 않습니다.');");
+            out.println("history.back()");
+            out.println("</script>");
+            out.flush();
+            response.flushBuffer();
+            out.close();
             bindingResult.reject("loginFail", "아이디 또는 비밀번호가 맞지 않습니다.");
            return "login/customer";
         }
