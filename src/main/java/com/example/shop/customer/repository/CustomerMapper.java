@@ -22,7 +22,7 @@ public interface CustomerMapper {
     //회원수정
     void updateCustomer(ModCustomer customer);
 
-    //단일 회원 정보 받기
+    //회원 정보 받기
     Customer getCustomer(String csId);
 
     //회원 공지사항 목록 조회
@@ -31,7 +31,5 @@ public interface CustomerMapper {
     //회원 아이디 중복 체크
     int isDuplicate(String target);
 
-    //로그인
-    Customer login(Customer customer);
 
 }//

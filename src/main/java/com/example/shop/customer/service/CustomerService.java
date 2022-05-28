@@ -5,9 +5,11 @@ import com.example.shop.customer.domain.Customer;
 import com.example.shop.customer.domain.LoginFlag;
 import com.example.shop.customer.dto.ModCustomer;
 import com.example.shop.customer.repository.CustomerMapper;
+import com.example.shop.login.SessionConst;
 import com.example.shop.notice.domain.Notice;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -63,12 +65,14 @@ public class CustomerService {
     //회원 로그인 중간처리
     public Customer login(String csId, String csPw) {
         Customer customer = customerMapper.getCustomer(csId);
-        if (customer != null) {
+        if (csId == null || !(csId.equals(customer.getCsId()))) throw new UsernameNotFoundException("Not Fount Account");
+
+        if (csId.equals(customer.getCsId())) {
             String dbPw = customer.getCsPw();
             BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-            //return encoder.matches(csPw,dbPw) ? LoginFlag.SUCCESS : LoginFlag.NO_PW;
+            if (encoder.matches(csPw, dbPw)) return customer;
         }
-        return customer;
+        return null;
     }
 
 

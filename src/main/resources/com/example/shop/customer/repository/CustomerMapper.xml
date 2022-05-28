@@ -49,11 +49,6 @@
         WHERE customer_id = #{target}
     </select>
 
-    <!-- 로그인  -->
-    <select id="isDuplicate" resultMap="customerMap">
-        SELECT COUNT(*) FROM customer
-        WHERE customer_id = #{target}
-    </select>
 
 
 </mapper>

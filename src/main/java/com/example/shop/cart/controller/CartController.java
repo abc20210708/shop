@@ -39,7 +39,7 @@ public class CartController {
 
     //장바구니 추가
     @PostMapping("/add")
-    public String insert(Cart cart, HttpSession session, HttpServletResponse response, HttpServletRequest request) throws IOException,ServletException {
+    public String insert(Cart cart, HttpSession session, HttpServletResponse response) throws IOException,ServletException {
 
         log.info("장바구니 insert! " +session.getAttribute("loginCustomer"));
         Customer loginCustomer = (Customer) session.getAttribute("loginCustomer");
@@ -64,7 +64,6 @@ public class CartController {
             PrintWriter out = response.getWriter();
 
             out.println("<script>alert('이미 장바구니에 있는 상품입니다 :) ');");
-            //out.println("<script type=\"text/javascript\">alert(decodeURIComponent('"+message+"'.replace(/\\+/g, '%20'))");
             out.println("history.back()");
             out.println("</script>");
             out.flush();

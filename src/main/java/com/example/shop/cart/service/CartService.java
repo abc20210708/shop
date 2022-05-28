@@ -18,7 +18,6 @@ import java.util.List;
 public class CartService {
 
     private final CartMapper cartMapper;
-    private final SqlSession session;
 
     //장바구니 추가
     public void insert(Cart cart) {
