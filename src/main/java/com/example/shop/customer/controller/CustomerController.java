@@ -10,10 +10,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -111,13 +108,14 @@ public class CustomerController {
     @PostMapping("/login")
     public String loginCustomer( HttpServletResponse response,
                                 HttpServletRequest request, Model model,
-                                 Customer customer) {
+                                  Customer customer) {
+
+        log.info("회원 로그인 controller---" + customer);
 
 
         Customer loginCustomer = customerService.login(customer.getCsId(), customer.getCsPw());
         if (loginCustomer == null) {
-
-            return "login/customer";
+           return "login/customer";
         }
 
         //세션 매니저를 통해 세션 생성 및 회원정보 보관

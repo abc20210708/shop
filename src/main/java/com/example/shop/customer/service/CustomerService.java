@@ -65,8 +65,11 @@ public class CustomerService {
     //회원 로그인 중간처리
     public Customer login(String csId, String csPw) {
         Customer customer = customerMapper.getCustomer(csId);
-        if (csId == null || !(csId.equals(customer.getCsId()))) throw new UsernameNotFoundException("Not Fount Account");
 
+        log.info("회원 로그인 service---" + customer);
+
+        if (csId == null || !(csId.equals(customer.getCsId()))) throw new UsernameNotFoundException("Not Fount Account");
+        
         if (csId.equals(customer.getCsId())) {
             String dbPw = customer.getCsPw();
             BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
