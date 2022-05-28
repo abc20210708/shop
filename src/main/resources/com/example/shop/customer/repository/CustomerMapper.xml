@@ -40,7 +40,7 @@
 
     <!-- 단일 회원 목록 조회하기   -->
     <select id="getCustomer" resultMap="customerMap">
-        SELECT * FROM customer WHERE customer_id = #{cdId}
+        SELECT * FROM customer WHERE customer_id = #{csId}
     </select>
 
     <!-- 아이디 중복확인 가능   -->
@@ -48,6 +48,12 @@
         SELECT COUNT(*) FROM customer
         WHERE customer_id = #{target}
     </select>
+
+    <!-- 로그인  -->
+    <select id="csLogin" resultMap="customerMap">
+        SELECT * FROM customer WHERE customer_id = #{csId} AND customer_pw = #{csPw}
+    </select>
+
 
 
 

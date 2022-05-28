@@ -4,7 +4,9 @@ import com.example.shop.customer.domain.Customer;
 import com.example.shop.customer.dto.ModCustomer;
 import com.example.shop.notice.domain.Notice;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.aop.target.LazyInitTargetSource;
+import org.springframework.security.core.parameters.P;
 import org.springframework.ui.Model;
 
 import javax.servlet.http.HttpSession;
@@ -30,6 +32,9 @@ public interface CustomerMapper {
 
     //회원 아이디 중복 체크
     int isDuplicate(String target);
+
+    //로그인
+    Customer csLogin(@Param("csId") String csId, @Param("csPw") String csPw);
 
 
 }//
