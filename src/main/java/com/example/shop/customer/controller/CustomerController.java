@@ -10,11 +10,14 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -106,15 +109,16 @@ public class CustomerController {
 
     //회원 로그인 검증
     @PostMapping("/login")
-    public String loginCustomer( HttpServletResponse response,
+    public String loginCustomer(BindingResult bindingResult,
                                 HttpServletRequest request, Model model,
-                                  Customer customer) {
+                               Customer customer) throws IOException, ServletException {
 
         log.info("회원 로그인 controller---" + customer);
 
 
         Customer loginCustomer = customerService.login(customer.getCsId(), customer.getCsPw());
         if (loginCustomer == null) {
+            bindingResult.reject("loginFail", "아이디 또는 비밀번호가 맞지 않습니다.");
            return "login/customer";
         }
 

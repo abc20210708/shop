@@ -15,6 +15,9 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.ServletException;
+import java.io.IOException;
+import java.rmi.server.ServerCloneException;
 import java.util.List;
 
 @Service
@@ -65,7 +68,7 @@ public class CustomerService {
     }
 
     //회원 로그인 중간처리
-    public Customer login(String csId, String csPw) {
+    public Customer login(String csId, String csPw) throws IOException, ServletException {
         Customer customer = customerMapper.getCustomer(csId);
 
         log.info("회원 로그인 service---" + customer);
@@ -78,6 +81,8 @@ public class CustomerService {
             BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
             if (!encoder.matches(csPw, dbPw)) throw new BadCredentialsException("Not Fount PassWord"); ;
         }
+
+
         return customer;
     }
 
