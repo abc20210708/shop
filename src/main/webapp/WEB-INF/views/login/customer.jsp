@@ -63,17 +63,15 @@
         const $idInput = $('#inputId');
         $idInput.on('keyup', e => {
                     //아이디를 입력하지 않았거나 공백만 쓰고 넘어간 경우
-                    if ($idInput.val().trim() === '') {
+                    if ($idInput.val().trim() === '' || $idInput.val().trim() === null ) {
                         $idInput.css('background', 'pink');
-                        $('#idChk').html('<b style="color:red; font-size:14px;">[아이디는 필수 정보입니다!]</b>');
+                        alert("입력하세요");
+                        Response.redirect("/login/customer.jsp");
                         chk1 = false;
                         //아이디를 정규표현식 패턴대로 입력하지 않을 경우
                         //test메서드는 정규표현식을 검증하여 값이 일치하면 true,
                         //일치하지 않으면 false를 리턴
-                    } else if (!getIdCheck.test($idInput.val())) {
-                        $idInput.css('background', 'pink');
-                        $('#idChk').html(
-                            '<b style="color:red; font-size:14px;">[영문, 숫자 4~14자로 작성하세요.]</b>');
+                    } else {
                         chk1 = false;
                     } });
     </script>

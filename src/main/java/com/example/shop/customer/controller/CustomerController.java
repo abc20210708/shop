@@ -120,17 +120,6 @@ public class CustomerController {
 
         Customer loginCustomer = customerService.login(customer.getCsId(), customer.getCsPw());
         if (loginCustomer == null) {
-            response.setCharacterEncoding("UTF-8");
-            response.setContentType("text/html; charset=UTF-8");
-
-            PrintWriter out = response.getWriter();
-
-            out.println("<script>alert('아이디 또는 비밀번호가 맞지 않습니다.');");
-            out.println("history.back()");
-            out.println("</script>");
-            out.flush();
-            response.flushBuffer();
-            out.close();
             bindingResult.reject("loginFail", "아이디 또는 비밀번호가 맞지 않습니다.");
            return "login/customer";
         }
