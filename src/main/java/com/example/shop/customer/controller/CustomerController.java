@@ -8,6 +8,7 @@ import com.example.shop.notice.domain.Notice;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -106,23 +107,26 @@ public class CustomerController {
     //회원 로그인 양식 요청 - (화면)
     @GetMapping("/login")
     public String loginCustomer() {
+        log.info("회원 로그인 양식 요청 GET!");
         return "login/customer";
     }
 
     //회원 로그인 검증
     @PostMapping("/login")
-    public String loginCustomer(Customer customer,BindingResult bindingResult,
-                                HttpServletRequest request, Model model, HttpServletResponse response
-                               ) throws IOException {
+    public String loginCustomer(Customer customer, HttpServletRequest request) throws IOException {
 
-        log.info("회원 로그인 controller---");
+        log.info("회원 로그인 검증 POST---");
 
         Customer loginCustomer = customerService.getCustomer(customer.getCsId());
-        if (customer.getCsId() == null || customer.getCsPw() ==null) {
-            bindingResult.reject("loginFail", "아이디 또는 비밀번호가 맞지 않습니다.");
+        if (customer.getCsId() == null || customer.getCsPw() ==null ||
+                !(customer.getCsId().equals(loginCustomer.getCsId()))) {
            return "login/customer";
+        } else if (customer.getCsId().equals(loginCustomer.getCsId())) {
+           String dbPw = customer.getCsPw();
+            BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+            if (!encoder.matches(customer.getCsPw(), dbPw))
+                return "login/customer";
         } else {
-
         //세션 매니저를 통해 세션 생성 및 회원정보 보관
         //세션이 있으면 있는 세션을 반환, 없으면 신규 세션을 생성
         HttpSession session = request.getSession();
@@ -130,8 +134,8 @@ public class CustomerController {
 
         log.info("로그인 유저: " + loginCustomer);
 
-        return "customer/loginHome";
         }
+        return "customer/loginHome";
     }
 
 
