@@ -68,13 +68,36 @@
                         alert("입력하세요");
                         Response.redirect("/login/customer.jsp");
                         chk1 = false;
-                        return;
                         //아이디를 정규표현식 패턴대로 입력하지 않을 경우
                         //test메서드는 정규표현식을 검증하여 값이 일치하면 true,
                         //일치하지 않으면 false를 리턴
-                    } else {
+                    } 
+                    else {
                         chk1 = false;
                     } });
+
+
+        
+            //패스워드 입력값 검증.
+            $('#password').on('keyup', function () {
+                //비밀번호 공백 확인
+                if ($("#password").val().trim() === "") {
+                    $('#password').css("background-color", "pink");
+                    $('#pwChk').html('<b style="font-size:14px;color:red;">[패스워드는 필수정보!]</b>');
+                    chk2 = false;
+                }
+                //비밀번호 유효성검사
+                else if (!getPwCheck.test($("#password").val()) || $("#password").val().length < 8) {
+                    $('#password').css("background-color", "pink");
+                    $('#pwChk').html('<b style="font-size:14px;color:red;">[특수문자 포함 8자이상]</b>');
+                    chk2 = false;
+                } else {
+                    $('#password').css("background-color", "aqua");
+                    $('#pwChk').html('<b style="font-size:14px;color:green;">[참 잘했어요]</b>');
+                    chk2 = true;
+                }
+            });
+
     </script>
 
 

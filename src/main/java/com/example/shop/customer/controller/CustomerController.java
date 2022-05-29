@@ -118,23 +118,22 @@ public class CustomerController {
         log.info("회원 로그인 검증 POST---");
 
         Customer loginCustomer = customerService.getCustomer(customer.getCsId());
+
         if (customer.getCsId() == null || customer.getCsPw() ==null ||
                 !(customer.getCsId().equals(loginCustomer.getCsId()))) {
            return "login/customer";
         } else if (customer.getCsId().equals(loginCustomer.getCsId())) {
-           String dbPw = customer.getCsPw();
+           String dbPw = loginCustomer.getCsPw();
             BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
             if (!encoder.matches(customer.getCsPw(), dbPw))
                 return "login/customer";
-        } else {
+        }
         //세션 매니저를 통해 세션 생성 및 회원정보 보관
         //세션이 있으면 있는 세션을 반환, 없으면 신규 세션을 생성
         HttpSession session = request.getSession();
         session.setAttribute(SessionConst.LOGIN_CUSTOMER, loginCustomer);
-
         log.info("로그인 유저: " + loginCustomer);
 
-        }
         return "customer/loginHome";
     }
 
