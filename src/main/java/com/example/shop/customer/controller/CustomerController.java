@@ -113,19 +113,15 @@ public class CustomerController {
     @PostMapping("/login")
     public String loginCustomer(Customer customer,BindingResult bindingResult,
                                 HttpServletRequest request, Model model, HttpServletResponse response
-                               ) throws UsernameNotFoundException,IOException {
+                               ) throws IOException {
 
         log.info("회원 로그인 controller---");
-
 
         Customer loginCustomer = customerService.getCustomer(customer.getCsId());
         if (customer.getCsId() == null || customer.getCsPw() ==null) {
             bindingResult.reject("loginFail", "아이디 또는 비밀번호가 맞지 않습니다.");
            return "login/customer";
-        }
-        //else if ((customer.getCsId().equals(loginCustomer.getCsId()))) {
-
-        //}
+        } else {
 
         //세션 매니저를 통해 세션 생성 및 회원정보 보관
         //세션이 있으면 있는 세션을 반환, 없으면 신규 세션을 생성
@@ -135,6 +131,7 @@ public class CustomerController {
         log.info("로그인 유저: " + loginCustomer);
 
         return "customer/loginHome";
+        }
     }
 
 

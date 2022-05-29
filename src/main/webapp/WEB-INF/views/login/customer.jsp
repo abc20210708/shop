@@ -68,6 +68,7 @@
                         alert("입력하세요");
                         Response.redirect("/login/customer.jsp");
                         chk1 = false;
+                        return;
                         //아이디를 정규표현식 패턴대로 입력하지 않을 경우
                         //test메서드는 정규표현식을 검증하여 값이 일치하면 true,
                         //일치하지 않으면 false를 리턴
