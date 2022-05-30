@@ -23,7 +23,7 @@
 
     <h1>회원 로그인</h1>
 
-    <form action="/customer/login" method="post" autocomplete="off" enctype="multipart/form-data">
+    <form action="/customer/login" method="post" autocomplete="off" id="loginForm" enctype="multipart/form-data">
 
         <p>
             <label>
@@ -45,7 +45,7 @@
 
         <p>
             <label>
-                <input type="submit" value="로그인">
+                <input type="button" value="로그인" id="loginBtn">
             </label>
         </p>
 
@@ -63,11 +63,13 @@
         const $idInput = $('#inputId');
         $idInput.on('keyup', e => {
                     //아이디를 입력하지 않았거나 공백만 쓰고 넘어간 경우
-                    if ($idInput.val().trim() === '' || $idInput.val().trim() === null ) {
+                    if ($idInput.val() === '' || $idInput.val() === null ) {
                         $idInput.css('background', 'pink');
-                        alert("입력하세요");
-                        Response.redirect("/login/customer.jsp");
+                        alert("아이디를 입력하세요");
+                        $idInput.focus();
+                        //Response.redirect("/login/customer.jsp");
                         chk1 = false;
+                        return;
                         //아이디를 정규표현식 패턴대로 입력하지 않을 경우
                         //test메서드는 정규표현식을 검증하여 값이 일치하면 true,
                         //일치하지 않으면 false를 리턴
@@ -78,6 +80,7 @@
 
 
         
+                    /*
             //패스워드 입력값 검증.
             $('#password').on('keyup', function () {
                 //비밀번호 공백 확인
@@ -97,6 +100,17 @@
                     chk2 = true;
                 }
             });
+
+        
+            //회원가입 버튼 클릭 이벤트
+            $('#loginBtn').on('click', e => {
+                if (chk1 && chk2) {
+                    //form Node
+                    $('#loginForm').submit(); //수동 submit
+                } else {
+                    alert('입력값을 확인하세요!');
+                }
+            }); */
 
     </script>
 
