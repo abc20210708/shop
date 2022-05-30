@@ -56,7 +56,7 @@
         //const loginCustomer = '${loginCustomer}';
 
 
-
+        /*
         let chk1 = false;
 
         //ID검증
@@ -77,16 +77,16 @@
                 chk1 = false;
             }
         });
-
+        */
 
         function go_login() {
-            if ($('#userid').val() == '' || $idInput.val() === null) {
+            if ($('#inputId').val() == '' || $idInput.val() === null) {
                 alert('아이디를 입력하세요!');
-                $('#userid').focus();
+                $('#inputId').focus();
                 return;
-            } else if ($('#userpw').val() == '') {
+            } else if ($('#inputPw').val() == '') {
                 alert('비밀번호를 입력하세요!');
-                $('#userpw').focus();
+                $('#inputPw').focus();
                 return;
             }
 
@@ -94,15 +94,15 @@
                 type: 'post',
                 url: 'login',
                 data: {
-                    id: $('#userid').val(),
-                    pw: $('#userpw').val()
+                    id: $('#inputId').val(),
+                    pw: $('#inputPw').val()
                 },
                 success: function (data) {
                     if (data == 'true') {
                         location.reload();
                     } else {
                         alert('아이디나 비밀번호가 일치하지 않습니다!');
-                        $("#userid").focus();
+                        $("#inputId").focus();
                     }
                 },
                 error: function (req, text) {
@@ -114,7 +114,7 @@
 
 
 
-
+        /*
         //로그인 버튼 클릭 이벤트
         $('#loginBtn').on('click', e => {
             if (chk1 && chk2) {
@@ -123,7 +123,7 @@
             } else {
                 alert('입력값을 확인하세요!');
             }
-        });
+        }); */
     </script>
 
 
