@@ -52,6 +52,8 @@
 
     </form>
 
+
+
     <script>
         //const loginCustomer = '${loginCustomer}';
 
@@ -107,16 +109,28 @@
             $.ajax({
                 type: 'post',
                 url: '/customer/login',
-                data: { "csId":$('#inputId').val(), "csPw":$('#inputPw').val() },
-                success: function() {
+                data: { 
+                    "csId":$('#inputId').val(), "csPw":$('#inputPw').val()
+             },
+                success: function(data) {
+                    console.log(data);
+                    if(!data) {
+                        alert("아이디 또는 비밀번호가 틀립니다. ");
+                        location.reload();
+                        return false;                 
+                    } else {
                         alert("로그인 성공 ;)");
-                       location.reload();
+                        $("#loginBtn").submit();  
+                    } 
                 },
-                error: function() {
-                    alert('로그인 정보가 올바르지 않습니다.');
+                error: function(error) {
+                    console.log(error);
                 }
-            });
-        }
+               
+            })
+        };
+
+        
 
         /*       
         function go_login() {

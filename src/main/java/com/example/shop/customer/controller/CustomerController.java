@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -113,12 +114,13 @@ public class CustomerController {
 
     //회원 로그인 검증
     @PostMapping("/login")
-    public String loginCustomer(Customer customer, HttpServletRequest request, HttpServletResponse response) throws Exception {
+    public String loginCustomer(Customer customer, HttpServletRequest request,
+                                HttpServletResponse response) throws Exception {
 
         log.info("회원 로그인 검증 POST---");
 
         Customer loginCustomer = customerService.getCustomer(customer.getCsId());
-
+        /*
         if (customer.getCsId() == null || customer.getCsPw() ==null ||
                 !(customer.getCsId().equals(loginCustomer.getCsId()))) {
            return "login/customer";
@@ -127,12 +129,19 @@ public class CustomerController {
             BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
             if (!encoder.matches(customer.getCsPw(), dbPw))
                 return "login/customer";
-        }
+        } */
+
+
         //세션 매니저를 통해 세션 생성 및 회원정보 보관
         //세션이 있으면 있는 세션을 반환, 없으면 신규 세션을 생성
         HttpSession session = request.getSession();
-        session.setAttribute(SessionConst.LOGIN_CUSTOMER, loginCustomer);
-        log.info("로그인 유저: " + loginCustomer);
+
+        if(loginCustomer == null) {
+            session.setAttribute(SessionConst.LOGIN_CUSTOMER, null);
+        } else {
+            session.setAttribute(SessionConst.LOGIN_CUSTOMER, loginCustomer);
+            log.info("로그인 유저: " + loginCustomer);
+        }
 
         return "customer/loginHome";
     }

@@ -51,7 +51,7 @@
 
     <!-- 로그인  -->
     <select id="csLogin" resultType="com.example.shop.customer.domain.Customer">
-        SELECT * FROM customer WHERE customer_id = #{csId, jdbcType=VARCHAR} AND customer_pw = #{csPw, jdbcType=VARCHAR}
+        SELECT customer_id,customer_pw FROM customer WHERE customer_id = #{csId} AND customer_pw = #{csPw}
     </select>
 
 
