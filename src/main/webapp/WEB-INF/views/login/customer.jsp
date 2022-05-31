@@ -79,12 +79,13 @@
         });
         */
 
-        $('#btn_login').click(function() {
-            if ($('#inputId').val() === '' ||$('#inputId').val() === null) {
+
+        function go_login() {
+            if( $('#inputId').val() === '' || $('#inputId').val() === null ) {
                 alert('아이디를 입력하세요!');
                 $('#inputId').focus();
                 return;
-            } else if ($('#inputPw').val() === '' || ($('#inputPw').val() === null) {
+            } else if( $('#inputPw').val() === '' || $('#inputPw').val() === null) {
                 alert('비밀번호를 입력하세요!');
                 $('#inputPw').focus();
                 return;
@@ -92,25 +93,22 @@
 
             $.ajax({
                 type: 'post',
-                url: '/customer/login',
-                dataType : "json",
-                data: {
-                    csId: $('#inputId').val(),
-                    csPw: $('#inputPw').val()
-                },
-                success: function (data) {
-                    if (data == 'true') {
+                url: 'customer/login',
+                data: { csId:$('#inputId').val(), csPw:$('#inputPw').val() },
+                success: function(data) {
+                    if(data) {
                         location.reload();
                     } else {
                         alert('아이디나 비밀번호가 일치하지 않습니다!');
                         $("#inputId").focus();
                     }
                 },
-                error: function (req, text) {
+                error: function(req, text) {
                     alert(text + ': ' + req.status);
                 }
             });
         }
+
 
 
 
