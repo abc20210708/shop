@@ -92,6 +92,7 @@
         });
 
 
+        /*
         function go_login() {
             if( $('#inputId').val() === '' || $('#inputId').val() === null ) {
                 alert('아이디를 입력하세요!');
@@ -105,7 +106,7 @@
 
             $.ajax({
                 type: 'post',
-                url: 'customer/login',
+                url: '/customer/login',
                 data: { csId:$('#inputId').val(), csPw:$('#inputPw').val() },
                 success: function(data) {
                     if(data) {
@@ -119,7 +120,46 @@
                     alert(text + ': ' + req.status);
                 }
             });
+        }*/
+
+               
+        function go_login() {
+            if( $('#inputId').val() === '' || $('#inputId').val() === null ) {
+                alert('아이디를 입력하세요!');
+                $('#inputId').focus();
+                return;
+            } else if( $('#inputPw').val() === '' || $('#inputPw').val() === null) {
+                alert('비밀번호를 입력하세요!');
+                $('#inputPw').focus();
+                return;
+            }
+
+            let data={
+                    csId:$("#inputId").val(),
+					csPw:$("#inputPw").val()	
+			};
+
+            $.ajax({
+                type: "POST",
+				url: "/auth/loginProc",
+				data: JSON.stringify(data),
+				contentType : "application/json; charset=utf-8", //스프링의 데이터 형식 인식 -> 오브젝트 변환
+				dataType : "json"	
+			}).done(function(resp){
+				console.log(resp);
+				if(resp.statusCode==1){
+					alert("로그인 성공");
+				location.href="/";
+				}else{
+					alert("아이디와 패스워드를 확인하세요.");
+				}
+			}).fail(function(error){
+				console.log(error);
+				alert("로그인 실패");
+			});
         }
+
+
 
 
 
