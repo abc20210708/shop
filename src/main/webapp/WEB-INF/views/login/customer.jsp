@@ -79,6 +79,18 @@
         });
         */
 
+        $('#inputId').on('keypress', function(e){
+            if(e.keyCode == '13'){
+                $('#loginBtn').click();
+            }
+            });
+
+        $('#inputPw').on('keypress', function(e){
+        if(e.keyCode == '13'){
+            $('#loginBtn').click();
+        }
+        });
+
 
         function go_login() {
             if( $('#inputId').val() === '' || $('#inputId').val() === null ) {
