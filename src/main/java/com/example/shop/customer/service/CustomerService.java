@@ -69,7 +69,7 @@ public class CustomerService {
 
     //회원 로그인 중간처리
 
-    public Customer login(String csId, String csPw)  {
+    public Customer login(String csId, String csPw) throws Exception  {
         Customer customer = customerMapper.csLogin(csId, csPw);
         log.info("회원 로그인 service---");
 

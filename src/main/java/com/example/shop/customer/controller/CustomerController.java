@@ -113,7 +113,7 @@ public class CustomerController {
 
     //회원 로그인 검증
     @PostMapping("/login")
-    public String loginCustomer(Customer customer, HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public String loginCustomer(Customer customer, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
         log.info("회원 로그인 검증 POST---");
 

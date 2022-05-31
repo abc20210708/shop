@@ -34,7 +34,7 @@ public interface CustomerMapper {
     int isDuplicate(String target);
 
     //로그인
-    Customer csLogin(@Param("csId") String csId, @Param("csPw") String csPw);
+    Customer csLogin(@Param("csId") String csId, @Param("csPw") String csPw) throws Exception;;
 
 
 }//

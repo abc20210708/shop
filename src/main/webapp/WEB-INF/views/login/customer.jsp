@@ -79,12 +79,12 @@
         });
         */
 
-        function go_login() {
-            if ($('#inputId').val() == '' || $idInput.val() === null) {
+        $('#btn_login').click(function() {
+            if ($('#inputId').val() === '' ||$('#inputId').val() === null) {
                 alert('아이디를 입력하세요!');
                 $('#inputId').focus();
                 return;
-            } else if ($('#inputPw').val() == '') {
+            } else if ($('#inputPw').val() === '' || ($('#inputPw').val() === null) {
                 alert('비밀번호를 입력하세요!');
                 $('#inputPw').focus();
                 return;
@@ -92,10 +92,11 @@
 
             $.ajax({
                 type: 'post',
-                url: 'login',
+                url: '/customer/login',
+                dataType : "json",
                 data: {
-                    id: $('#inputId').val(),
-                    pw: $('#inputPw').val()
+                    csId: $('#inputId').val(),
+                    csPw: $('#inputPw').val()
                 },
                 success: function (data) {
                     if (data == 'true') {
