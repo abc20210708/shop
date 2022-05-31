@@ -106,12 +106,17 @@
                 return;
             }
 
+            let csId = $('#inputId').val();
+            let csPw = $('#inputPw').val();
+
+            let param =  {"csId":csId, "csPw":csPw }
+
             $.ajax({
-                type: 'post',
+                anyne: true,
+                type: 'POST',
                 url: '/customer/login',
-                data: { 
-                    "csId":$('#inputId').val(), "csPw":$('#inputPw').val()
-             },
+                data: JSON.stringify(param),
+                dataType: "text",
                 success: function(data) {
                     console.log(data);
                     if(!data) {

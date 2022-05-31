@@ -120,7 +120,7 @@ public class CustomerController {
         log.info("회원 로그인 검증 POST---");
 
         Customer loginCustomer = customerService.getCustomer(customer.getCsId());
-        /*
+
         if (customer.getCsId() == null || customer.getCsPw() ==null ||
                 !(customer.getCsId().equals(loginCustomer.getCsId()))) {
            return "login/customer";
@@ -129,7 +129,7 @@ public class CustomerController {
             BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
             if (!encoder.matches(customer.getCsPw(), dbPw))
                 return "login/customer";
-        } */
+        }
 
 
         //세션 매니저를 통해 세션 생성 및 회원정보 보관
