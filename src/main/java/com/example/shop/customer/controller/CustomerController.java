@@ -123,7 +123,7 @@ public class CustomerController {
                 !(customer.getCsId().equals(loginCustomer.getCsId()))) {
            return "login/customer";
         } else if (customer.getCsId().equals(loginCustomer.getCsId())) {
-           String dbPw = loginCustomer.getCsPw();
+            String dbPw = loginCustomer.getCsPw();
             BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
             if (!encoder.matches(customer.getCsPw(), dbPw))
                 return "login/customer";

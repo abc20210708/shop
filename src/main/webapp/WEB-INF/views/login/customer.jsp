@@ -92,7 +92,7 @@
         });
 
 
-        /*
+        
         function go_login() {
             if( $('#inputId').val() === '' || $('#inputId').val() === null ) {
                 alert('아이디를 입력하세요!');
@@ -107,22 +107,18 @@
             $.ajax({
                 type: 'post',
                 url: '/customer/login',
-                data: { csId:$('#inputId').val(), csPw:$('#inputPw').val() },
-                success: function(data) {
-                    if(data) {
-                        location.reload();
-                    } else {
-                        alert('아이디나 비밀번호가 일치하지 않습니다!');
-                        $("#inputId").focus();
-                    }
+                data: { "csId":$('#inputId').val(), "csPw":$('#inputPw').val() },
+                success: function() {
+                        alert("로그인 성공 ;)");
+                       location.reload();
                 },
-                error: function(req, text) {
-                    alert(text + ': ' + req.status);
+                error: function() {
+                    alert('로그인 정보가 올바르지 않습니다.');
                 }
             });
-        }*/
+        }
 
-               
+        /*       
         function go_login() {
             if( $('#inputId').val() === '' || $('#inputId').val() === null ) {
                 alert('아이디를 입력하세요!');
@@ -134,30 +130,23 @@
                 return;
             }
 
-            let data={
-                    csId:$("#inputId").val(),
-					csPw:$("#inputPw").val()	
-			};
+
 
             $.ajax({
                 type: "POST",
-				url: "/auth/loginProc",
+				url: "/customer/login",
 				data: JSON.stringify(data),
 				contentType : "application/json; charset=utf-8", //스프링의 데이터 형식 인식 -> 오브젝트 변환
-				dataType : "json"	
-			}).done(function(resp){
-				console.log(resp);
-				if(resp.statusCode==1){
-					alert("로그인 성공");
-				location.href="/";
-				}else{
-					alert("아이디와 패스워드를 확인하세요.");
-				}
-			}).fail(function(error){
-				console.log(error);
-				alert("로그인 실패");
+				dataType : "json",
+                success: function(data) {
+                    if(!data)
+                        alert('잘못된 아이디이거나, 비밀번호가 틀렸습니다.') ;
+                    else
+                        location.href="/customer/loginHome" ; // home.do로 돌아가시면 됩니다.
+                }	
 			});
-        }
+            
+        }*/
 
 
 
