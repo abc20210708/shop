@@ -121,7 +121,7 @@ public class CustomerController {
         //세션이 있으면 있는 세션을 반환, 없으면 신규 세션을 생성
         HttpSession session = request.getSession();
         log.info("회원 로그인 검증 POST---");
-        Customer loginCustomer = customerService.getCustomer(customer.getCsId());
+        Customer loginCustomer = customerService.login(customer.getCsId(), customer.getCsPw());
 
         /*
         if (customer.getCsId() == null || customer.getCsPw() ==null ||
@@ -137,7 +137,7 @@ public class CustomerController {
 
 
         if(loginCustomer != null) {
-            session.setAttribute("ms", loginCustomer);
+            session.setAttribute(SessionConst.LOGIN_CUSTOMER, loginCustomer);
             log.info("로그인 유저: " + loginCustomer);
         } else {
             model.addAttribute("massage", "아이디 또는 비밀번호가 다릅니다.");

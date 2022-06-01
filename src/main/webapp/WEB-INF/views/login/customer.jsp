@@ -105,7 +105,7 @@
                 $('#inputPw').focus();
                 return;
             } else {
-                $('#loginBtn').submit();
+                $("form").submit();
             }
         }
 

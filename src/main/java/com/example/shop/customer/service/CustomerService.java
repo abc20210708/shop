@@ -69,14 +69,14 @@ public class CustomerService {
 
     //회원 로그인 중간처리
 
-    public Customer login(Customer customer) throws Exception {
-        Customer findCustomer = customerMapper.getCustomer(customer.getCsId());
+    public Customer login(String csId, String csPw) throws Exception {
+        Customer findCustomer = customerMapper.getCustomer(csId);
         log.info("회원 로그인 service---");
 
-        String dbPw = customer.getCsPw();
-        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         if(findCustomer != null) {
-            if(encoder.matches(customer.getCsPw(), dbPw)) {
+            String dbPw = findCustomer.getCsPw();
+            BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+            if(encoder.matches(csPw,dbPw)) {
                 return findCustomer;
             }
         }
