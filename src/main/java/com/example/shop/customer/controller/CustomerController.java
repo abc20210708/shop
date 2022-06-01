@@ -123,18 +123,6 @@ public class CustomerController {
         log.info("회원 로그인 검증 POST---");
         Customer loginCustomer = customerService.login(customer.getCsId(), customer.getCsPw());
 
-        /*
-        if (customer.getCsId() == null || customer.getCsPw() ==null ||
-                !(customer.getCsId().equals(loginCustomer.getCsId()))) {
-           return "login/customer";
-        } else if (customer.getCsId().equals(loginCustomer.getCsId())) {
-            String dbPw = loginCustomer.getCsPw();
-            BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-            if (!encoder.matches(customer.getCsPw(), dbPw))
-                return "login/customer";
-        } */
-
-
 
         if(loginCustomer != null) {
             session.setAttribute(SessionConst.LOGIN_CUSTOMER, loginCustomer);
