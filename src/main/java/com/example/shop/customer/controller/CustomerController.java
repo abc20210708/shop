@@ -115,7 +115,7 @@ public class CustomerController {
     //회원 로그인 검증
     @PostMapping("/login")
     public String loginCustomer(Customer customer, HttpServletRequest request,
-                                Model model) throws Exception {
+                                HttpServletResponse response) throws Exception {
 
         //세션 매니저를 통해 세션 생성 및 회원정보 보관
         //세션이 있으면 있는 세션을 반환, 없으면 신규 세션을 생성
@@ -140,7 +140,17 @@ public class CustomerController {
             session.setAttribute(SessionConst.LOGIN_CUSTOMER, loginCustomer);
             log.info("로그인 유저: " + loginCustomer);
         } else {
-            model.addAttribute("massage", "아이디 또는 비밀번호가 다릅니다.");
+            response.setCharacterEncoding("UTF-8");
+            response.setContentType("text/html; charset=UTF-8");
+
+            PrintWriter out = response.getWriter();
+
+            out.println("<script>alert('아이디 또는 비밀번호가 틀립니다. ');");
+            out.println("history.back()");
+            out.println("</script>");
+            out.flush();
+            response.flushBuffer();
+            out.close();
             return "login/customer";
         }
 
