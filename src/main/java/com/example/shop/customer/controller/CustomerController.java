@@ -149,26 +149,6 @@ public class CustomerController {
         return  "redirect:/";
     }
 
-    /*
-      @PostMapping("/login")
-    public String loginCustomer(String csId, String csPw, Model model,
-                                HttpSession session, HttpServletResponse response) throws IOException {
-        log.info("로그인 검증 ID: "+ csId);
-        //LoginFlag flag = customerService.login(csId, csPw);
-       // Customer loginCs = customerService.login(csId, csPw);
-        //model.addAttribute("flag",flag);
-        //model.addAttribute("id", csId);
 
-        //회원 로그인 성공시
-        if (flag == LoginFlag.SUCCESS) {
-            sessionManager.createSession(loginCs, response);
-            //session.setAttribute("loginCustomer", customerService.getCustomer(csId));
-            //response.sendRedirect("/product/product");
-            return "redirect:/";
-            //customer/info?cdId="+csId
-        }
-        return "login/customer";
-    }
-    * */
 
 }//

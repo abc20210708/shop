@@ -1,13 +1,10 @@
 package com.example.shop.cart.service;
 
 import com.example.shop.cart.domain.Cart;
-import com.example.shop.cart.dto.ModCart;
 import com.example.shop.cart.repository.CartMapper;
 import com.example.shop.product.domain.Product;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
