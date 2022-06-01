@@ -2,22 +2,14 @@ package com.example.shop.customer.service;
 
 
 import com.example.shop.customer.domain.Customer;
-import com.example.shop.customer.domain.LoginFlag;
 import com.example.shop.customer.dto.ModCustomer;
 import com.example.shop.customer.repository.CustomerMapper;
-import com.example.shop.login.SessionConst;
 import com.example.shop.notice.domain.Notice;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.authentication.InternalAuthenticationServiceException;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import javax.servlet.ServletException;
-import java.io.IOException;
-import java.rmi.server.ServerCloneException;
 import java.util.List;
 
 @Service
