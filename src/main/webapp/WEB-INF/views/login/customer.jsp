@@ -104,8 +104,12 @@
                 alert('비밀번호를 입력하세요!');
                 $('#inputPw').focus();
                 return;
+            } else {
+                $('#loginBtn').submit();
             }
+        }
 
+            /*
             let csId = $('#inputId').val();
             let csPw = $('#inputPw').val();
 
@@ -133,7 +137,7 @@
                 }
                
             })
-        };
+        };*/
 
         
 
